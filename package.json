@@ -18,15 +18,18 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint src --color",
+        "lint": "eslint src --color --fix",
         "prettier": "prettier src -check",
         "husky-install": "husky install"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run lint && npm test",
-            "pre-push": "npm run lint && npm test"
+            "pre-commit": "lint-staged",
+            "pre-push": "lint-staged"
         }
+    },
+    "lint-staged":{
+      "*.js":["npm run lint","git add"]
     },
     "eslintConfig": {
         "extends": [
