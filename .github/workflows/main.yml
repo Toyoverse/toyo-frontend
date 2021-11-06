@@ -20,9 +20,6 @@ jobs:
                   node-version: 14.x
             - name: npm ci
               run: npm ci
-            - name: test
-              run: npm test
-            - name: format
               run: npm run prettier
             - name: lint
               run: npm run lint
