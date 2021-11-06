@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default functio() {
+export default function Character() {
   return (
     <div>
 

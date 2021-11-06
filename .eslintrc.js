@@ -59,5 +59,8 @@ module.exports = {
         'require-jsdoc': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
+        'max-lines': ['error', 100],
+        'no-console': 'error',
+        'no-nested-ternary': 'error',
     },
 }

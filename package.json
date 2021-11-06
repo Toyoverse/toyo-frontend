@@ -7,6 +7,7 @@
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
         "node-sass": "4.14.1",
+        "pretty-quick": "^3.1.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-router-dom": "5.2.0",
@@ -19,10 +20,13 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint src --color --fix",
-        "prettier": "prettier src -check",
-        "husky-install": "husky install",
-        "prepare": "husky install",
-        "lint-staged": "lint-staged --config lint-staged.js"
+        "pretty-quick": "pretty-quick"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged && eslint src --color --fix",
+            "pre-push": "pretty-quick --staged && eslint src --color --fix"
+        }
     },
     "browserslist": {
         "production": [
