@@ -3,7 +3,12 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'google'],
+    extends: [
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'google',
+        'prettier',
+    ],
     parserOptions: {
         ecmaFeatures: {
             jsx: true,

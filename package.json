@@ -20,22 +20,16 @@
         "eject": "react-scripts eject",
         "lint": "eslint src --color --fix",
         "prettier": "prettier src -check",
-        "husky-install": "husky install"
+        "husky-install": "husky install",
+        "prepare": "husky install"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "lint-staged"
-        }
-    },
-    "lint-staged":{
-      "*.js":["npm run lint","git add"]
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
+    "lint-staged": {
+        "*.{js,jsx}": [
+            "npm run lint",
+            "git add",
+            "eslint --cache --fix"
+        ],
+        "*.{js,css,md}": "prettier --write"
     },
     "browserslist": {
         "production": [
@@ -53,6 +47,7 @@
         "cross-env": "^7.0.3",
         "eslint": "^8.2.0",
         "eslint-config-google": "^0.14.0",
+        "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-react": "^7.26.1",
         "husky": "^7.0.4",
         "lint-staged": "^11.2.6",
