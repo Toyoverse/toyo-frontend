@@ -21,15 +21,8 @@
         "lint": "eslint src --color --fix",
         "prettier": "prettier src -check",
         "husky-install": "husky install",
-        "prepare": "husky install"
-    },
-    "lint-staged": {
-        "*.{js,jsx}": [
-            "npm run lint",
-            "git add",
-            "eslint --cache --fix"
-        ],
-        "*.{js,css,md}": "prettier --write"
+        "prepare": "husky install",
+        "lint-staged": "lint-staged --config lint-staged.js"
     },
     "browserslist": {
         "production": [
