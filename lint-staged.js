@@ -1,7 +1,6 @@
 module.exports = {
     '*.{js,jsx,ts,tsx}': [
-        'npm run lintgit a',
-        'react-scripts test --bail --watchAll=false --findRelatedTests --passWithNoTests',
+        'npm run lint',
         () => 'tsc-files --noEmit',
     ],
     '*.{js,jsx,ts,tsx,json,css,js}': ['prettier --write'],
