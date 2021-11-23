@@ -1,0 +1,33 @@
+.main-wrapper {
+    display: flex;
+
+    @include media-query($md) {
+        flex-direction: column;
+    }
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 60%;
+    width: 20%;
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
+        no-repeat center center fixed;
+}
+
+.stripes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+
+    & > img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+}
