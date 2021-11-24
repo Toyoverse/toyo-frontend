@@ -60,13 +60,9 @@ function Dock() {
                 <div className="item-showcase">
                     <div>
                         <img
+                            className="main-img-showcase"
                             src={mainImgUrl}
                             alt="main img"
-                            style={{
-                                width: '300px',
-                                height: '500px',
-                                marginRight: '3em',
-                            }}
                         />
                     </div>
 

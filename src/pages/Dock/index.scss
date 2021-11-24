@@ -32,17 +32,11 @@
     .nav-items {
         margin: 2em 0 0 2em;
         position: relative;
-        // position: absolute;
-        // top: 2em;
-        // left: 2em;
-        // margin-left: 1em;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         row-gap: 1.3em;
-        // height: 60%;
-        // width: 20%;
         background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
             no-repeat;
         background-size: contain;
@@ -80,8 +74,6 @@
             position: absolute;
             top: 40%;
             left: -1.5em;
-            // transform: translate(1em, 1em);
-            // z-index: -1;
 
             & > img {
                 width: 200px;
@@ -103,6 +95,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            & > div > .main-img-showcase {
+                width: 300px / 1366px * 100vw;
+                height: 440px;
+                margin-right: 3em;
+            }
         }
 
         .my-stuff-wrapper {
