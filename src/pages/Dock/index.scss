@@ -31,6 +31,7 @@
 
     .nav-items {
         margin: 2em 0 0 2em;
+        position: relative;
         // position: absolute;
         // top: 2em;
         // left: 2em;
@@ -72,6 +73,19 @@
             & > img {
                 width: 130px;
                 height: 100px;
+            }
+        }
+
+        & > .selected-nav-item-glow {
+            position: absolute;
+            top: 40%;
+            left: -1.5em;
+            // transform: translate(1em, 1em);
+            // z-index: -1;
+
+            & > img {
+                width: 200px;
+                height: 200px;
             }
         }
     }

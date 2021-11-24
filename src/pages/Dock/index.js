@@ -20,10 +20,18 @@ function Dock() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
     const selectedGlowUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
+    const selectedNavGlowUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637769744/Toyo/nav-item-glow_wkiqbj.png'
 
     return (
         <main className="main-wrapper">
             <div className="nav-items">
+                <div className="selected-nav-item-glow">
+                    <img
+                        src={selectedNavGlowUrl}
+                        alt="selected-nav-item glow"
+                    />
+                </div>
                 <div className="logo">
                     <img src={logoUrl} alt="logo" />
                 </div>
