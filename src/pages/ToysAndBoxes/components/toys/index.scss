@@ -1,0 +1,9 @@
+.toys {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+    scrollbar-color: red yellow;
+    height: 100vh;
+    overflow: auto;
+}
