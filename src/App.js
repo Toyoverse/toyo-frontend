@@ -7,16 +7,14 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 
-import Character from './pages/character/Character'
-import Dock from './pages/Dock/Dock'
+import Dock from './pages/ToysAndBoxes/ToysAndBoxes'
 
 function App() {
     return (
         <div className="App">
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Character} />
-                    <Route path="/dock" component={Dock} />
+                    <Route path="/" component={Dock} />
                 </Switch>
             </Router>
         </div>
