@@ -18,61 +18,70 @@ function Dock() {
         'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png'
     const upIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
+    // const selectedGlowUrl =
+    //     'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
 
     return (
         <main className="main-wrapper">
-            <div className="stripes-overlay">
-                <div className="nav-items">
-                    <div className="logo">
-                        <img src={logoUrl} alt="logo" />
-                    </div>
-                    <div className="nav-item">
-                        <img src={homeUrl} alt="home" />
-                        <span>HOME</span>
-                    </div>
-                    <div className="nav-item">
-                        <img src={itemsUrl} alt="items" />
-                        <span>ITEMS</span>
-                    </div>
-                    <div className="nav-item">
-                        <img src={toyosUrl} alt="toyos" />
-                        <span>TOYOS</span>
-                    </div>
-                    <div className="nav-item">
-                        <img src={bodyPartsUrl} alt="body parts" />
-                        <span>BODY PARTS</span>
-                    </div>
+            <div className="nav-items">
+                <div className="logo">
+                    <img src={logoUrl} alt="logo" />
                 </div>
-                <div className="main-content-wrapper">
-                    <div className="item-showcase">
-                        <div>
-                            <img
-                                src={mainImgUrl}
-                                alt="main img"
-                                style={{
-                                    width: '300px',
-                                    height: '500px',
-                                    marginRight: '3em',
-                                }}
-                            />
-                        </div>
-
-                        <TextCard />
+                <div className="nav-item">
+                    <img src={homeUrl} alt="home" />
+                    <span>HOME</span>
+                </div>
+                <div className="nav-item">
+                    <img src={itemsUrl} alt="items" />
+                    <span>ITEMS</span>
+                </div>
+                <div className="nav-item">
+                    <img src={toyosUrl} alt="toyos" />
+                    <span>TOYOS</span>
+                </div>
+                <div className="nav-item">
+                    <img src={bodyPartsUrl} alt="body parts" />
+                    <span>
+                        BODY
+                        <br />
+                        PARTS
+                    </span>
+                </div>
+            </div>
+            <div className="main-content-wrapper">
+                <div className="item-showcase">
+                    <div>
+                        <img
+                            src={mainImgUrl}
+                            alt="main img"
+                            style={{
+                                width: '300px',
+                                height: '500px',
+                                marginRight: '3em',
+                            }}
+                        />
                     </div>
-                    <div className="my-stuff-wrapper">
+
+                    <TextCard />
+                </div>
+                <div className="my-stuff-wrapper">
+                    <div>
                         <div className="top-section">
                             <header className="title">MY STUFF</header>
                             <img
                                 src={upIconUrl}
                                 alt="scroll up"
                                 className="scroll-icon"
-                                style={{ width: '32px', height: '32px' }}
+                                style={{ width: '24px', height: '24px' }}
                             />
                         </div>
                         <ItemsCarousel />
                     </div>
                 </div>
             </div>
+            {/* <div className="selected-glow">
+                <img src={selectedGlowUrl} alt="selected glow" />
+            </div> */}
         </main>
     )
 }
