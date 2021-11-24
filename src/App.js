@@ -10,6 +10,7 @@ import './App.css'
 import Character from './pages/character/Character'
 import Dock from './pages/Dock'
 import Parts from './pages/Parts'
+import ToysAndBoxes from './pages/ToysAndBoxes/ToysAndBoxes.jsx'
 
 function App() {
     return (

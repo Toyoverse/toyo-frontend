@@ -74,22 +74,10 @@
 
         & > .open-btn {
             align-self: flex-start;
-            margin-left: 1.5em;
+            margin-left: 0.8em;
             z-index: 2;
             position: relative;
-
-            & > img {
-                height: 2.5em;
-            }
-
-            & > span {
-                position: absolute;
-                top: 23%;
-                left: 33%;
-                font-family: 'FreePixel', sans-serif;
-                font-weight: normal;
-                color: #ff009f;
-            }
+            height: 4em;
         }
     }
     // }

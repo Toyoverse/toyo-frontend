@@ -8,6 +8,7 @@ export default function ToysAndBoxes() {
     return (
         <div>
             <div className="container">
+                <div className="stripes-overlay"></div>
                 <div className="sidebar">
                     <SideBar />
                 </div>

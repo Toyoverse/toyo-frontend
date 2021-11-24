@@ -4,7 +4,7 @@ import './index.scss'
 
 function TextCard() {
     const openBtnUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637683322/Toyo/open-btn_y4mdep.png'
+        'https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/open-button_xjrwoo.png'
     return (
         <div className="card-wrapper">
             {/* <img
@@ -27,10 +27,7 @@ function TextCard() {
                     tempus maximus. Praesent dapibus pretium nulla sed
                     pellentesque.
                 </p>
-                <div className="open-btn">
-                    <img src={openBtnUrl} alt="open button" />
-                    <span>open</span>
-                </div>
+                <img src={openBtnUrl} className="open-btn" alt="open button" />
             </div>
             {/* </div> */}
             {/* <div className="back-card"></div> */}

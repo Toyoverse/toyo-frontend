@@ -40,7 +40,14 @@ function Nav() {
                 <span>
                     BODY
                     <br />
-                    PARTS
+                    <span
+                        style={{
+                            display: 'block',
+                            marginTop: '-0.7em',
+                        }}
+                    >
+                        PARTS
+                    </span>
                 </span>
             </div>
         </div>

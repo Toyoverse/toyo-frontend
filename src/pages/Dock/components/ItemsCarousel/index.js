@@ -6,8 +6,8 @@ function ItemsCarousel() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-5_3x_ctgics.png'
     const angHuUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-3_3x_an4mwu.png'
-    // const mizuchiGlowUrl =
-    //     'https://res.cloudinary.com/groovin/image/upload/v1637764670/Toyo/mizuchiGlow_tvuvme.png'
+    const mizuchiGlowUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637789184/Toyo/mizuchi-selected-no-back_ievgre.png'
     const mizuchiUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/boxes_3x_ttyx7o.png'
 
@@ -32,7 +32,7 @@ function ItemsCarousel() {
             </div>
             <div>
                 <img
-                    src={mizuchiUrl}
+                    src={mizuchiGlowUrl}
                     className="selected-item"
                     alt="mizuchi selected"
                 />

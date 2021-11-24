@@ -11,9 +11,12 @@ function Dock() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
     const selectedGlowUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
+    const titleBoxUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/my-stuff-title_lxborg.png'
 
     return (
         <main className="main-wrapper">
+            <div className="stripes-overlay"></div>
             <Nav />
             <div className="main-content-wrapper">
                 <div className="item-showcase">
@@ -30,7 +33,11 @@ function Dock() {
                 <div className="my-stuff-wrapper">
                     <div>
                         <div className="top-section">
-                            <header className="title">MY STUFF</header>
+                            <img
+                                className="title"
+                                src={titleBoxUrl}
+                                alt="title box"
+                            />
                             <img
                                 src={upIconUrl}
                                 alt="scroll up"
