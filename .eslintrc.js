@@ -3,11 +3,7 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'google',
-        'prettier',
-    ],
+    extends: ['plugin:react/recommended', 'google', 'prettier'],
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
@@ -58,7 +54,7 @@ module.exports = {
         'require-jsdoc': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
-        'max-lines': ['error', 100],
+        'max-lines': ['error', 120],
         'no-console': 'error',
         'no-nested-ternary': 'error',
     },
