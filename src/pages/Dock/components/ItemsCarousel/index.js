@@ -6,6 +6,8 @@ function ItemsCarousel() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-5_3x_ctgics.png'
     const angHuUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-3_3x_an4mwu.png'
+    // const mizuchiGlowUrl =
+    //     'https://res.cloudinary.com/groovin/image/upload/v1637764670/Toyo/mizuchiGlow_tvuvme.png'
     const mizuchiUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/boxes_3x_ttyx7o.png'
 
@@ -17,6 +19,7 @@ function ItemsCarousel() {
     return (
         <div className="items-carousel">
             <img
+                className="nav-icon"
                 src={iconLeftUrl}
                 alt="icon left"
                 style={{ width: '24px', height: '24px' }}
@@ -28,7 +31,11 @@ function ItemsCarousel() {
                 <img src={angHuUrl} alt="ang hu" />
             </div>
             <div>
-                <img src={mizuchiUrl} alt="mizuchi" />
+                <img
+                    src={mizuchiUrl}
+                    className="selected-item"
+                    alt="mizuchi selected"
+                />
             </div>
             <div>
                 <img src={fortifiedUrl} alt="fortified" />
@@ -37,6 +44,7 @@ function ItemsCarousel() {
                 <img src={mizuchiUrl} alt="mizuchi" />
             </div>
             <img
+                className="nav-icon"
                 src={iconRightUrl}
                 alt="icon right"
                 style={{ width: '24px', height: '24px' }}

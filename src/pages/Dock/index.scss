@@ -1,116 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Arapix';
+    src: url('../assets/fonts/29LT\ Arapix-Regular.OTF') format('opentype');
+}
+
 .main-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     display: flex;
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637696490/background_b0fnlj.png)
-        no-repeat center center;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    color: white;
 
     @media (max-width: 768px) {
         flex-direction: column;
     }
-}
 
-.nav-items {
-    position: absolute;
-    top: 2em;
-    left: 2em;
-    // margin-left: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 60%;
-    width: 20%;
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
-        no-repeat;
-    background-size: contain;
-    background-position: center;
-
-    & > .nav-item {
-        margin-bottom: 5px;
+    .main-content-wrapper {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-
-        & > img {
-            width: 50px;
-            height: 50px;
-        }
-
-        & > span {
-            background: transparent;
-        }
-    }
-
-    & > .logo {
-        & > img {
-            width: 179.36px;
-            height: 143.49px;
-        }
-    }
-}
-
-.main-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.item-showcase {
-    height: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.my-stuff-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    & > .top-section {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
+        justify-content: space-between;
         height: 100%;
-        width: 100%;
-        padding: 0 40px;
 
-        & > .title {
-            margin-top: 10px;
-            background: #ff0099;
-            height: 49.73px;
-            width: 172.31px;
+        .item-showcase {
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            & > div > .main-img-showcase {
+                width: 300px / 1366px * 100vw;
+                height: 440px;
+                margin-right: 3em;
+            }
         }
 
-        & > .scroll-icon {
+        .my-stuff-wrapper {
             position: absolute;
-            top: 0;
-            left: 48%;
+            bottom: 1em;
+            right: 50%;
+            width: 65%;
+            transform: translate(50%, -1em);
+            & > div {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+
+                & > .top-section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0 40px;
+
+                    & > .title {
+                        margin-top: 10px;
+                        background: #ff0099;
+                        height: 25px;
+                        width: 100px;
+                        font-family: Arapix, sans-serif;
+                        font-weight: normal;
+                        font-size: 15px;
+                        letter-spacing: 0.02em;
+                        text-align: left;
+                        color: #fff;
+                        padding-left: 15px;
+                        margin-bottom: 0.4em;
+                        margin: 10px 0 0.4em 0.5em;
+                    }
+
+                    & > .scroll-icon {
+                        position: absolute;
+                        top: 0;
+                        left: 48%;
+                    }
+                }
+
+                & > .selected-glow {
+                    position: absolute;
+                    bottom: -1em;
+                    right: 50%;
+                    transform: translate(50%, 1em);
+                    z-index: -1;
+
+                    > img {
+                        width: 300px;
+                        height: 300px;
+                    }
+                }
+            }
         }
     }
-}
-
-.stripes-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-
-    & > img {
-        height: 100%;
-        width: 100%;
-        max-width: 100%;
-        object-fit: cover;
-    }
-}
-
-img {
-    height: 100px;
-    width: 100px;
 }
