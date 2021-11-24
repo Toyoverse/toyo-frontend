@@ -1,12 +1,18 @@
 .main-wrapper {
     display: flex;
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637696490/background_b0fnlj.png)
+        no-repeat center center;
 
-    @include media-query($md) {
+    @media (max-width: 768px) {
         flex-direction: column;
     }
 }
 
 .nav-items {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    // margin-left: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +20,79 @@
     height: 60%;
     width: 20%;
     background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
-        no-repeat center center fixed;
+        no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    & > .nav-item {
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & > img {
+            width: 50px;
+            height: 50px;
+        }
+
+        & > span {
+            background: transparent;
+        }
+    }
+
+    & > .logo {
+        & > img {
+            width: 179.36px;
+            height: 143.49px;
+        }
+    }
+}
+
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.item-showcase {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-stuff-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    & > .top-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        padding: 0 40px;
+
+        & > .title {
+            margin-top: 10px;
+            background: #ff0099;
+            height: 49.73px;
+            width: 172.31px;
+        }
+
+        & > .scroll-icon {
+            position: absolute;
+            top: 0;
+            left: 48%;
+        }
+    }
 }
 
 .stripes-overlay {
@@ -30,4 +108,9 @@
         max-width: 100%;
         object-fit: cover;
     }
+}
+
+img {
+    height: 100px;
+    width: 100px;
 }

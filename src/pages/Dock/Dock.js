@@ -1,7 +1,7 @@
 import React from 'react'
+import ItemsCarousel from './components/ItemsCarousel'
 import TextCard from './components/TextCard'
-
-import 'index.scss'
+import './index.scss'
 
 function Dock() {
     const logoUrl =
@@ -16,69 +16,63 @@ function Dock() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677736/Toyo/body_part_3x_mxq76n.png'
     const mainImgUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png'
-    const fortifiedUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-5_3x_ctgics.png'
-    const angHuUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-3_3x_an4mwu.png'
-    const mizuchiUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/boxes_3x_ttyx7o.png'
+    const upIconUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
     const stripesUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637680498/Toyo/stripes-overlay_cnf9g1.png'
 
     return (
         <main className="main-wrapper">
             <div className="nav-items">
-                <div>
+                <div className="logo">
                     <img src={logoUrl} alt="logo" />
                 </div>
-                <div>
+                <div className="nav-item">
                     <img src={homeUrl} alt="home" />
+                    <span>HOME</span>
                 </div>
-                <div>
+                <div className="nav-item">
                     <img src={itemsUrl} alt="items" />
+                    <span>ITEMS</span>
                 </div>
-                <div>
+                <div className="nav-item">
                     <img src={toyosUrl} alt="toyos" />
+                    <span>TOYOS</span>
                 </div>
-                <div>
+                <div className="nav-item">
                     <img src={bodyPartsUrl} alt="body parts" />
+                    <span>BODY PARTS</span>
                 </div>
             </div>
-
             <div className="main-content-wrapper">
-                <div>
+                <div className="item-showcase">
                     <div>
-                        <img src={mainImgUrl} alt="main" />
+                        <img
+                            src={mainImgUrl}
+                            alt="main img"
+                            style={{
+                                width: '300px',
+                                height: '500px',
+                                marginRight: '3em',
+                            }}
+                        />
                     </div>
 
                     <TextCard />
                 </div>
-
-                <div>
-                    <div>
-                        <header>MY STUFF</header>
-                        <img src={upIconUrl} alt="scroll up" />
+                <div className="my-stuff-wrapper">
+                    <div className="top-section">
+                        <header className="title">MY STUFF</header>
+                        <img
+                            src={upIconUrl}
+                            alt="scroll up"
+                            className="scroll-icon"
+                            style={{ width: '32px', height: '32px' }}
+                        />
                     </div>
-                    <div>
-                        <div>
-                            <img src={fortifiedUrl} alt="fortified" />
-                        </div>
-                        <div>
-                            <img src={angHuUrl} alt="ang hu" />
-                        </div>
-                        <div>
-                            <img src={mizuchiUrl} alt="mizuchi" />
-                        </div>
-                        <div>
-                            <img src={fortifiedUrl} alt="fortified" />
-                        </div>
-                        <div>
-                            <img src={mizuchiUrl} alt="mizuchi" />
-                        </div>
-                    </div>
+                    <ItemsCarousel />
                 </div>
             </div>
-
             <div className="stripes-overlay">
                 <img src={stripesUrl} alt="stripes" />
             </div>
