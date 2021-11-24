@@ -18,8 +18,8 @@ function Dock() {
         'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png'
     const upIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
-    // const selectedGlowUrl =
-    //     'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
+    const selectedGlowUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
 
     return (
         <main className="main-wrapper">
@@ -76,12 +76,12 @@ function Dock() {
                             />
                         </div>
                         <ItemsCarousel />
+                        <div className="selected-glow">
+                            <img src={selectedGlowUrl} alt="selected glow" />
+                        </div>
                     </div>
                 </div>
             </div>
-            {/* <div className="selected-glow">
-                <img src={selectedGlowUrl} alt="selected glow" />
-            </div> */}
         </main>
     )
 }
