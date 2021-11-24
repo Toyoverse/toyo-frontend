@@ -1,7 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .main-wrapper {
+    width: 100%;
+    height: 100vh;
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637754088/Toyo/background_uzhh7t.png);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637696490/background_b0fnlj.png)
-        no-repeat center center;
+    color: white;
 
     @media (max-width: 768px) {
         flex-direction: column;
