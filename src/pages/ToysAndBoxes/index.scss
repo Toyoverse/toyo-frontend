@@ -2,10 +2,12 @@
     display: grid;
     grid-template-columns: 100px 1fr;
     margin: 0;
-    background: url(../../assets/Layer5/Layer5@2x.png);
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
     background-color: rgba(0, 0, 0, 0.979);
     min-height: 100vh;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     grid-gap: 20px;
 }
 
@@ -14,6 +16,8 @@
 }
 
 .stripes-overlay {
+    pointer-events: none;
+    mix-blend-mode: soft-light;
     position: absolute;
     top: 0;
     left: 0;
@@ -24,5 +28,5 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 10;
-    opacity: 0.3;
+    opacity: 1;
 }
