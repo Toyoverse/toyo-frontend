@@ -72,16 +72,44 @@ li {
 }
 
 ::-webkit-scrollbar {
+    border: 1px solid #ff00998e;
     width: 15px;
+    -webkit-animation: fade_move_down 4s ease-in-out infinite;
+    -moz-animation: fade_move_down 4s ease-in-out infinite;
+    animation: fade_move_down 4s ease-in-out infinite;
 }
 
-::-webkit-scrollbar-track {
+// ::-webkit-scrollbar-button {
+//     width: 24px;
+//     height: 24px;
+// }
+
+::-webkit-sc ::-webkit-scrollbar-track {
     background: #f5f5f527;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ff0099;
+    background: #ff00998e;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+::-webkit-scrollbar-button {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-button::vertical:increment {
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637847635/Toyo/arrow-up_zjzp1c.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637847635/Toyo/arrow-down_nwviwd.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
