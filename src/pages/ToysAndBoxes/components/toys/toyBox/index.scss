@@ -26,12 +26,16 @@
     margin-left: 10px;
     margin-bottom: 10px;
     color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    row-gap: 1em;
 }
 
 .info .name {
     font-size: large;
     text-transform: capitalize;
-    max-height: 10px;
 }
 
 .head {
