@@ -40,6 +40,7 @@
     }
 
     & > .selected-nav-item-glow {
+        pointer-events: none;
         position: absolute;
         top: 40%;
         left: -1.5em;

@@ -1,7 +1,8 @@
 import React from 'react'
-import SideBar from './components/sidebar'
+// import SideBar from './components/sidebar'
 import Header from './components/header'
 import Toys from './components/toys'
+import Nav from '../../components/Nav'
 import './index.scss'
 
 export default function ToysAndBoxes() {
@@ -10,7 +11,7 @@ export default function ToysAndBoxes() {
             <div className="container">
                 <div className="stripes-overlay"></div>
                 <div className="sidebar">
-                    <SideBar />
+                    <Nav />
                 </div>
                 <div className="headerContainer">
                     <div className="header">
