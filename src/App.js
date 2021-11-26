@@ -12,6 +12,7 @@ import Dock from './pages/Dock'
 import Parts from './pages/Parts'
 import ToysAndBoxes from './pages/ToysAndBoxes/ToysAndBoxes.jsx'
 import Haruko from './pages/character/Haruko'
+import LastSeen from './pages/LastSeen'
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Route exact path="/toys" component={ToysAndBoxes} />
                     <Route path="/dock" component={Dock} />
                     <Route path="/parts" component={Parts} />
+                    <Route path="/last-seen" component={LastSeen} />
                     <Route path="/character/haruko" component={Haruko} />
                 </Switch>
             </Router>

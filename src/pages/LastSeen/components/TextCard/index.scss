@@ -1,0 +1,226 @@
+@font-face {
+    font-family: 'FreePixel';
+    src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Retro Computer';
+    src: url('../../../assets/fonts/retro_computer_personal_use.ttf')
+        format('truetype');
+}
+
+.stats-card-wrapper {
+    position: relative;
+    height: 80vh;
+    width: 40vw;
+    // border: 2px solid yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637860890/Toyo/haruko-page/stats-board_y5nwit.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    & > .stats-header {
+        display: flex;
+        align-items: center;
+        column-gap: 0.7em;
+        margin-left: 6em;
+        margin-top: 5.5em;
+
+        & > .char-icon {
+            & > img {
+                width: 3.5em;
+            }
+        }
+
+        & > .char-name {
+            font-family: 'FreePixel', sans-serif;
+            font-weight: normal;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: #fff;
+            font-size: 2em;
+            text-transform: uppercase;
+        }
+    }
+
+    .val {
+        font-family: 'Retro Computer';
+        font-weight: normal;
+        letter-spacing: 0.02em;
+        color: #fff;
+        font-size: 0.7em;
+        text-transform: uppercase;
+    }
+
+    & > .stats-metadata {
+        margin-left: 6em;
+        margin-top: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70%;
+
+        .prop {
+            font-family: 'FreePixel';
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: #fc0097;
+            font-size: 0.7em;
+            text-transform: capitalize;
+        }
+    }
+
+    & > .stats-desc-header {
+        margin-left: 6em;
+        margin-top: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 70%;
+
+        .stats-double-lines {
+            display: block;
+            width: 5em;
+            margin-right: auto;
+            flex-basis: 60%;
+        }
+
+        .heart-icon {
+            display: block;
+            width: 1em;
+            margin-left: 0.6em;
+        }
+    }
+
+    & > .stats-desc {
+        margin-left: 6em;
+        margin-top: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 67%;
+        text-align: left;
+        font-family: 'FreePixel', sans-serif;
+        // border: 2px solid yellow;
+    }
+
+    & > .best-stats {
+        margin-left: 6em;
+        margin-top: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 70%;
+    }
+
+    & > .stats-type1-wrapper {
+        margin-left: 6em;
+        margin-top: 0.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+
+        .stats-type1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            // define the circle
+            .circle {
+                width: 5em;
+                height: 5em;
+                background: url(https://res.cloudinary.com/groovin/image/upload/v1637917054/Toyo/haruko-page/stat-circle-wrapper_qqxzmc.png);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                //center the circle value
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Retro Computer', sans-serif;
+            }
+        }
+
+        .stats-type-desc {
+            margin-top: 0.7em;
+            & > div {
+                width: 7.2em;
+            }
+
+            font-family: 'FreePixel', sans-serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+            font-size: 0.7em;
+            text-transform: capitalize;
+            text-align: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+
+    & > .stats-type2-wrapper {
+        margin-left: 6em;
+        margin-top: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70%;
+
+        .column-wrapper {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .stat-perc {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                .stat-perc-prop {
+                    font-family: 'FreePixel', sans-serif;
+                    font-weight: normal;
+                    letter-spacing: 0.02em;
+                    color: #ffffff;
+                    font-size: 0.85em;
+                    text-transform: capitalize;
+                    text-align: right;
+                    flex-basis: 35%;
+                }
+
+                .stat-progress-bar {
+                    background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                    background-size: cover;
+                    background-position: left;
+                    background-repeat: no-repeat;
+                    flex-basis: 45%;
+                    height: 2em;
+                }
+
+                .perc {
+                    flex-basis: 25%;
+                    font-family: 'FreePixel', sans-serif;
+                    font-weight: normal;
+                    letter-spacing: 0.02em;
+                    color: #ffffff;
+                    font-size: 0.85em;
+                }
+            }
+        }
+    }
+}
