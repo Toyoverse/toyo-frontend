@@ -5,8 +5,8 @@ import Nav from './components/Nav'
 import './index.scss'
 
 function LastSeen() {
-    const mainImgUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637860899/Toyo/haruko-page/haruko_iwz559.png'
+    const charImgUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637934895/Toyo/haruko-page/skull_an6can.png'
     const titleBoxUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/my-boxes-header_hl00ev.png'
 
@@ -19,7 +19,7 @@ function LastSeen() {
                     <div>
                         <img
                             className="main-img-showcase"
-                            src={mainImgUrl}
+                            src={charImgUrl}
                             alt="main img"
                         />
                     </div>
