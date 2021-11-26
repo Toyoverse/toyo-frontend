@@ -13,7 +13,7 @@ function ItemsCarousel() {
         'https://res.cloudinary.com/groovin/image/upload/v1637684965/Toyo/arrow-right_vfwnu0.png'
 
     return (
-        <div className="items-carousel">
+        <div className="boxes-carousel">
             <img
                 className="nav-icon"
                 src={iconLeftUrl}
@@ -29,7 +29,7 @@ function ItemsCarousel() {
             <div>
                 <img
                     src={boxSelectedUrl}
-                    className="selected-item"
+                    className="selected-box-item"
                     alt="box selected"
                 />
             </div>

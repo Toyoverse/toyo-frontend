@@ -1,17 +1,19 @@
-.items-carousel {
+.boxes-carousel {
     display: flex;
-    column-gap: 20px;
+    column-gap: 2em;
     align-items: baseline;
     justify-content: space-between;
+    width: 100%;
 
     & > div > img {
-        width: 150px;
-        height: 100px;
+        width: 130px;
+        height: 80px;
     }
 
-    .selected-item {
-        width: 165px;
-        height: 115px;
+    .selected-box-item {
+        // width: 165px;
+        // height: 115px;
+        transform: scale(1.9, 2.4);
     }
 
     .nav-icon {

@@ -7,10 +7,6 @@ import './index.scss'
 function Haruko() {
     const mainImgUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637860899/Toyo/haruko-page/haruko_iwz559.png'
-    const upIconUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
-    const selectedGlowUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637766092/Toyo/selected-glow_zkn2oe.png'
     const titleBoxUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/my-boxes-header_hl00ev.png'
 
@@ -38,17 +34,8 @@ function Haruko() {
                                 src={titleBoxUrl}
                                 alt="title box"
                             />
-                            <img
-                                src={upIconUrl}
-                                alt="scroll up"
-                                className="scroll-icon"
-                                style={{ width: '24px', height: '24px' }}
-                            />
                         </div>
                         <BoxesCarousel />
-                        <div className="selected-glow">
-                            <img src={selectedGlowUrl} alt="selected glow" />
-                        </div>
                     </div>
                 </div>
             </div>
