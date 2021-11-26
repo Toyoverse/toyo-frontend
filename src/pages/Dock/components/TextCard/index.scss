@@ -5,7 +5,7 @@
 
 .card-wrapper {
     position: relative;
-    height: 75vh;
+    height: 70vh;
     width: 40vw;
     // border: 2px solid yellow;
     display: flex;
@@ -13,8 +13,8 @@
     align-items: center;
     justify-content: center;
 
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637760092/Toyo/card_r3yiim.png);
-    background-size: cover;
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637860890/Toyo/haruko-page/stats-board_y5nwit.png);
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
@@ -46,6 +46,7 @@
     //     }
 
     & > .text-section {
+        max-width: 60%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -54,10 +55,11 @@
         & > header {
             font-family: 'FreePixel', sans-serif;
             font-weight: normal;
-            font-size: 1.05em;
+            font-size: 2em;
             padding-left: 1em;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5em;
+            letter-spacing: 0.02em;
+            margin-bottom: 1em;
+            padding-top: 1em;
         }
 
         & > p {
@@ -68,7 +70,7 @@
             max-width: fit-content;
 
             font-weight: normal;
-            line-height: 1.5em;
+            line-height: 1.8em;
             color: #fff;
         }
 

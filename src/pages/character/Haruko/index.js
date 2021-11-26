@@ -1,7 +1,7 @@
 import React from 'react'
-import ItemsCarousel from './components/ItemsCarousel'
+import BoxesCarousel from './components/BoxesCarousel'
 import TextCard from './components/TextCard'
-import Nav from '../../../components/Nav'
+import Nav from './components/Nav'
 import './index.scss'
 
 function Haruko() {
@@ -15,7 +15,7 @@ function Haruko() {
         'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/my-boxes-header_hl00ev.png'
 
     return (
-        <main className="main-wrapper">
+        <main className="main-char-wrapper">
             <div className="stripes-overlay"></div>
             <Nav />
             <div className="main-content-wrapper">
@@ -45,7 +45,7 @@ function Haruko() {
                                 style={{ width: '24px', height: '24px' }}
                             />
                         </div>
-                        <ItemsCarousel />
+                        <BoxesCarousel />
                         <div className="selected-glow">
                             <img src={selectedGlowUrl} alt="selected glow" />
                         </div>

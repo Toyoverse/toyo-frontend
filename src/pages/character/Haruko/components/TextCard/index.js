@@ -3,10 +3,8 @@ import React from 'react'
 import './index.scss'
 
 function TextCard() {
-    const openBtnUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/open-button_xjrwoo.png'
     return (
-        <div className="card-wrapper">
+        <div className="stats-card-wrapper">
             {/* <img
                 src={
                     'https://res.cloudinary.com/groovin/image/upload/v1637758826/Toyo/text-card_jaqdv2.png'
@@ -27,7 +25,6 @@ function TextCard() {
                     tempus maximus. Praesent dapibus pretium nulla sed
                     pellentesque.
                 </p>
-                <img src={openBtnUrl} className="open-btn" alt="open button" />
             </div>
             {/* </div> */}
             {/* <div className="back-card"></div> */}

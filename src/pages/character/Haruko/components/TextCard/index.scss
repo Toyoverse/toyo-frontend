@@ -3,7 +3,7 @@
     src: url('../../../../assets/fonts/FreePixel.ttf') format('opentype');
 }
 
-.card-wrapper {
+.stats-card-wrapper {
     position: relative;
     height: 80vh;
     width: 40vw;
@@ -14,7 +14,7 @@
     justify-content: center;
 
     background: url(https://res.cloudinary.com/groovin/image/upload/v1637860890/Toyo/haruko-page/stats-board_y5nwit.png);
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
