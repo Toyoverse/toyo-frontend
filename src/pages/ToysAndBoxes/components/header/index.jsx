@@ -1,32 +1,41 @@
 import './index.scss'
 import ShrinIcon from '../../../../assets/shrink.svg'
-import { AiOutlineSearch } from 'react-icons/ai'
 import React from 'react'
+import itemHead from "./assets/title@3x.png"
 
 export default function Header() {
     return (
-        <div className="header">
+        <div className="header" id="toyo-header">
             <div className="shrink">
                 <img src={ShrinIcon} alt="" />
             </div>
             <div className="nav-content">
-                <div className="nav-box red-bg">My Items</div>
+                <img src={itemHead} alt="" className="itemHead" />
 
                 <ul>
                     <li>
-                        <div className="nav-box white-bg"> Filters </div>
+                        <div className="nav-box">
+                            <h6> Filters </h6>
+                        </div>
                     </li>
                     <li>
-                        <div className="nav-box no-bg"> Filters</div>
+                        <div className="nav-box no-bg">
+                            <h6> Filters </h6>
+                        </div>
                     </li>
                     <li>
-                        <div className="nav-box no-bg"> Filters</div>
+                        <div className="nav-box no-bg">
+                            <h6> Filters </h6>
+                        </div>
                     </li>
                     <li>
-                        <div className="nav-box  search-box no-bg">
-                            <input type="text" placeholder="search here" />
-                            <div className="iconHolder">
-                                <AiOutlineSearch color="white" />
+                        <div className="d-flex search">
+                            <div className="input" contentEditable></div>
+                            <div className="search">
+                                <img
+                                    src="https://res.cloudinary.com/reeelecs/image/upload/v1637781041/Shape_599_mhgcjw.svg"
+                                    alt=""
+                                />
                             </div>
                         </div>
                     </li>

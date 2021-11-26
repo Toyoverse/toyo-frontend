@@ -1,15 +1,16 @@
 import React from 'react'
-import SideBar from './components/sidebar'
 import Header from './components/header'
 import Toys from './components/toys'
+import Nav from '../../components/Nav'
 import './index.scss'
 
 export default function ToysAndBoxes() {
     return (
         <div>
+            <div className="illusion"></div>
             <div className="container">
-                <div className="sidebar">
-                    <SideBar />
+                <div className="nav-wrapper">
+                    <Nav />
                 </div>
                 <div className="headerContainer">
                     <div className="header">

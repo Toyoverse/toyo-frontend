@@ -11,7 +11,7 @@ export default function Toys() {
                         key={elem}
                         img="https://i.graphicmama.com/uploads/2019/4/5cb489633dae6-futuristic-robot-cartoon-vector-character.png"
                         name="toyo futurustic name "
-                        time="8:43:21"
+                        time="#342421"
                     />
                 )
             })}

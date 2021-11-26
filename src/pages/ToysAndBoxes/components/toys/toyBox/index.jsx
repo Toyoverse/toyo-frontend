@@ -10,11 +10,14 @@ export default function ToyBox({ img, name, time }) {
                 <img src={BoxHeader} alt="" />
             </div>
             <div className={'image'}>
-                <img src={img} alt="" />
+                <img
+                    src="https://res.cloudinary.com/reeelecs/image/upload/v1637780013/Layer_527_3x_p7ozg2.png"
+                    alt=""
+                />
             </div>
             <div className={'info'}>
-                <p className={'name'}>{name}</p>
-                <p className={'time'}>{time}</p>
+                <div className={'name'}>{name}</div>
+                <div className="time">{time}</div>
             </div>
         </div>
     )
