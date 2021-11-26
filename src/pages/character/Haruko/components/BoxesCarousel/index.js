@@ -2,14 +2,10 @@ import React from 'react'
 import './index.scss'
 
 function ItemsCarousel() {
-    const fortifiedUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-5_3x_ctgics.png'
-    const angHuUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677737/Toyo/boxes-3_3x_an4mwu.png'
-    const mizuchiGlowUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637789184/Toyo/mizuchi-selected-no-back_ievgre.png'
-    const mizuchiUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/boxes_3x_ttyx7o.png'
+    const boxUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637860892/Toyo/haruko-page/Group_72_jfjoka.png'
+    const boxSelectedUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637860900/Toyo/haruko-page/boxes-selected_ralz7o.png'
 
     const iconLeftUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637684965/Toyo/arrow-left_z3zj6j.png'
@@ -17,7 +13,7 @@ function ItemsCarousel() {
         'https://res.cloudinary.com/groovin/image/upload/v1637684965/Toyo/arrow-right_vfwnu0.png'
 
     return (
-        <div className="items-carousel">
+        <div className="boxes-carousel">
             <img
                 className="nav-icon"
                 src={iconLeftUrl}
@@ -25,23 +21,26 @@ function ItemsCarousel() {
                 style={{ width: '24px', height: '24px' }}
             />
             <div>
-                <img src={fortifiedUrl} alt="fortified" />
+                <img src={boxUrl} alt="box" />
             </div>
             <div>
-                <img src={angHuUrl} alt="ang hu" />
+                <img src={boxUrl} alt="box" />
             </div>
             <div>
                 <img
-                    src={mizuchiGlowUrl}
-                    className="selected-item"
-                    alt="mizuchi selected"
+                    src={boxSelectedUrl}
+                    className="selected-box-item"
+                    alt="box selected"
                 />
             </div>
             <div>
-                <img src={fortifiedUrl} alt="fortified" />
+                <img src={boxUrl} alt="box" />
             </div>
             <div>
-                <img src={mizuchiUrl} alt="mizuchi" />
+                <img src={boxUrl} alt="box" />
+            </div>
+            <div>
+                <img src={boxUrl} alt="box" />
             </div>
             <img
                 className="nav-icon"

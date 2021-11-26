@@ -5,13 +5,13 @@ function Nav() {
     const logoUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/Logo_3x_swwtrs.png'
     const homeUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/home_3x_wukx7g.png'
-    const itemsUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637679596/Toyo/items_xnyybm.png'
+        'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/haruko-home-nav_jvvbi3.png'
+    const boxesUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/haruko-boxes-nav_yo0kdb.png'
     const toyosUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/toyo_3x_hjr7v7.png'
+        'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/haruko-toyos-nav_sohg5w.png'
     const bodyPartsUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677736/Toyo/body_part_3x_mxq76n.png'
+        'https://res.cloudinary.com/groovin/image/upload/v1637860885/Toyo/haruko-page/haruko-parts-nav_egfagf.png'
     const selectedNavGlowUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637769744/Toyo/nav-item-glow_wkiqbj.png'
 
@@ -28,8 +28,8 @@ function Nav() {
                 <span>HOME</span>
             </div>
             <div className="nav-item">
-                <img src={itemsUrl} alt="items" />
-                <span>ITEMS</span>
+                <img src={boxesUrl} alt="items" />
+                <span>BOXES</span>
             </div>
             <div className="nav-item">
                 <img src={toyosUrl} alt="toyos" />

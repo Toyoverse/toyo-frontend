@@ -10,7 +10,7 @@ export default function ToyBox({ img, name, time }) {
                 <img src={BoxHeader} alt="" />
             </div>
             <div className={'image'}>
-                <img src={img} alt="" />
+                <img src={img} alt="toy" />
             </div>
             <div className={'info'}>
                 <p className={'name'}>{name}</p>
