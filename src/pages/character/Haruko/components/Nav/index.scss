@@ -1,4 +1,4 @@
-.nav-items {
+.nav-character-items {
     margin: 2em 0 0 2em;
     position: relative;
     display: flex;
@@ -6,10 +6,10 @@
     align-items: center;
     justify-content: space-between;
     row-gap: 1.3em;
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
-        no-repeat;
-    background-size: contain;
-    background-position: center;
+    // background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
+    //     no-repeat;
+    // background-size: contain;
+    // background-position: center;
 
     & > .nav-item {
         display: flex;

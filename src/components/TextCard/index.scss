@@ -1,0 +1,69 @@
+.stats-card-wrapper {
+    position: relative;
+
+    .top-card {
+        background: #ff0099;
+        height: 98.5%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .menu-controls {
+            padding: 0 1em;
+            height: 0.8em;
+            width: 100%;
+            background: url(https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png);
+            background-size: 97% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card-content {
+            height: 95%;
+            width: 97%;
+            background: black;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            padding: 1em;
+        }
+    }
+
+    .back-card {
+        background: #ff0099;
+        height: 98.5%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        z-index: -5;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .back-content {
+            height: 98%;
+            width: 98%;
+            background: black;
+        }
+    }
+}

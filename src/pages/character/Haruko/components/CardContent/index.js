@@ -2,7 +2,7 @@ import React from 'react'
 
 import './index.scss'
 
-function TextCard() {
+function CardContent() {
     const charIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637917431/Toyo/haruko-page/haruko-icon_zimt4f.png'
     const doubleLinesUrl =
@@ -14,7 +14,7 @@ function TextCard() {
     const progrBarUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png'
     return (
-        <div className="stats-card-wrapper">
+        <>
             <div className="stats-header">
                 <div className="char-icon">
                     <img src={charIconUrl} alt="haruko" />
@@ -127,8 +127,8 @@ function TextCard() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
-export default TextCard
+export default CardContent
