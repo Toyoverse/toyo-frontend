@@ -11,7 +11,7 @@
 
 .stats-card-wrapper {
     position: relative;
-    height: 80vh;
+    height: 85vh;
     width: 40vw;
     // border: 2px solid yellow;
     display: flex;
@@ -23,13 +23,14 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    padding-left: 13%;
 
     & > .stats-header {
         display: flex;
         align-items: center;
         column-gap: 0.7em;
-        margin-left: 6em;
-        margin-top: 5.5em;
+        // margin-left: 18%;
+        margin-top: 5em;
 
         & > .char-icon {
             & > img {
@@ -58,12 +59,12 @@
     }
 
     & > .stats-metadata {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 0.5em;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 70%;
+        width: 75%;
 
         .prop {
             font-family: 'FreePixel';
@@ -76,18 +77,18 @@
     }
 
     & > .stats-desc-header {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 0.5em;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        width: 70%;
+        width: 75%;
 
         .stats-double-lines {
             display: block;
             width: 5em;
             margin-right: auto;
-            flex-basis: 60%;
+            flex-basis: 55%;
         }
 
         .heart-icon {
@@ -98,34 +99,34 @@
     }
 
     & > .stats-desc {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 0.5em;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        width: 67%;
+        width: 75%;
         text-align: left;
         font-family: 'FreePixel', sans-serif;
         // border: 2px solid yellow;
     }
 
     & > .best-stats {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 2em;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        width: 70%;
+        width: 75%;
     }
 
     & > .stats-type1-wrapper {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 0.5em;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 70%;
+        width: 75%;
 
         .stats-type1 {
             display: flex;
@@ -172,12 +173,12 @@
     }
 
     & > .stats-type2-wrapper {
-        margin-left: 6em;
+        // margin-left: 6em;
         margin-top: 1em;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 70%;
+        width: 75%;
 
         .column-wrapper {
             width: 50%;

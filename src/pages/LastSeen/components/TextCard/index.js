@@ -7,13 +7,6 @@ function TextCard() {
         'https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/open-button_xjrwoo.png'
     return (
         <div className="card-wrapper">
-            {/* <img
-                src={
-                    'https://res.cloudinary.com/groovin/image/upload/v1637758826/Toyo/text-card_jaqdv2.png'
-                }
-                alt="card"
-            /> */}
-            {/* <div className="top-card"> */}
             <div className="text-section">
                 <header>Morbi tincidunt varius lectus id feugiat.</header>
                 <p>
@@ -29,8 +22,6 @@ function TextCard() {
                 </p>
                 <img src={openBtnUrl} className="open-btn" alt="open button" />
             </div>
-            {/* </div> */}
-            {/* <div className="back-card"></div> */}
         </div>
     )
 }

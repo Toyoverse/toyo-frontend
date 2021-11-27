@@ -6,7 +6,7 @@
 .card-wrapper {
     position: relative;
     height: 85vh;
-    width: 50vw;
+    width: 55vw;
     // border: 2px solid yellow;
     display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@
     //     }
 
     & > .text-section {
-        max-width: 60%;
+        max-width: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
