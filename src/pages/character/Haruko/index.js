@@ -1,7 +1,8 @@
 import React from 'react'
 import BoxesCarousel from './components/BoxesCarousel'
-import TextCard from './components/TextCard'
 import Nav from './components/Nav'
+import TextCard from '../../../components/TextCard'
+import CardContent from './components/CardContent'
 import './index.scss'
 
 function Haruko() {
@@ -24,7 +25,11 @@ function Haruko() {
                         />
                     </div>
 
-                    <TextCard />
+                    <TextCard
+                        CardContent={CardContent}
+                        heightInVh={70}
+                        widthInVw={30}
+                    />
                 </div>
                 <div className="my-stuff-wrapper">
                     <div>

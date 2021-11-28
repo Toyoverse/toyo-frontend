@@ -1,6 +1,7 @@
 import React from 'react'
 import BoxesCarousel from './components/BoxesCarousel'
-import TextCard from './components/TextCard'
+import TextCard from '../../components/TextCard'
+import CardContent from './components/CardContent'
 import Nav from './components/Nav'
 import './index.scss'
 
@@ -24,7 +25,11 @@ function LastSeen() {
                         />
                     </div>
 
-                    <TextCard />
+                    <TextCard
+                        CardContent={CardContent}
+                        heightInVh={45}
+                        widthInVw={30}
+                    />
                 </div>
                 <div className="my-stuff-wrapper">
                     <div>

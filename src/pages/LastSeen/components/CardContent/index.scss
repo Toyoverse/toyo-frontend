@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'FreePixel';
+    src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Retro Computer';
+    src: url('../../../assets/fonts/retro_computer_personal_use.ttf')
+        format('truetype');
+}
+
+.last-seen-text-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2;
+    & > header {
+        font-family: 'FreePixel', sans-serif;
+        font-weight: normal;
+        font-size: 1.9em;
+        padding-left: 0.5em;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.7em;
+        padding-top: 0.2em;
+    }
+
+    & > p {
+        font-family: 'FreePixel', sans-serif;
+        font-size: 0.8em;
+        // padding-left: 3.5em;
+        // padding-right: 2em;
+        text-align: left;
+        max-width: fit-content;
+
+        font-weight: normal;
+        line-height: 1.2em;
+        color: #fff;
+    }
+
+    & > .open-btn {
+        align-self: flex-start;
+        z-index: 2;
+        position: relative;
+        height: 4em;
+        margin-left: -0.4em;
+        // margin-left: 2em;
+    }
+}

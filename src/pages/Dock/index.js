@@ -1,6 +1,7 @@
 import React from 'react'
 import ItemsCarousel from './components/ItemsCarousel'
-import TextCard from './components/TextCard'
+import TextCard from '../../components/TextCard'
+import CardContent from './components/CardContent'
 import Nav from '../../components/Nav'
 import './index.scss'
 
@@ -28,7 +29,11 @@ function Dock() {
                         />
                     </div>
 
-                    <TextCard />
+                    <TextCard
+                        CardContent={CardContent}
+                        heightInVh={45}
+                        widthInVw={30}
+                    />
                 </div>
                 <div className="my-stuff-wrapper">
                     <div>
