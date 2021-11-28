@@ -1,10 +1,14 @@
 .toys {
+    width: 89.3%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin: 20px;
+    margin-left: 10px;
     scrollbar-color: red yellow;
-    height: 100vh;
+    height: 80vh;
     overflow: auto;
     &::-webkit-scrollbar {
         width: (20px);

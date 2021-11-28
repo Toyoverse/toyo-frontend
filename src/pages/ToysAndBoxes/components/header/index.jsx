@@ -4,6 +4,7 @@ import React from 'react'
 import itemHead from "./assets/title@3x.png"
 
 export default function Header() {
+
     return (
         <div className="header" id="toyo-header">
             <div className="shrink">
