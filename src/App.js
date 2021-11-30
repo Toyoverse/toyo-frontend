@@ -13,15 +13,13 @@ import Parts from './pages/Parts'
 import ToysAndBoxes from './pages/ToysAndBoxes/ToysAndBoxes.jsx'
 import Haruko from './pages/character/Haruko'
 import LastSeen from './pages/LastSeen'
-import Home from './pages/Home'
 
 function App() {
     return (
         <div className="App">
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/character" component={Character} />
+                    <Route exact path="/" component={Character} />
                     <Route exact path="/toys" component={ToysAndBoxes} />
                     <Route path="/dock" component={Dock} />
                     <Route path="/parts" component={Parts} />
