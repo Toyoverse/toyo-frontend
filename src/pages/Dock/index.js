@@ -5,9 +5,18 @@ import CardContent from './components/CardContent'
 import Nav from '../../components/Nav'
 import './index.scss'
 
+import Unity, { UnityContext } from 'react-unity-webgl'
+
+const unityContext = new UnityContext({
+    loaderUrl: 'transpbg4/Build/transpbg4.loader.js',
+    dataUrl: 'transpbg4/Build/transpbg4.data',
+    frameworkUrl: 'transpbg4/Build/transpbg4.framework.js',
+    codeUrl: 'transpbg4/Build/transpbg4.wasm',
+})
+
 function Dock() {
-    const mainImgUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png'
+    /*   const mainImgUrl =
+          'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png' */
     const upIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/expand_3x_skeqf3.png'
     const selectedGlowUrl =
@@ -22,18 +31,22 @@ function Dock() {
             <div className="main-content-wrapper">
                 <div className="item-showcase">
                     <div>
-                        <img
-                            className="main-img-showcase"
-                            src={mainImgUrl}
-                            alt="main img"
+                        <Unity
+                            unityContext={unityContext}
+                            style={{
+                                height: '100%',
+                                width: '500px',
+                                marginRight: 20,
+                            }}
                         />
                     </div>
-
-                    <TextCard
-                        CardContent={CardContent}
-                        heightInVh={45}
-                        widthInVw={30}
-                    />
+                    <div className="text-card">
+                        <TextCard
+                            CardContent={CardContent}
+                            heightInVh={45}
+                            widthInVw={30}
+                        />
+                    </div>
                 </div>
                 <div className="my-stuff-wrapper">
                     <div>
