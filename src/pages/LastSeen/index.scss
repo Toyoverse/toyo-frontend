@@ -9,6 +9,22 @@
     src: url('../assets/fonts/29LT\ Arapix-Regular.OTF') format('opentype');
 }
 
+.ToyosItemsOpen {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+.ToyosItemsOpen.active {
+    transition: top 6s;
+    top: 0;
+}
+
+.ToyosItemsOpen.remove {
+    transition: top 6s;
+    top: 100vw;
+}
+
 .last-seen-wrapper {
     mix-blend-mode: screen;
     position: relative;

@@ -6,7 +6,7 @@ import './index.scss'
 
 export default function ToysAndBoxes() {
     return (
-        <div>
+        <div id="ToyosItemsOpen">
             <div className="illusion"></div>
             <div className="container">
                 <div className="nav-wrapper">
@@ -17,6 +17,66 @@ export default function ToysAndBoxes() {
                         <Header />
                     </div>
                     <div className={'toysContainer'}>
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
                         <Toys
                             name="toyo futurustic name "
                             time="#342421"

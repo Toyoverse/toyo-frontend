@@ -3,10 +3,19 @@ import ShrinIcon from '../../../../assets/shrink.svg'
 import React from 'react'
 import itemHead from './assets/title@3x.png'
 
+function handleClick() {
+    const path = window.location.pathname
+    if (path == '/last-seen') {
+        document
+            .getElementById('ToyosItemsOpen')
+            .classList.replace('active', 'remove')
+    }
+}
+
 export default function Header() {
     return (
         <div className="header" id="toyo-header">
-            <div className="shrink">
+            <div className="shrink" onClick={handleClick}>
                 <img src={ShrinIcon} alt="" />
             </div>
             <div className="nav-content">
@@ -17,11 +26,11 @@ export default function Header() {
                         <h6> FILTERS </h6>
                     </div>
 
-                    <div className="nav-box  no-bg">
+                    <div className="nav-box no-bg">
                         <h6> FILTERS </h6>
                     </div>
 
-                    <div className="nav-box  no-bg">
+                    <div className="nav-box no-bg">
                         <h6> FILTERS </h6>
                     </div>
 

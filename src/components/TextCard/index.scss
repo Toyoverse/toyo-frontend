@@ -2,7 +2,7 @@
     position: relative;
 
     .top-card {
-        /*  background: #ff0099; */
+        background: #ff0099;
         height: 98.5%;
         width: 98.5%;
 
@@ -23,6 +23,7 @@
             height: 0.8em;
             width: 100%;
             background: url(https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png);
+            //background: url(./../../assets/header.png);
             background-size: 97% 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -43,7 +44,7 @@
     }
 
     .back-card {
-        /*  background: #ff0099; */
+        background: #ff0099;
         height: 98.5%;
         width: 98.5%;
 

@@ -3,6 +3,15 @@ import './index.scss'
 
 import Folder from './../folder'
 
+function handleClick() {
+    const path = window.location.pathname
+    if (path == '/last-seen') {
+        document
+            .getElementById('ToyosItemsOpen')
+            .classList.replace('remove', 'active')
+    }
+}
+
 function ItemsCarousel() {
     const iconLeftUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637684965/Toyo/arrow-left_z3zj6j.png'
@@ -22,6 +31,7 @@ function ItemsCarousel() {
                         src={upIconUrl}
                         alt="scroll up"
                         className="scroll-icon"
+                        onClick={handleClick}
                     />
                 </div>
                 <div className="items-carousel">
