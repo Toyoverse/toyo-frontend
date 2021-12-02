@@ -19,18 +19,16 @@
         background: rgba(255, 0, 153, 0);
         border: 2px solid #f09;
         opacity: 0.5;
-
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-        background: rgba($color: #f09, $alpha: .5);
+        background: rgba($color: #f09, $alpha: 0.5);
         /* inner white */
     }
 
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-        background: rgba($color: #f09, $alpha: .5);
-        
+        background: rgba($color: #f09, $alpha: 0.5);
     }
 }

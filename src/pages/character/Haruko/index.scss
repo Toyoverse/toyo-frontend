@@ -52,35 +52,6 @@
                 margin-right: 5em;
             }
         }
-
-        .my-stuff-wrapper {
-            position: absolute;
-            bottom: 1em;
-            right: 50%;
-            width: 76%;
-            transform: translate(50%, -1em);
-            & > div {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-
-                & > .top-section {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    justify-content: center;
-                    height: 100%;
-                    width: 100%;
-
-                    & > .title {
-                        width: 200px;
-                        margin-bottom: 1.7em;
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -89,7 +60,7 @@
     min-width: 100vw;
     min-height: 100vh;
     z-index: 100;
-    background-image: url("https://res.cloudinary.com/reeelecs/image/upload/v1637780694/Shape_2_copy_10_mjbwfb.png");
+    background-image: url('https://res.cloudinary.com/reeelecs/image/upload/v1637780694/Shape_2_copy_10_mjbwfb.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

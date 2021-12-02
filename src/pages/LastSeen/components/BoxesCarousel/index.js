@@ -15,7 +15,7 @@ function ItemsCarousel() {
     return (
         <div className="boxes-carousel">
             <img
-                className="nav-icon"
+                className="nav-iconTemp"
                 src={iconLeftUrl}
                 alt="icon left"
                 style={{ width: '24px', height: '24px' }}
@@ -43,7 +43,7 @@ function ItemsCarousel() {
                 <img src={boxUrl} alt="box" />
             </div>
             <img
-                className="nav-icon"
+                className="nav-iconTemp"
                 src={iconRightUrl}
                 alt="icon right"
                 style={{ width: '24px', height: '24px' }}

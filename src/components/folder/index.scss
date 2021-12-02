@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'FreePixel';
+    src: url('../../components/fonts/FreePixel.ttf') format('opentype');
+}
+
+.items-carousel {
+    display: flex;
+    column-gap: 20px;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .filePortrait {
+        width: 10em;
+        height: 7em;
+        border: #fff 10px solid;
+        cursor: pointer;
+
+        .fileImg {
+            background-color: aqua;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fileTexts {
+            display: flex;
+            justify-content: space-between;
+
+            .fileText {
+                font-family: 'FreePixel', sans-serif;
+                font-size: 0.8em;
+                text-align: left;
+                max-width: fit-content;
+                font-weight: normal;
+                line-height: 1.2em;
+                color: #fff;
+            }
+        }
+    }
+}

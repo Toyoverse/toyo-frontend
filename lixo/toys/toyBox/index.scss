@@ -1,0 +1,53 @@
+@import '../../../../../components/sass/variables.scss';
+.toyBox {
+    max-width: 250px;
+    min-height: 350px;
+    display: flex;
+    margin: 10px;
+    background: #0009;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5px;
+    box-shadow: 1px 1px 10px 5px rgba(255, 255, 255, 0.54);
+}
+
+.image {
+    width: 70%;
+    align-self: center;
+}
+
+.info {
+    text-align: start;
+    margin-left: 10px;
+    color: white;
+    .name {
+        font-size: large;
+        text-transform: capitalize;
+        font-family: $freepixel;
+        font-weight: normal;
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        color: #fff;
+        line-height: 1;
+    }
+    .time {
+        font-family: $freepixel;
+        font-weight: normal;
+        font-size: 14.86px;
+        letter-spacing: -0.02em;
+        line-height: 37.96px;
+        text-align: left;
+        color: #fff;
+    }
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.head img {
+    width: 100%;
+    object-fit: contain;
+}

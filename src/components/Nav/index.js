@@ -43,7 +43,7 @@ function Nav() {
                 </Link>
             </div>
             <div className="nav-item">
-                <Link className="link" to="/toys">
+                <Link className="link" to="/last-seen">
                     <img src={bodyPartsUrl} alt="body parts" />
                     <span>
                         BODY

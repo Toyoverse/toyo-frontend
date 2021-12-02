@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/header'
-import Toys from './components/toys'
-import Nav from '../../components/Nav'
+import Toys from './../../components/toyBox'
+import Nav from './../../components/Nav'
 import './index.scss'
 
 export default function ToysAndBoxes() {
@@ -17,7 +17,46 @@ export default function ToysAndBoxes() {
                         <Header />
                     </div>
                     <div className={'toysContainer'}>
-                        <Toys />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
+                        <Toys
+                            name="toyo futurustic name "
+                            time="#342421"
+                            img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
+                        />
                     </div>
                 </div>
             </div>
