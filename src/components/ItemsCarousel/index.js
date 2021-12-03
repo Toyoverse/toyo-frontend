@@ -5,7 +5,7 @@ import Folder from './../folder'
 
 function handleClick() {
     const path = window.location.pathname
-    if (path == '/last-seen') {
+    if (path == '/parts') {
         document
             .getElementById('ToyosItemsOpen')
             .classList.replace('remove', 'active')

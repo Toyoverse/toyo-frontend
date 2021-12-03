@@ -5,7 +5,7 @@ import itemHead from './assets/title@3x.png'
 
 function handleClick() {
     const path = window.location.pathname
-    if (path == '/last-seen') {
+    if (path == '/parts') {
         document
             .getElementById('ToyosItemsOpen')
             .classList.replace('active', 'remove')
@@ -20,7 +20,6 @@ export default function Header() {
             </div>
             <div className="nav-content">
                 <img src={itemHead} alt="" className="itemHead" />
-
                 <div className="wrapperFilter">
                     <div className="nav-box">
                         <h6> FILTERS </h6>

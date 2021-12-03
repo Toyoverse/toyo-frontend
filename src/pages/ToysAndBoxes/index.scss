@@ -1,29 +1,35 @@
 .container {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
     background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
     background-color: rgba(0, 0, 0, 0.979);
-    min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.container.active {
+    transition: top 2s;
+    top: 0;
+}
+
+.container.remove {
+    transition: top 3s;
+    top: 100vw;
+}
+
 .sidebar {
     max-width: 100px;
 }
-.illusion {
-    position: fixed;
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 100;
-    background-image: url('https://res.cloudinary.com/reeelecs/image/upload/v1637780694/Shape_2_copy_10_mjbwfb.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    mix-blend-mode: soft-light;
-    pointer-events: none;
+
+.centerToyos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .toysContainer {
@@ -31,11 +37,12 @@
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    scrollbar-color: red yellow;
+    scrollbar-color: rgb(255, 0, 153) rgba(255, 0, 153, 0.233);
     overflow-y: scroll;
     scroll-behavior: smooth;
     height: inherit;
     max-height: 75vh;
+    max-width: 1380px;
 
     &::-webkit-scrollbar {
         width: (20px);
@@ -59,5 +66,27 @@
 
     &::-webkit-scrollbar-thumb:hover {
         background: rgba($color: #f09, $alpha: 0.5);
+    }
+
+    &::-webkit-scrollbar-button:single-button {
+        display: block;
+        height: 20px;
+        background-color: rgba($color: #f09, $alpha: 0.5);
+    }
+
+    /* Up */
+    &::-webkit-scrollbar-button:single-button:vertical:decrement {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(256, 256, 256)'><polygon points='50,00 0,50 50,40 100,50'/></svg>");
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Down */
+    &::-webkit-scrollbar-button:single-button:vertical:increment {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(256, 256, 256)'><polygon points='100,50 50,60 0,50 50,100' /></svg>");
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }

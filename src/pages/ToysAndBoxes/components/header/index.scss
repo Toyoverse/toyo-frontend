@@ -1,10 +1,19 @@
 @import '../../../../components/sass/variables.scss';
+
 #toyo-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100vw;
+    max-width: 1380px;
+
     .search {
         display: flex;
-        margin-right: 50px;
+
+        /* margin-right: 50px; */
         .input {
-            width: 220px;
+            width: 15vw;
             height: 30px;
             background-color: transparent;
 
@@ -16,6 +25,7 @@
             align-content: center;
             overflow: hidden;
         }
+
         .search {
             @extend .input;
             width: 30px;
@@ -28,11 +38,11 @@
     }
 
     .nav-box {
-        width: 200px;
+        width: 10vw;
         height: 30px;
         background: #fff;
         border: 2px solid #fff;
-        margin-right: 2em;
+        margin-right: 1em;
         h6 {
             font-family: $araplix;
             font-weight: normal;
@@ -57,29 +67,6 @@
         background-color: rgb(255, 82, 111);
     }
 
-    /*  .nav-box {
-        width: 200px;
-        height: 30px;
-        background-color: rgba(255, 255, 255, 0);
-        align-content: center;
-        margin-right: 25px;
-        color: #fff;
-        border: #fff solid 5px;
-        h6 {
-            font-family: $araplix;
-            font-weight: normal;
-            font-size: 25px;
-            letter-spacing: -0.02em;
-            text-align: center;
-        }
-
-        .selected {
-            background-color: rgb(0, 0, 0);
-            color: #000;
-
-        }
-    } */
-
     .nav-content {
         display: flex;
         justify-content: space-between;
@@ -88,13 +75,16 @@
 
     .wrapperFilter {
         display: flex;
-        justify-content: space-around;
     }
 
-    .shrink img {
-        width: 20px;
-        margin-top: 10px;
-        cursor: pointer;
+    .shrink {
+        width: 100%;
+        top: 2vh;
+
+        img {
+            width: 1.5em;
+            cursor: pointer;
+        }
     }
 
     .search-box .iconHolder {
@@ -106,7 +96,7 @@
         border: none;
     }
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         width: 15px;
     }
 
@@ -120,10 +110,12 @@
 
     ::-webkit-scrollbar-thumb:hover {
         background: #555;
-    }
+    } */
+
     .itemHead {
         height: 80px;
         width: auto;
+        margin-left: -1vw;
         // background: #f09;
     }
 }

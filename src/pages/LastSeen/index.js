@@ -3,9 +3,7 @@ import BoxesCarousel from './../../components/ItemsCarousel'
 import TextCard from '../../components/TextCard'
 import CardContent from './components/CardContent'
 import Nav from './../../components/Nav'
-
-import Header from './../ToysAndBoxes/components/header'
-import Toys from './../../components/toyBox'
+import Items from './../ToysAndBoxes/ToysAndBoxes'
 
 import './index.scss'
 
@@ -35,121 +33,7 @@ function LastSeen() {
                 </div>
                 <BoxesCarousel />
             </div>
-            <div id="ToyosItemsOpen" className="ToyosItemsOpen remove">
-                <div className="illusion"></div>
-                <div className="container">
-                    <div className="nav-wrapper">
-                        <Nav />
-                    </div>
-                    <div className="headerContainer">
-                        <div className="header">
-                            <Header />
-                        </div>
-                        <div className={'toysContainer'}>
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                            <Toys
-                                name="toyo futurustic name "
-                                time="#342421"
-                                img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Items />
         </main>
     )
 }

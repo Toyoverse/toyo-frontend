@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 function Nav() {
     const logoUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677739/Toyo/Logo_3x_swwtrs.png'
-    const homeUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/home_3x_wukx7g.png'
+    /* const homeUrl =
+        'https://res.cloudinary.com/groovin/image/upload/v1637677738/Toyo/home_3x_wukx7g.png' */
     const itemsUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637679596/Toyo/items_xnyybm.png'
     const toyosUrl =
@@ -24,14 +24,14 @@ function Nav() {
             <div className="logo">
                 <img src={logoUrl} alt="logo" />
             </div>
-            <div className="nav-item">
+            {/* <div className="nav-item">
                 <Link className="link" to="/">
                     <img src={homeUrl} alt="home" />
                     <span>HOME</span>
                 </Link>
-            </div>
+            </div> */}
             <div className="nav-item">
-                <Link className="link" to="/dock">
+                <Link className="link" to="/items">
                     <img src={itemsUrl} alt="items" />
                     <span>ITEMS</span>
                 </Link>
@@ -43,7 +43,7 @@ function Nav() {
                 </Link>
             </div>
             <div className="nav-item">
-                <Link className="link" to="/last-seen">
+                <Link className="link" to="/parts">
                     <img src={bodyPartsUrl} alt="body parts" />
                     <span>
                         BODY

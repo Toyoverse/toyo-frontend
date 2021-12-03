@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: space-between;
     row-gap: 1.3em;
+    z-index: 2;
 
     .nav-items:focus {
         background: url(https://res.cloudinary.com/groovin/image/upload/v1637681026/Toyo/single-pink-smoke_plny0j.png)
@@ -32,6 +33,7 @@
                 width: 34px;
                 height: 34px;
                 cursor: pointer;
+                /* TO DO colocar bg de luz de fundo */
             }
 
             & > span {
