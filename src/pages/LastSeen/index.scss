@@ -9,9 +9,176 @@
     src: url('../assets/fonts/29LT\ Arapix-Regular.OTF') format('opentype');
 }
 
+@keyframes opacityMask {
+    0% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            transparent,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            transparent,
+            black
+        );
+    }
+
+    25% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            black,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            black,
+            black
+        );
+    }
+
+    50% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            black,
+            black,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            black,
+            black,
+            black
+        );
+    }
+
+    75% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            black,
+            black,
+            black,
+            black
+        );
+        mask-image: linear-gradient(transparent, black, black, black, black);
+    }
+
+    100% {
+        -webkit-mask-image: linear-gradient(black, black, black, black, black);
+        mask-image: linear-gradient(black, black, black, black, black);
+    }
+}
+
+@keyframes opacityMaskOut {
+    0% {
+        -webkit-mask-image: linear-gradient(black, black, black, black, black);
+        mask-image: linear-gradient(black, black, black, black, black);
+    }
+
+    25% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            black,
+            black,
+            black,
+            black
+        );
+        mask-image: linear-gradient(transparent, black, black, black, black);
+    }
+
+    50% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            black,
+            black,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            black,
+            black,
+            black
+        );
+    }
+
+    75% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            black,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            black,
+            black
+        );
+    }
+
+    100% {
+        -webkit-mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            transparent,
+            black
+        );
+        mask-image: linear-gradient(
+            transparent,
+            transparent,
+            transparent,
+            transparent,
+            black
+        );
+        z-index: -1;
+    }
+}
+
+.img-background {
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    -webkit-mask-image: linear-gradient(
+        transparent,
+        transparent,
+        transparent,
+        transparent,
+        transparent
+    );
+    mask-image: linear-gradient(
+        transparent,
+        transparent,
+        transparent,
+        transparent,
+        transparent
+    );
+    background-color: rgba(0, 0, 0, 0.507);
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
 .last-seen-wrapper {
     mix-blend-mode: screen;
-    position: relative;
+
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.507);
@@ -32,26 +199,49 @@
     }
 
     .main-content-wrapper {
-        flex-grow: 1;
         display: flex;
+        position: absolute;
+        flex: 1;
         flex-direction: column;
+
+        width: 100vw;
+        height: 100vh;
+
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-        height: 100%;
 
         .item-showcase {
-            height: 80%;
+            /* height: 70%; */
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-evenly;
 
             & > div > .main-img-showcase {
-                width: 300px / 1366px * 100vw;
+                width: 30vw;
                 height: 55vh;
-                margin-right: -1em;
             }
         }
     }
+}
+
+.animationImgIn {
+    display: block;
+    animation-name: opacityMask;
+    animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.animationImgOut {
+    display: block;
+    animation-name: opacityMaskOut;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
 }
 
 .stripes-overlay {

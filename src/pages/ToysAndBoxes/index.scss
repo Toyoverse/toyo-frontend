@@ -5,20 +5,21 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
-    background-color: rgba(0, 0, 0, 0.979);
+    //background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
+    background-color: transparent;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 2;
 }
 
 .container.active {
-    transition: top 2s;
+    transition: top 0.5s;
     top: 0;
 }
 
 .container.remove {
-    transition: top 3s;
+    transition: top 1s;
     top: 100vw;
 }
 

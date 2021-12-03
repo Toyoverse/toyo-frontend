@@ -3,8 +3,6 @@ import React from 'react'
 import './index.scss'
 
 function CardContent() {
-    const openBtnUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/open-button_xjrwoo.png'
     return (
         <div className="last-seen-text-section">
             <header>Morbi tincidunt varius lectus id feugiat.</header>
@@ -18,7 +16,6 @@ function CardContent() {
                 vehicula ligula vitae odio tempus maximus. Praesent dapibus
                 pretium nulla sed pellentesque.
             </p>
-            <img src={openBtnUrl} className="open-btn" alt="open button" />
         </div>
     )
 }

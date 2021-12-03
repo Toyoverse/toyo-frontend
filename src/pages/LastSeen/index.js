@@ -1,6 +1,6 @@
 import React from 'react'
 import BoxesCarousel from './../../components/ItemsCarousel'
-import TextCard from '../../components/TextCard'
+import TextCard from '../../components/StatsCard'
 import CardContent from './components/CardContent'
 import Nav from './../../components/Nav'
 import Items from './../ToysAndBoxes/ToysAndBoxes'
@@ -13,6 +13,7 @@ function LastSeen() {
 
     return (
         <main className="last-seen-wrapper">
+            <div id="img-background" className="img-background"></div>
             <div className="stripes-overlay"></div>
             <Nav />
             <div className="main-content-wrapper">

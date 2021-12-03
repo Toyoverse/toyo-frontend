@@ -43,7 +43,9 @@
         background: #fff;
         border: 2px solid #fff;
         margin-right: 1em;
+        cursor: pointer;
         h6 {
+            text-transform: uppercase;
             font-family: $araplix;
             font-weight: normal;
             font-size: 25px;

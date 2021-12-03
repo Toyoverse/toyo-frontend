@@ -10,8 +10,7 @@
 }
 
 .main-wrapper {
-    position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.507);
     background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
@@ -19,8 +18,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     display: flex;
+
     align-items: flex-start;
     justify-content: space-between;
 
@@ -31,15 +30,19 @@
     }
 
     .main-content-wrapper {
-        flex-grow: 1;
         display: flex;
+        flex: 1;
+        position: absolute;
         flex-direction: column;
+
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-        height: 100%;
+
+        width: 100vw;
+        height: 100vh;
 
         .item-showcase {
-            height: 80%;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
