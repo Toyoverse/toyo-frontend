@@ -24,7 +24,7 @@ function Haruko() {
 
                     <TextCard
                         CardContent={CardContent}
-                        heightInVh={60}
+                        heightInVh={55}
                         widthInVw={30}
                     />
                 </div>

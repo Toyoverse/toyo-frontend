@@ -10,10 +10,10 @@ import './index.scss'
 import Unity, { UnityContext } from 'react-unity-webgl'
 
 const unityContext = new UnityContext({
-    loaderUrl: 'transpbg4/Build/transpbg4.loader.js',
-    dataUrl: 'transpbg4/Build/transpbg4.data',
-    frameworkUrl: 'transpbg4/Build/transpbg4.framework.js',
-    codeUrl: 'transpbg4/Build/transpbg4.wasm',
+    loaderUrl: 'https://nakatoshivault.com/viewer/Build/viwer.loader.js',
+    dataUrl: 'https://nakatoshivault.com/viewer/Build/viwer.data',
+    frameworkUrl: 'https://nakatoshivault.com/viewer/Build/viwer.framework.js',
+    codeUrl: 'https://nakatoshivault.com/viewer/Build/viwer.wasm',
 })
 
 function Dock() {
@@ -35,16 +35,15 @@ function Dock() {
                         <Unity
                             unityContext={unityContext}
                             style={{
-                                height: '100%',
-                                width: '500px',
-                                marginRight: 20,
+                                width: '30vw',
+                                height: '55vh',
                             }}
                         />
                     </div>
                     <div className="text-card">
                         <TextCard
                             CardContent={CardContent}
-                            heightInVh={45}
+                            heightInVh={55}
                             widthInVw={30}
                         />
                     </div>

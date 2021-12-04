@@ -173,7 +173,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 1;
+    z-index: 2;
 }
 
 .last-seen-wrapper {
@@ -207,13 +207,15 @@
         width: 100vw;
         height: 100vh;
 
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
 
         .item-showcase {
             /* height: 70%; */
             display: flex;
             align-items: center;
+            margin-bottom: 5vh;
+
             justify-content: space-evenly;
 
             & > div > .main-img-showcase {

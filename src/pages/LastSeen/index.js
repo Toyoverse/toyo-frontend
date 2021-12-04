@@ -28,7 +28,7 @@ function LastSeen() {
 
                     <TextCard
                         CardContent={CardContent}
-                        heightInVh={45}
+                        heightInVh={55}
                         widthInVw={30}
                     />
                 </div>

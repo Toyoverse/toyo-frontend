@@ -3,9 +3,9 @@ import React from 'react'
 import './index.scss'
 
 function CardContent() {
-    const charIconUrl =
+    /*   const charIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637917431/Toyo/haruko-page/haruko-icon_zimt4f.png'
-    const doubleLinesUrl =
+ */ const doubleLinesUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637919102/Toyo/haruko-page/double-lines_lygeaq.png'
     const heartIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637918794/Toyo/haruko-page/heart-icon_rnnnu3.png'
@@ -16,9 +16,6 @@ function CardContent() {
     return (
         <>
             <div className="stats-header">
-                <div className="char-icon">
-                    <img src={charIconUrl} alt="haruko" />
-                </div>
                 <div className="char-name">Haruko</div>
             </div>
 
@@ -46,12 +43,6 @@ function CardContent() {
                 <img src={heartIconUrl} className="heart-icon" alt="heart" />
             </div>
 
-            <p className="stats-desc">
-                Nullam tincidunt, orci vel interdum cursus, nisi enim egestas
-                lacus, ac lobortis odio neque in dui. Curabitur placerat, purus
-                in consectetur
-            </p>
-
             <img className="best-stats" src={bestStatsUrl} alt="best stats" />
 
             <div className="stats-type1-wrapper">
@@ -70,22 +61,59 @@ function CardContent() {
                     </div>
                 </div>
                 <div className="stats-type-desc">
-                    <div>Vitality</div>
-                    <div>Strength</div>
-                    <div>Resistance</div>
                     <div>Cyber Force</div>
+                    <div>Techinique</div>
+                    <div>Agility</div>
+                    <div>Stamina</div>
                 </div>
             </div>
 
             <div className="stats-type2-wrapper">
                 <div className="column-wrapper">
                     <div className="stat-perc">
-                        <div className="stat-perc-prop">Analysis</div>
+                        <div className="stat-perc-prop">Vitality</div>
                         <img
                             className="stat-progress-bar"
                             alt="progress"
                             src={progrBarUrl}
                         />
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Strength</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Resistance</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Cyber Force</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Resilience</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Precision</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                </div>
+                <div className="column-wrapper">
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Techinique</div>
+                        <div className="stat-progress-bar"></div>
+                        <div className="perc">85%</div>
+                    </div>
+                    <div className="stat-perc">
+                        <div className="stat-perc-prop">Analysis</div>
+                        <div className="stat-progress-bar"></div>
                         <div className="perc">85%</div>
                     </div>
                     <div className="stat-perc">
@@ -99,29 +127,12 @@ function CardContent() {
                         <div className="perc">85%</div>
                     </div>
                     <div className="stat-perc">
-                        <div className="stat-perc-prop">Precision</div>
-                        <div className="stat-progress-bar"></div>
-                        <div className="perc">85%</div>
-                    </div>
-                </div>
-                <div className="column-wrapper">
-                    <div className="stat-perc">
                         <div className="stat-perc-prop">Stamina</div>
                         <div className="stat-progress-bar"></div>
                         <div className="perc">85%</div>
                     </div>
                     <div className="stat-perc">
-                        <div className="stat-perc-prop">Speed</div>
-                        <div className="stat-progress-bar"></div>
-                        <div className="perc">85%</div>
-                    </div>
-                    <div className="stat-perc">
-                        <div className="stat-perc-prop">Energy</div>
-                        <div className="stat-progress-bar"></div>
-                        <div className="perc">85%</div>
-                    </div>
-                    <div className="stat-perc">
-                        <div className="stat-perc-prop">Life</div>
+                        <div className="stat-perc-prop">Luck</div>
                         <div className="stat-progress-bar"></div>
                         <div className="perc">85%</div>
                     </div>

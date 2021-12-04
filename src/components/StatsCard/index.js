@@ -2,9 +2,11 @@ import React from 'react'
 
 import './index.scss'
 
+import imgheader from './../../assets/header.png'
+
 const TextCard = ({ CardContent, heightInVh, widthInVw }) => {
-    const headerImg =
-        'https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png'
+    const headerImg = imgheader
+    // 'https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png'
 
     return (
         <div

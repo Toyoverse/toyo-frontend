@@ -46,7 +46,7 @@ $moveRight: $tileWidth * ($growFactor - 1);
             transition: $duration transform;
             font-size: 0;
             white-space: nowrap;
-            margin: ($tileHeight / 2) 1.5vw;
+            margin: ($tileHeight / 5) 1vw ($tileHeight / 2) 1vw;
         }
 
         .tile {

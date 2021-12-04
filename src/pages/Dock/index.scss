@@ -35,16 +35,17 @@
         position: absolute;
         flex-direction: column;
 
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
 
         width: 100vw;
         height: 100vh;
 
         .item-showcase {
-            height: 60vh;
+            height: 55vh;
             display: flex;
             align-items: center;
+            margin-bottom: 5vh;
             justify-content: space-between;
 
             .text-card {
