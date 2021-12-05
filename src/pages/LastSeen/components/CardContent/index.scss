@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 2;
     & > header {
         font-family: 'FreePixel', sans-serif;
         font-weight: normal;
@@ -41,7 +40,6 @@
 
     & > .open-btn {
         align-self: flex-start;
-        z-index: 2;
         position: relative;
         height: 4em;
         margin-left: -0.4em;

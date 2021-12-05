@@ -1,7 +1,7 @@
 import React from 'react'
 import BoxesCarousel from './../../../components/ItemsCarousel'
 import Nav from './../../../components/Nav'
-import TextCard from '../../../components/TextCard'
+import TextCard from '../../../components/StatsCard'
 import CardContent from './components/CardContent'
 import './index.scss'
 
@@ -24,7 +24,7 @@ function Haruko() {
 
                     <TextCard
                         CardContent={CardContent}
-                        heightInVh={70}
+                        heightInVh={55}
                         widthInVw={30}
                     />
                 </div>

@@ -10,12 +10,10 @@
 }
 
 .main-char-wrapper {
-    mix-blend-mode: screen;
-    position: relative;
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.507);
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637914541/Toyo/haruko-page/character-background_uovblt.png);
+    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
 
     background-position: center;
     background-repeat: no-repeat;
@@ -34,22 +32,26 @@
     .main-content-wrapper {
         flex-grow: 1;
         display: flex;
+        position: absolute;
         flex-direction: column;
+
+        width: 100vw;
+        height: 100vh;
+
+        justify-content: flex-end;
         align-items: center;
-        justify-content: space-between;
-        height: 100%;
 
         .item-showcase {
-            height: 80%;
-            width: 70%;
+            /* height: 80%; */
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 5vh;
 
             & > div > .main-img-showcase {
-                width: 300px / 1366px * 100vw;
-                height: 60vh;
-                margin-right: 5em;
+                width: 30vw;
+                height: 55vh;
+                /* margin-right: 5em; */
             }
         }
     }

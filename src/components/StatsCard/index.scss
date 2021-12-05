@@ -1,8 +1,10 @@
 .stats-card-wrapper {
     position: relative;
 
-    .top-card {
+    .top-card2 {
         /*  background: #ff0099; */
+        background: #0004;
+        border: solid 11px #ff0099;
         height: 98.5%;
         width: 98.5%;
 
@@ -13,37 +15,36 @@
         top: 0;
         left: 0;
 
+        z-index: 1;
+
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
 
         .menu-controls {
-            padding: 0 1em;
-            height: 0.8em;
+            position: absolute;
+            top: -8px;
             width: 100%;
-            background: url(https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png);
-            background-size: 97% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
+            resize: contain;
         }
 
         .card-content {
             height: 95%;
             width: 97%;
-            background: black;
+            background: #0004;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
 
-            padding: 1em;
+            padding: 2em;
         }
     }
 
-    .back-card {
-        /*  background: #ff0099; */
+    .back-card2 {
+        background: #0004;
+        border: solid 11px #ff0099;
+
         height: 98.5%;
         width: 98.5%;
 
@@ -54,8 +55,6 @@
         bottom: 0;
         right: 0;
 
-        z-index: -5;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -63,7 +62,7 @@
         .back-content {
             height: 98%;
             width: 98%;
-            background: black;
+            background: #0000;
         }
     }
 }

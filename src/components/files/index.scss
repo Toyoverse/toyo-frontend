@@ -3,21 +3,24 @@
     src: url('../../components/fonts/FreePixel.ttf') format('opentype');
 }
 
-.filePortrait {
+.filePortrait1 {
     width: 10em;
     height: 7em;
-    border: #fff 10px solid;
+    border: #fff 12px solid;
     cursor: pointer;
+    position: relative;
 
     .fileImg {
-        background-color: aqua;
+        background-color: #f09e;
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
 
     .fileTexts {
         display: flex;
         justify-content: space-between;
+        margin-top: -8px;
 
         .fileText {
             font-family: 'FreePixel', sans-serif;
@@ -25,7 +28,6 @@
             text-align: left;
             max-width: fit-content;
             font-weight: normal;
-            line-height: 1.2em;
             color: #000;
         }
     }
