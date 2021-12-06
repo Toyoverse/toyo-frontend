@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ItemsCarousel from './../../components/ItemsCarousel'
 import TextCard from '../../components/StatsCard'
 import CardContent from './components/CardContent'
@@ -9,14 +9,30 @@ import './index.scss'
 
 import Unity, { UnityContext } from 'react-unity-webgl'
 
-const unityContext = new UnityContext({
+/* const unityContext = new UnityContext({
     loaderUrl: 'https://nakatoshivault.com/viewer/Build/viwer.loader.js',
     dataUrl: 'https://nakatoshivault.com/viewer/Build/viwer.data',
     frameworkUrl: 'https://nakatoshivault.com/viewer/Build/viwer.framework.js',
     codeUrl: 'https://nakatoshivault.com/viewer/Build/viwer.wasm',
+}) */
+
+const unityContext = new UnityContext({
+    loaderUrl: '/Build/viewer.loader.js',
+    dataUrl: '/Build/viewer.data',
+    frameworkUrl: '/Build/viewer.framework.js',
+    codeUrl: '/Build/viewer.wasm',
 })
 
 function Dock() {
+
+    function teste() {
+        unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100");
+    }
+
+    useEffect(() => {
+        unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100");
+    }, [])
+
     /*   const mainImgUrl =
           'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png' */
 
@@ -40,7 +56,7 @@ function Dock() {
                             }}
                         />
                     </div>
-                    <div className="text-card">
+                    <div className="text-card" onClick={teste}>
                         <TextCard
                             CardContent={CardContent}
                             heightInVh={55}

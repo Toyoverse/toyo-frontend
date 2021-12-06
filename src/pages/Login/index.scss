@@ -1,0 +1,62 @@
+.main-login {
+    background-color: #000;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+    font-family: 'FreePixel', sans-serif;
+
+    .login-label {
+        .linking {
+            font-size: 1.5rem;
+        }
+
+        .btnContainer {
+            color: #ff009b;
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+
+            .icon-name {
+                display: flex;
+                flex-direction: row; 
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                z-index: 1;
+                margin-top: -5px;
+                margin-left: -10px;
+
+                .metamask-logo {
+                    width: 4vw;
+                    margin-right: 0.5vw;
+                }
+
+                .connect {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .open-btn {
+            z-index: 1;
+            height: 20vh;
+            width: 50vh;
+            cursor: pointer;
+        }
+
+        .open-btn:hover {
+            src: url('../assets/images/btn-metamask-2.png');
+        }
+    }
+}
