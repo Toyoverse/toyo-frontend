@@ -15,7 +15,7 @@ function mouseOut() {
 
 export default function Login() {
     return (
-        <div className="main-wrapper">
+        <div className="main-wrapper-login">
             <div className="main-login">
                 <div className="login-label">
                     <p className="linking">
