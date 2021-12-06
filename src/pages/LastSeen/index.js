@@ -14,7 +14,6 @@ function LastSeen() {
     return (
         <main className="last-seen-wrapper">
             <div id="img-background" className="img-background"></div>
-            <div className="stripes-overlay"></div>
             <Nav />
             <div className="main-content-wrapper">
                 <div className="item-showcase">
