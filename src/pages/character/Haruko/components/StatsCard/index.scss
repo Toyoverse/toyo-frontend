@@ -1,0 +1,128 @@
+.stats-card-wrapper {
+    position: relative;
+
+    .top-card2 {
+        /*  background: #ff0099; */
+        background: #0004;
+        border: solid 11px #ff0099;
+        height: 98.5%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        z-index: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        .tabs {
+            position: absolute;
+            right: 0;
+            z-index: 1; 
+            display: flex;
+            flex-direction: row-reverse;
+            font-family: "Retro Computer";
+            font-size: 14px;
+            color: #fff;
+
+            .outside-trapezoid-parts {     
+                position: relative;
+                cursor: pointer; 
+
+                .trapezoid {
+                    border-top: 25px solid #ff0099;
+                    border-left: 30px solid transparent;
+                    border-right: 0 solid transparent;
+                    height: 0;
+                    width: 105px;
+                }
+
+                .trapezoid.active {
+                    border-top: 25px solid #b10885;     
+                }
+    
+                .parts {
+                    position: absolute;
+                    z-index: 2;
+                    top: 3px;
+                    left: 35px;
+                }
+            }
+    
+            .outside-parallelogram-stats {
+                position: relative;
+                cursor: pointer; 
+
+                .parallelogram {
+                    width: 100px;
+                    height: 25px;
+                    transform: skew(50deg);
+                    background: #ff0099;     
+                    margin-right: -20px;        
+                }
+
+                .parallelogram.active {
+                    background: #b10885;     
+                }
+    
+                .stats {
+                    position: absolute;
+                    z-index: 2;
+                    top: 3px;
+                    right: 0;
+                }
+            }
+        }
+
+        .menu-controls {
+            position: absolute;
+            top: -8px;
+            width: 100%;
+            resize: contain;
+        }
+
+        .card-content {
+            height: 95%;
+            width: 97%;
+            background: #0004;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 2em;
+        }
+    }
+
+    .back-card2 {
+        background: #0004;
+        border: solid 11px #ff0099;
+
+        height: 98.5%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .back-content {
+            height: 98%;
+            width: 98%;
+            background: #0000;
+        }
+    }
+}

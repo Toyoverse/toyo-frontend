@@ -1,7 +1,7 @@
 import React from 'react'
 import BoxesCarousel from './../../../components/ItemsCarousel'
 import Nav from './../../../components/Nav'
-import TextCard from '../../../components/StatsCard'
+import TextCard from './components/StatsCard'
 import CardContent from './components/CardContent'
 import './index.scss'
 
