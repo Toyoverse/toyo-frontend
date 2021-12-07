@@ -2,7 +2,6 @@
 import React from 'react'
 import './index.scss'
 
-/* import Folder from './../folder' */
 import File from './../files'
 
 function handleClick() {
@@ -62,27 +61,6 @@ function ItemsCarousel() {
                         onClick={handleClick}
                     />
                 </div>
-                {/* <div className="items-carousel">
-                    <img
-                        className="nav-icon"
-                        src={iconLeftUrl}
-                        alt="icon left"
-                    />
-
-                    <div className="items-carousel">
-                        <Folder />
-                        <Folder />
-                        <Folder />
-                        <Folder />
-                        <Folder />
-                    </div>
-
-                    <img
-                        className="nav-icon"
-                        src={iconRightUrl}
-                        alt="icon right"
-                    />
-                </div> */}
                 <div className="externo">
                     <img
                         className="nav-icon"
