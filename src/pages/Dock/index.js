@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React/* , { useEffect }  */from 'react'
 import ItemsCarousel from './../../components/ItemsCarousel'
 import TextCard from '../../components/StatsCard'
 import CardContent from './components/CardContent'
@@ -17,21 +17,23 @@ import Unity, { UnityContext } from 'react-unity-webgl'
 }) */
 
 const unityContext = new UnityContext({
-    loaderUrl: '/Build/viewer.loader.js',
-    dataUrl: '/Build/viewer.data',
-    frameworkUrl: '/Build/viewer.framework.js',
-    codeUrl: '/Build/viewer.wasm',
+    loaderUrl: '/viewerRota/viewer/Build/viewer.loader.js',
+    dataUrl: '/viewerRota/viewer/Build/viewer.data',
+    frameworkUrl: '/viewerRota/viewer/Build/viewer.framework.js',
+    codeUrl: '/viewerRota/viewer/Build/viewer.wasm',
 })
 
 function Dock() {
 
     function teste() {
+        unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
         unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100");
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
+        unityContext.send("Starter", "setaRota", "https://nakatoshivault.com/_toyoAssets/");
         unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100");
-    }, [])
+    }, []) */
 
     /*   const mainImgUrl =
           'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png' */
