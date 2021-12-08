@@ -8,6 +8,14 @@
     width: 100vw;
     max-width: 1380px;
 
+    @media screen and (min-width: 1280px) {
+        padding-left: 10vw;
+    }
+
+    @media screen and (min-width: 1680px) {
+        padding-left: 0;
+    }
+
     .search {
         display: flex;
 

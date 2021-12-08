@@ -17,6 +17,18 @@ function handleClick() {
         document
             .getElementById('img-background')
             .classList.add('animationImgOut')
+    } else if (path == '/items') {
+        document
+            .getElementById('ToyosItemsOpen')
+            .classList.replace('active', 'remove')
+
+        document
+            .getElementById('img-background')
+            .classList.remove('animationImgIn')
+
+        document
+            .getElementById('img-background')
+            .classList.add('animationImgOut')
     }
 }
 
@@ -29,7 +41,7 @@ export default function Header() {
             <div className="nav-content">
                 <img src={itemHead} alt="" className="itemHead" />
                 <div className="wrapperFilter">
-                    <div className="nav-box no-bg">
+                    {/*  <div className="nav-box no-bg">
                         <h6> head </h6>
                     </div>
 
@@ -39,7 +51,7 @@ export default function Header() {
 
                     <div className="nav-box no-bg">
                         <h6> arms/legs </h6>
-                    </div>
+                    </div> 
 
                     <div className="d-flex search">
                         <div className="input" contentEditable></div>
@@ -49,7 +61,7 @@ export default function Header() {
                                 alt=""
                             />
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
         </div>

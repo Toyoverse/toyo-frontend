@@ -30,7 +30,7 @@
 .centerToyos {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 4em;
 }
 
 .toysContainer {
@@ -44,6 +44,14 @@
     height: inherit;
     max-height: 75vh;
     max-width: 1380px;
+
+    @media screen and (min-width: 1280px) {
+        padding-left: 10vw;
+    }
+
+    @media screen and (min-width: 1680px) {
+        padding-left: 0;
+    }
 
     &::-webkit-scrollbar {
         width: (20px);

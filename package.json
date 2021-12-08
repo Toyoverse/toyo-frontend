@@ -19,21 +19,17 @@
         "react-router-dom": "5.2.0",
         "react-scripts": "4.0.3",
         "web-vitals": "^1.0.1",
-        "react-unity-webgl": "^8.6.1"
+        "react-unity-webgl": "^8.6.1",
+        "react-device-detect": "2.1.2",
+        "axios": "0.24.0"
+        
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint src --color --fix",
         "pretty-quick": "pretty-quick"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged && eslint src --color --fix",
-            "pre-push": "pretty-quick --staged && eslint src --color --fix"
-        }
     },
     "browserslist": {
         "production": [
@@ -49,12 +45,6 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
-        "eslint": "^7.11.0",
-        "eslint-config-google": "^0.14.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-react": "^7.26.1",
-        "husky": "^4.3.8",
-        "lint-staged": "^11.2.6",
         "prettier": "^2.4.1",
         "sass": "^1.43.4"
     }

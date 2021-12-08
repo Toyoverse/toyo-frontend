@@ -1,0 +1,144 @@
+
+@font-face {
+    font-family: 'FreePixel';
+    src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
+}
+.stats-card-wrapper {
+    position: relative;
+
+    .top-card2 {
+        /*  background: #ff0099; */
+        background: #0004;
+        border: solid 11px #ff0099;
+        height: 100%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        z-index: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .menu-controls {
+            position: absolute;
+            top: -8px;
+            width: 100%;
+            resize: contain;
+        }
+
+        .card-content {
+            height: 95%;
+            width: 97%;
+            background: #0004;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 1.5em;
+        }
+    }
+
+    .back-card2 {
+        background: #0004;
+        border: solid 11px #ff0099;
+
+        height: 98.5%;
+        width: 98.5%;
+
+        // height: 69vh;
+        // width: 29.5vw;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .back-content {
+            height: 98%;
+            width: 98%;
+            background: #0000;
+        }
+    }
+}
+
+
+.dock-text-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 2;
+    flex: 1;
+
+    & > header {
+        font-family: 'FreePixel', sans-serif;
+        font-weight: normal;
+        font-size: 1.9em;
+        padding-left: 0.5em;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.7em;
+        padding-top: 0.2em;
+    }
+
+    & > p {
+        font-family: 'FreePixel', sans-serif;
+        font-size: 1em;
+
+        text-align: left;
+        max-width: fit-content;
+
+        padding-top: 0.8em;
+        font-weight: normal;
+        line-height: 1.2em;
+        color: #fff;
+    }
+}
+.btnContainer {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+.open-btn {
+    z-index: 1;
+    height: 8em;
+    cursor: pointer;
+}
+
+.stats-metadata1 {
+    //margin-top: -1em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .prop {
+        font-family: 'FreePixel';
+        font-weight: normal;
+        letter-spacing: 0.02em;
+        color: #fc0097;
+        font-size: 2em;
+        text-transform: capitalize;
+    }
+
+    .val {
+        font-family: 'Retro Computer';
+        font-weight: normal;
+        letter-spacing: 0.02em;
+        color: #fff;
+        font-size: 2em;
+        text-transform: uppercase;
+    }
+}

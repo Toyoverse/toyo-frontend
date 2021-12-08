@@ -1,5 +1,5 @@
-$duration: 450ms;
-$tileWidth: 230px;
+$duration: 350ms;
+$tileWidth: 200px;
 $tileHeight: ($tileWidth / (16/9));
 $iconSize: 50px;
 $growFactor: 1.2;
@@ -47,6 +47,9 @@ $moveRight: $tileWidth * ($growFactor - 1);
             font-size: 0;
             white-space: nowrap;
             margin: ($tileHeight / 5) 1vw ($tileHeight / 2) 1vw;
+            @media screen and (max-width: 1440px) {
+                margin: ($tileHeight / 7) 1vw ($tileHeight / 3) 1vw;
+            }
         }
 
         .tile {
@@ -54,6 +57,10 @@ $moveRight: $tileWidth * ($growFactor - 1);
             display: inline-block;
             width: $tileWidth;
             height: $tileHeight;
+            @media screen and (max-width: 1440px) {
+                width: 150px;
+                height: ($tileWidth / 2);
+            }
             font-size: 20px;
             cursor: pointer;
             transition: $duration all;

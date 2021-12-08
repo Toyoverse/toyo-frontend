@@ -8,7 +8,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
+    /* Redirect, */
 } from 'react-router-dom'
 import './App.css'
 
@@ -16,6 +16,7 @@ import Character from './pages/character/Character'
 import Dock from './pages/Dock'
 import Haruko from './pages/character/Haruko'
 import LastSeen from './pages/LastSeen'
+import Login from './pages/Login'
 /* import Home from './pages/Home' */
 
 function App() {
@@ -23,8 +24,8 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
-                    <Route exact path="/">
-                        <Redirect to="/items" />
+                    <Route exact path="/" component={Login}>
+                        {/* <Redirect to="/items" /> */}
                     </Route>
                     <Route path="/items" component={Dock} />
                     <Route exact path="/character" component={Character} />
