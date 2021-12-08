@@ -17,6 +17,18 @@ function handleClick() {
         document
             .getElementById('img-background')
             .classList.add('animationImgOut')
+    } else if (path == '/items') {
+        document
+            .getElementById('ToyosItemsOpen')
+            .classList.replace('active', 'remove')
+
+        document
+            .getElementById('img-background')
+            .classList.remove('animationImgIn')
+
+        document
+            .getElementById('img-background')
+            .classList.add('animationImgOut')
     }
 }
 

@@ -7,6 +7,7 @@ import File from './../files'
 function handleClick() {
     const path = window.location.pathname
     if (path == '/parts') {
+
         document
             .getElementById('ToyosItemsOpen')
             .classList.replace('remove', 'active')
@@ -26,7 +27,29 @@ function handleClick() {
                 .getElementById('img-background')
                 .classList.add('animationImgIn')
         }
+    } else if (path == '/items') {
+        document
+        .getElementById('ToyosItemsOpen')
+        .classList.replace('remove', 'active')
+
+    const bgImg = document.getElementById('img-background')
+
+    if (bgImg.classList.contains('animationImgOut')) {
+        document
+            .getElementById('img-background')
+            .classList.remove('animationImgOut')
+
+        document
+            .getElementById('img-background')
+            .classList.add('animationImgIn')
+    } else {
+        document
+            .getElementById('img-background')
+            .classList.add('animationImgIn')
     }
+    }
+
+    
 }
 
 function handleClickLeft() {
@@ -39,7 +62,7 @@ function handleClickRight() {
     el.scrollLeft += 240
 }
 
-function ItemsCarousel() {
+const ItemsCarousel = ({ fileName, fileId, fileImg }) => {
     const iconLeftUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637684965/Toyo/arrow-left_z3zj6j.png'
     const iconRightUrl =
@@ -73,29 +96,23 @@ function ItemsCarousel() {
                             <div className="tile">
                                 <div className="tile__media">
                                     <File
-                                        name="toyo"
-                                        identification="#696969"
-                                        img="https://res.cloudinary.com/groovin/image/upload/v1637826560/Toyo/img3_rfasor.png"
+                                        name={fileName || 'LOADING'}
+                                        id={fileId}
+                                        img={fileImg}
                                     />
-                                </div>
-                                <div className="tile__details">
-                                    <div className="tile__title">
-                                        {/* Top Gear */}
-                                    </div>
                                 </div>
                             </div>
 
-                            <div className="tile">
+                            {/* <div className="tile">
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -103,13 +120,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -117,13 +133,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -131,13 +146,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826560/Toyo/img3_rfasor.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -145,13 +159,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -159,13 +172,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826560/Toyo/img3_rfasor.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -173,13 +185,12 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
                             </div>
@@ -187,16 +198,15 @@ function ItemsCarousel() {
                                 <div className="tile__media">
                                     <File
                                         name="toyo"
-                                        identification="#696969"
+                                        id="#696969"
                                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
                                     />
                                 </div>
                                 <div className="tile__details">
                                     <div className="tile__title">
-                                        {/* Top Gear */}
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <img
@@ -209,6 +219,12 @@ function ItemsCarousel() {
             </div>
         </div>
     )
+}
+
+ItemsCarousel.propTypes = {
+    fileName: String,
+    fileId: String,
+    fileImg: String,
 }
 
 export default ItemsCarousel

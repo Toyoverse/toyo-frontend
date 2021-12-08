@@ -4,6 +4,7 @@ import iconMetamask from './../assets/images/metamask.png'
 import openBtnUrl from './../assets/images/btn-metamask-2.png'
 import openBtnUrlHover from './../assets/images/btn-metamask.png'
 /*  onMouseOver={} onMouseOut={}  */
+import { isMobile } from 'react-device-detect'
 
 function mouseOver() {
     document.getElementById('open-btn').src = openBtnUrlHover
@@ -18,29 +19,38 @@ export default function Login() {
         <div className="main-wrapper-login">
             <div className="main-login">
                 <div className="login-label">
-                    <p className="linking">
-                        LINKING WH9 HUMAN TO SIMULATION H64...
-                    </p>
-                    <div
-                        className="btnContainer"
-                        onMouseOver={mouseOver}
-                        onMouseOut={mouseOut}
-                    >
-                        <img
-                            src={openBtnUrl}
-                            id="open-btn"
-                            className="open-btn"
-                            alt="Connect Metamask"
-                        />
-                        <div className="icon-name">
-                            <img
-                                src={iconMetamask}
-                                className="metamask-logo"
-                                alt="Metamask"
-                            />
-                            <p className="connect">CONNECT METAMASK</p>
-                        </div>
-                    </div>
+                    {isMobile ? (
+                        <p className="linking">
+                            for a better experience we restrict access to
+                            desktop only
+                        </p>
+                    ) : (
+                        <>
+                            <p className="linking">
+                                LINKING WH9 HUMAN TO SIMULATION H64...
+                            </p>
+                            <div
+                                className="btnContainer"
+                                onMouseOver={mouseOver}
+                                onMouseOut={mouseOut}
+                            >
+                                <img
+                                    src={openBtnUrl}
+                                    id="open-btn"
+                                    className="open-btn"
+                                    alt="Connect Metamask"
+                                />
+                                <div className="icon-name">
+                                    <img
+                                        src={iconMetamask}
+                                        className="metamask-logo"
+                                        alt="Metamask"
+                                    />
+                                    <p className="connect">CONNECT METAMASK</p>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
             <div className="noise-wrapper">

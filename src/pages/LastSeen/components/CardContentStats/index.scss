@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'FreePixel';
-    src: url('../../../../assets/fonts/FreePixel.ttf') format('opentype');
+    src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
 }
 
 @font-face {
     font-family: 'Retro Computer';
-    src: url('../../../../assets/fonts/retro_computer_personal_use.ttf')
+    src: url('../../../assets/fonts/retro_computer_personal_use.ttf')
         format('truetype');
 }
 
@@ -60,7 +60,7 @@
     }
 }
 
-.stats-desc-header {
+.stats-desc-header2 {
     // margin-left: 6em;
     margin-top: 0.5em;
     display: flex;
@@ -170,26 +170,43 @@
     }
 }
 
-.stats-type2-wrapper {
+.stats-type2-wrapper2 {
     // margin-left: 6em;
     margin-top: 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    flex-direction: column;
+
+
+    @media screen and (max-width: 1440px) {
+        flex-direction: row;
+        display: flex;
+        flex: 1;
+    }  
+
 
     .column-wrapper {
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
 
+        @media screen and (max-width: 1440px) {
+            width: 40%;
+            height: 100%;
+        }        
+
         .stat-perc {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
+
+            @media screen and (max-width: 1440px) {
+                margin-left: -2.5em;
+            }   
 
             .stat-perc-prop {
                 font-family: 'FreePixel', sans-serif;
@@ -199,7 +216,7 @@
                 font-size: 0.85em;
                 text-transform: capitalize;
                 text-align: left;
-                flex-basis: 35%;
+                white-space: nowrap
             }
 
             .stat-progress-bar {
@@ -209,6 +226,11 @@
                 background-repeat: no-repeat;
                 flex-basis: 45%;
                 height: 2em;
+                width: 10em;
+
+                @media screen and (max-width: 1440px) {
+                    display: none;
+                }
             }
 
             .perc {
@@ -218,6 +240,10 @@
                 letter-spacing: 0.02em;
                 color: #ffffff;
                 font-size: 0.85em;
+            }
+
+            .spacerVertical{
+                opacity: 0;
             }
         }
     }

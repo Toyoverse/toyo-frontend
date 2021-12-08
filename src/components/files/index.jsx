@@ -3,13 +3,13 @@ import './index.scss'
 
 import PropTypes from 'prop-types'
 
-export default function Files({ img, name, identification }) {
+export default function Files({ img, name, id }) {
     return (
         <div className="filePortrait1">
             <img src={img} className="fileImg" />
             <div className="fileTexts">
                 <text className="fileText">{name}</text>
-                <text className="fileText">{identification}</text>
+                <text className="fileText">{id}</text>
             </div>
         </div>
     )
@@ -18,5 +18,5 @@ export default function Files({ img, name, identification }) {
 Files.propTypes = {
     img: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    identification: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 }

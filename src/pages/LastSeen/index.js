@@ -1,7 +1,7 @@
 import React from 'react'
 import BoxesCarousel from './../../components/ItemsCarousel'
 import TextCard from '../../components/StatsCard'
-import CardContent from './components/CardContent'
+import CardContent from './components/CardContentStats'
 import Nav from './../../components/Nav'
 import Items from './../ToysAndBoxes/ToysAndBoxes'
 
@@ -10,6 +10,10 @@ import './index.scss'
 function LastSeen() {
     const charImgUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637934895/Toyo/haruko-page/skull_an6can.png'
+
+    const fileName = 'Toyo'
+    const fileId = '#696969'
+    const fileImg = 'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
 
     return (
         <main className="last-seen-wrapper">
@@ -31,7 +35,11 @@ function LastSeen() {
                         widthInVw={30}
                     />
                 </div>
-                <BoxesCarousel />
+                <BoxesCarousel
+                    fileName={fileName}
+                    fileId={fileId}
+                    fileImg={fileImg}
+                />
             </div>
             <Items />
         </main>

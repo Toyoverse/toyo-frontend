@@ -9,6 +9,11 @@
     cursor: pointer;
     position: relative;
 
+    @media screen and (max-width: 1440px) {
+        width: 8em;
+        height: 5em;
+    }
+
     background: url(../../assets/folder.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -19,6 +24,10 @@
         height: 50%;
         object-fit: contain;
         margin-top: 30px;
+        @media screen and (max-width: 1440px) {
+            margin-top: 20px;
+
+         }
     }
 
     .fileTexts {

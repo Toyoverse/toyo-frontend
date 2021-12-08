@@ -1,9 +1,11 @@
-import React/* , { useEffect }  */from 'react'
+import React/* , { useEffect }  */ from 'react'
 import ItemsCarousel from './../../components/ItemsCarousel'
-import TextCard from '../../components/StatsCard'
-import CardContent from './components/CardContent'
+import TextCard from './components/StatsCardDock'
 import Nav from '../../components/Nav'
 import './index.scss'
+import Items from './../ToysAndBoxes/ToysAndBoxes'
+
+import axios from 'axios';
 
 /* import Toy from './../../components/toyBox' */
 
@@ -26,8 +28,9 @@ const unityContext = new UnityContext({
 function Dock() {
 
     function teste() {
-        unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
-        unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100");
+        //unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
+        unityContext.send("Starter", "setaRota", "https://st0rag3-toy0-d3vs-h3ll.nyc3.digitaloceanspaces.com/toyoAssets/");
+        unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100");
     }
 
     /* useEffect(() => {
@@ -38,18 +41,21 @@ function Dock() {
     /*   const mainImgUrl =
           'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png' */
 
+    const itemName = 'mistery box'
+    const itemType = 'normal'
+    const itemStatus = 'close'
+
+    const fileName = 'Toyo'
+    const fileId = '#696969'
+    const fileImg = 'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
+
     return (
         <main className="main-wrapper">
-            <div className="stripes-overlay"></div>
+            <div id="img-background" className="img-background"></div>
             <Nav />
             <div className="main-content-wrapper">
                 <div className="item-showcase">
                     <div>
-                        {/* <Toy
-                         name="toyo futurustic name "
-                         time="#342421"
-                         img="https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img2_vmkw71.png"
-                        /> */}
                         <Unity
                             unityContext={unityContext}
                             style={{
@@ -60,15 +66,27 @@ function Dock() {
                     </div>
                     <div className="text-card" onClick={teste}>
                         <TextCard
-                            CardContent={CardContent}
+                            itemName={itemName}
+                            itemType={itemType}
+                            itemStatus={itemStatus}
                             heightInVh={55}
                             widthInVw={30}
                         />
                     </div>
                 </div>
 
-                <ItemsCarousel />
+                <ItemsCarousel
+                    fileName={fileName}
+                    fileId={fileId}
+                    fileImg={fileImg}
+                />
             </div>
+            <Items
+                name={fileName}
+                time={fileId}
+                img={fileImg}
+            />
+
         </main>
     )
 }
