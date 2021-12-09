@@ -37,13 +37,13 @@ function Nav() {
                 </Link>
             </div>
             <div className="nav-item">
-                <Link className="link" to="/character/haruko">
+                <Link className="link" to="/waiting">
                     <img src={toyosUrl} alt="toyos" />
                     <span>TOYOS</span>
                 </Link>
             </div>
             <div className="nav-item">
-                <Link className="link" to="/parts">
+                <Link className="link" to="/waiting">
                     <img src={bodyPartsUrl} alt="body parts" />
                     <span>
                         BODY

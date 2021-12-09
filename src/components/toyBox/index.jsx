@@ -12,7 +12,7 @@ export default function ToyBox({ img, name, time }) {
             <img src={img} alt="" className="image" />
             <div className={'info'}>
                 <div className={'name'}>{name}</div>
-                <div className="time">{time}</div>
+                <div className="time">#{time}</div>
             </div>
         </div>
     )

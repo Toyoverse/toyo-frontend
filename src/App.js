@@ -17,6 +17,7 @@ import Dock from './pages/Dock'
 import Haruko from './pages/character/Haruko'
 import LastSeen from './pages/LastSeen'
 import Login from './pages/Login'
+import Waiting from './pages/Waiting'
 /* import Home from './pages/Home' */
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
                     <Route path="/items" component={Dock} />
                     <Route exact path="/character" component={Character} />
                     <Route path="/parts" component={LastSeen} />
-                    <Route path="/character/haruko" component={Haruko} />
+                    <Route path="/toyos" component={Haruko} />
+                    <Route path="/waiting" component={Waiting} />
                 </Switch>
             </Router>
         </div>

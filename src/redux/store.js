@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import mainReducer from './main/index'
+import boxReducer from './boxToyos/index'
+import blockchainReducer from './blockchain/index'
 
-export default configureStore({
+const store = configureStore({
     reducer: {
-        main: mainReducer,
+        box: boxReducer,
+        blockchain: blockchainReducer
     },
 })
+
+export default store

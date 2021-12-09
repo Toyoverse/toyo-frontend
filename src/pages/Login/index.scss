@@ -147,6 +147,11 @@
             }
         }
 
+        .btnContainer.disable {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
         .open-btn {
             z-index: 1;
             height: 20vh;
