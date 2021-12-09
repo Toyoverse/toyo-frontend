@@ -9,7 +9,7 @@ export default function Files({ img, name, id }) {
             <img src={img} className="fileImg" />
             <div className="fileTexts">
                 <text className="fileText">{name}</text>
-                <text className="fileText">{id}</text>
+                <text className="fileText">#{id}</text>
             </div>
         </div>
     )
