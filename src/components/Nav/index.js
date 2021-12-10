@@ -14,8 +14,7 @@ function Nav() {
     const bodyPartsUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637677736/Toyo/body_part_3x_mxq76n.png'
     /*   const selectedNavGlowUrl =
-        'https://res.cloudinary.com/groovin/image/upload/v1637769744/Toyo/nav-item-glow_wkiqbj.png'
- */
+        'https://res.cloudinary.com/groovin/image/upload/v1637769744/Toyo/nav-item-glow_wkiqbj.png' */
     return (
         <div className="nav-items">
             {/*  <div className="selected-nav-item-glow">
@@ -37,7 +36,7 @@ function Nav() {
                 </Link>
             </div>
             <div className="nav-item">
-                <Link className="link" to="/waiting">
+                <Link className="link" to="/toyos">
                     <img src={toyosUrl} alt="toyos" />
                     <span>TOYOS</span>
                 </Link>

@@ -7,7 +7,11 @@ import Items from './../ToysAndBoxes/ToysAndBoxes'
 
 import { useSelector } from 'react-redux'
 
-/* import Unity, { UnityContext } from 'react-unity-webgl' */
+import api from './../../services/api'
+
+import Waiting from './../Waiting/index'
+
+import Unity, { UnityContext } from 'react-unity-webgl'
 
 /* import Toy from './../../components/toyBox' */
 
@@ -26,97 +30,109 @@ import { useSelector } from 'react-redux'
 }) */
 
 function Dock() {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [boxSelected, setBoxSelected] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [boxSelected, setBoxSelected] = useState(0)
 
-    const [isOpen, setIsOpen] = useState(true);
-    
-    const mainImgUrl = 'https://res.cloudinary.com/groovin/image/upload/v1637679642/Toyo/main_cb0t4x.png'
+    const [isOpen, setIsOpen] = useState(true)
+    const [files, setFiles] = useState([])
+    const blockchain = useSelector(state => state.blockchain)
+
+    const FJC = './../../../public/BOXES/FortiedJakana.png'
+    const FJO = './../../../public/BOXES/FortiedJakanaOpen.png'
+
+    const FKC = './../../../public/BOXES/FortiedKytunt.png'
+    const FKO = './../../../public/BOXES/FortiedKytuntOpen.png'
+
+    const NJC = './../../../public/BOXES/Jakana.png'
+    const NJO = './../../../public/BOXES/JakanaOpen.png'
+
+    const NKC = './../../../public/BOXES/Kytunt.png'
+    const NKO = './../../../public/BOXES/KytuntOpen.png'
+
+    const mainImgUrl = NKO
+
     const itemName = 'mistery box'
     const itemType = 'normal'
     const itemStatus = 'close'
 
     const fileName = 'Toyo'
     const fileId = '#696969'
-    const fileImg = 'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
-    
-    const box = useSelector((state) => state.box)
+    const fileImg =
+        'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
 
-    /* useEffect(function () {
-        unityContext.on("loaded", function () {
-          setIsLoaded(true);
-        });
-    }, []); */
-
-    /* useEffect(function () {
-        if(isLoaded) {
-            console.log('loaded')
-            loadingWebGL()
-        }
-    }, [isLoaded]); */
-
-    /* function loadingWebGL() {        
-        console.log("MARS >>>> START SETA ROTA");
-        unityContext.send("loader", "setaRota", "http://localhost:3000/toyoAssets/");
-        console.log("MARS >>>> END SETA ROTA");
-        console.log("MARS >>>> START BACKFUNCTION");
-        unityContext.send("loader", "backFunction", "1,2,1;4,4,4,4,4,4,4,4,4,4;1,1,1,1,1,1,1,1,1,1;1,1,1,1,1,1,1,1,1,1;100,100,100,100,100,100,100,100,100,100;0,0,0,0,0,0,0,0,0,0");
-        console.log("MARS >>>> END BACKFUNCTION");
-    } */
+    const box = useSelector(state => state.box)
 
     /* function loadingWebGL() {
         unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
         unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100");
     } */
 
+    useEffect(async () => {
+        await api
+            .get('/ToyoBox/getBoxes', {
+                params: {
+                    walletAddress: blockchain.account,
+                    chainId: parseInt(blockchain.chainId, 16),
+                },
+            })
+            .then(response => setFiles(response.data))
+            .catch(error => {
+                console.log(error)
+            })
+    })
+
     return (
         <main className="main-wrapper">
-            <div id="img-background" className="img-background"></div>  
-            {/* <Unity
-                unityContext={unityContext}
-                style={{
-                    position: 'absolute',
-                    zIndex: 20,
-                    width: '95vw',
-                    height: '95vh', 
-                    top: '2.5vh',
-                    left: '2.5vw',
-                    display: 'none',             
-                    visibility: "hidden"     
-                    visibility: isLoaded ? "visible" : "hidden"
-                }}
-            />      */}        
-            <Nav />                  
-            <div className="main-content-wrapper">
-                <div className="item-showcase">                             
-                    <div style={{
-                        width: '30vw',
-                        height: '55vh', 
-                        backgroundImage: `url(${mainImgUrl})`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        /* visibility: isLoaded ? "hidden" : "visible",
-                        display: isLoaded ? "none" : "block" */
-                    }} />
-                    <div className="text-card">
-                        <TextCard
-                            itemName={box.name.split(" - ").pop().split("Seed")[0].replace("Fortified", "")}
-                            itemType={box.name.split(" - ").pop().includes('Fortified') == true ? "Fortified" : "Normal"}
-                            itemStatus={itemStatus}
-                            heightInVh={55}
-                            widthInVw={30}
-                        />
+            <div id="img-background" className="img-background"></div>
+
+            {/*  TO DO DESCOMENTAR ISSO IMPORTANTE  */}
+            {!files.length ? (
+                <Waiting />
+            ) : (
+                <>
+                    <Nav />
+                    <div className="main-content-wrapper">
+                        <div className="item-showcase">
+                            <div
+                                style={{
+                                    width: '30vw',
+                                    height: '55vh',
+                                    backgroundImage: `url${mainImgUrl}`,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: 'contain',
+                                    backgroundRepeat: 'no-repeat',
+                                    //visibility: isLoaded ? "hidden" : "visible",
+                                    //display: isLoaded ? "none" : "block"
+                                }}
+                            />
+                            <div className="text-card">
+                                <TextCard
+                                    itemName={box.name
+                                        .split(' - ')
+                                        .pop()
+                                        .split('Seed')[0]
+                                        .replace('Fortified', '')}
+                                    itemType={
+                                        box.name
+                                            .split(' - ')
+                                            .pop()
+                                            .includes('Fortified') == true
+                                            ? 'Fortified'
+                                            : 'Normal'
+                                    }
+                                    itemId={box.idBoxClicked}
+                                    itemStatus={itemStatus}
+                                    heightInVh={55}
+                                    widthInVw={30}
+                                />
+                            </div>
+                        </div>
+
+                        <ItemsCarousel />
                     </div>
-                </div>
-                
-                <ItemsCarousel />
-            </div>
-            <Items
-                name={fileName}
-                time={fileId}
-                img={fileImg}
-            />
+                    <Items name={fileName} time={fileId} img={fileImg} />
+                </>
+            )}
         </main>
     )
 }

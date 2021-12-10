@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.scss'
-import iconMetamask from './../assets/images/metamask.png'
+import iconOpenSea from './../../assets/icons/icon_opensea.png'
 import openBtnUrl from './../assets/images/btn-metamask-2.png'
 import openBtnUrlHover from './../assets/images/btn-metamask.png'
 /*  onMouseOver={} onMouseOut={}  */
@@ -15,7 +15,13 @@ function mouseOut() {
     document.getElementById('open-btn').src = openBtnUrl
 }
 
+function redirect() {
+    window.open('https://opensea.io/collection/toyo-first-9', '_blank').focus()
+}
+
 export default function Login() {
+    const path = window.location.pathname
+
     return (
         <main className="main">
             <Nav />
@@ -24,14 +30,50 @@ export default function Login() {
                     <div className="login-label">
                         {isMobile ? (
                             <p className="linking">
-                                for a better experience we restrict access to
-                                desktop only
+                                THIS TERMINAL HAS NO GRANTED ACCESS. <br />
+                                TRY AGAIN USING A P.C. TERMINAL.
                             </p>
                         ) : (
                             <>
-                                <p className="linking">
-                                    OFFLINE, PLEASE TRY AGAIN LATER
-                                </p>
+                                {path == '/items' ? (
+                                    <>
+                                        <p className="linking">
+                                            WE HAVE LOOKED IN ALL POSSIBLY
+                                            SIMULATIONS, <br />
+                                            BUT YOU HAVE NO BOX TO DISPLAY.
+                                        </p>
+                                        <div
+                                            className="btnContainer"
+                                            onMouseOver={mouseOver}
+                                            onMouseOut={mouseOut}
+                                            id="btnContainer"
+                                            onClick={redirect}
+                                        >
+                                            <img
+                                                src={openBtnUrl}
+                                                id="open-btn"
+                                                className="open-btn"
+                                                alt="Connect Metamask"
+                                            />
+                                            <div className="icon-name">
+                                                <img
+                                                    src={iconOpenSea}
+                                                    className="metamask-logo"
+                                                    alt="Metamask"
+                                                />
+                                                <p className="connect">
+                                                    BUY ON OPENSEA
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <p className="linking">
+                                        WILD TOYOS ATTACKED OUR LIVE LINK IN
+                                        SIMULATION H64. <br />
+                                        WE WILL BE BACK ASAP.
+                                    </p>
+                                )}
                             </>
                         )}
                     </div>

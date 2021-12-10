@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'FreePixel';
     src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
@@ -6,7 +5,7 @@
 .stats-card-wrapper {
     position: relative;
 
-    .top-card2 {
+    .top-card3 {
         /*  background: #ff0099; */
         background: #0004;
         border: solid 11px #ff0099;
@@ -20,7 +19,7 @@
         top: 0;
         left: 0;
 
-        z-index: 1;
+        z-index: 3;
 
         display: flex;
         flex-direction: column;
@@ -41,12 +40,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            z-index: 3;
 
             padding: 1.5em;
         }
     }
 
-    .back-card2 {
+    .back-card3 {
         background: #0004;
         border: solid 11px #ff0099;
 
@@ -71,7 +71,6 @@
         }
     }
 }
-
 
 .dock-text-section {
     width: 100%;

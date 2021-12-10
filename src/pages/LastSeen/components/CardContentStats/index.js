@@ -43,7 +43,7 @@ function CardContent() {
                 <img src={heartIconUrl} className="heart-icon" alt="heart" />
             </div>
 
-            <div className="stats-type2-wrapper2">
+            <div className="stats-type2-wrapper3">
                 <div className="column-wrapper">
                     <div className="stat-perc">
                         <div className="stat-perc-prop">Head:</div>

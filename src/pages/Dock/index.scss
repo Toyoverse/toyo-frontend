@@ -12,8 +12,8 @@
 .main-wrapper {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.507);
-    background: url(https://res.cloudinary.com/groovin/image/upload/v1637762659/Toyo/background22_wufrfr.png);
+    background-color: rgba(0, 0, 0, 0.774);
+    background: url('./../../assets/fundo/background.jpg');
 
     background-position: center;
     background-repeat: no-repeat;
@@ -49,7 +49,7 @@
             justify-content: space-between;
 
             .text-card {
-                mix-blend-mode: screen;
+                //mix-blend-mode: screen;
             }
 
             & > div > .main-img-showcase {

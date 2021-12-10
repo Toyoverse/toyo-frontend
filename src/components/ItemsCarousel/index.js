@@ -145,7 +145,7 @@ const ItemsCarousel = () => {
                                                         'LOADING'
                                                     }
                                                     id={obj.tokenId}
-                                                    img={`http://localhost:3000/BOXES/${obj.name
+                                                    img={`${window.location.protocol}//${window.location.hostname}/BOXES/${obj.name
                                                         .split(' - ')
                                                         .pop()
                                                         .split('Seed')[0]

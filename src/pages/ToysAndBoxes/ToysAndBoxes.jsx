@@ -35,7 +35,7 @@ export default function ToysAndBoxes({ img, name, time }) {
                             <Toys
                                 name={obj.name.split(" - ").pop().split("Seed")[0]}
                                 time={obj.tokenId}
-                                img={`http://localhost:3000/BOXES/${obj.name.split(" - ").pop().split("Seed")[0].trim()}.png`}
+                                img={`${window.location.protocol}//${window.location.hostname}/BOXES/${obj.name.split(" - ").pop().split("Seed")[0].trim()}.png`}
                             />
                             ))                         
                          }

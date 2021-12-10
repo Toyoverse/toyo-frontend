@@ -5,49 +5,55 @@ import openBtnUrl from './../assets/images/btn-metamask-2.png'
 import openBtnUrlHover from './../assets/images/btn-metamask.png'
 /*  onMouseOver={} onMouseOut={}  */
 import { isMobile } from 'react-device-detect'
-import * as metamaskConnect from './../../middleware/metamaskConnect' 
+import * as metamaskConnect from './../../middleware/metamaskConnect'
 import * as web3Connect from './../../middleware/web3Connect'
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
+import midle from './../../middleware/parts'
 
 import { useDispatch } from 'react-redux'
-import { setWalletAccount, setChainId, setContracts } from './../../redux/blockchain/index'
+import {
+    setWalletAccount,
+    setChainId,
+    setContracts,
+} from './../../redux/blockchain/index'
 
 export default function Login() {
     const dispatch = useDispatch()
-    const history = useHistory();
+    const history = useHistory()
 
     function mouseOver() {
         document.getElementById('open-btn').src = openBtnUrlHover
     }
-    
+
     function mouseOut() {
         document.getElementById('open-btn').src = openBtnUrl
     }
-    
+
     async function connectMetaMask() {
         let returnConnect = await web3Connect.web3App()
         let path = `/items`
-        if(returnConnect == true) {
-            dispatch(setWalletAccount(web3Connect.getAccount()));
-            dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
-            /* dispatch(setContracts(web3Connect.getContracts())); */
+        //console.log('teste', window.ethereum)
+        if (returnConnect == true) {
+            dispatch(setWalletAccount(web3Connect.getAccount()))
+            dispatch(setChainId(web3Connect.getValidNetwork().ChainId))
             history.push(path)
         }
     }
-   
+
     useEffect(async () => {
         await metamaskConnect.isMetaMaskInstalled()
     }, [])
 
     return (
+
         <div className="main-wrapper-login">
             <div className="main-login">
                 <div className="login-label">
                     {isMobile ? (
                         <p className="linking">
-                            for a better experience we restrict access to
-                            desktop only
+                            THIS TERMINAL HAS NO GRANTED ACCESS. <br />
+                            TRY AGAIN USING A P.C. TERMINAL.
                         </p>
                     ) : (
                         <>

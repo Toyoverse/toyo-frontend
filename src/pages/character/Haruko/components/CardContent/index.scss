@@ -29,7 +29,6 @@
         letter-spacing: 0.02em;
         color: #fff;
         font-size: 3em;
-        text-transform: uppercase;
     }
 }
 
@@ -61,6 +60,28 @@
 }
 
 .stats-desc-header {
+    // margin-left: 6em;
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    .stats-double-lines {
+        display: block;
+        width: 5em;
+        margin-right: auto;
+        flex-basis: 55%;
+    }
+
+    .heart-icon {
+        display: block;
+        width: 1em;
+        margin-left: 0.6em;
+    }
+}
+
+.stats-desc-header2 {
     // margin-left: 6em;
     margin-top: 0.5em;
     display: flex;
@@ -218,6 +239,88 @@
                 letter-spacing: 0.02em;
                 color: #ffffff;
                 font-size: 0.85em;
+            }
+        }
+    }
+}
+
+
+.stats-type2-wrapper2 {
+    // margin-left: 6em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+
+
+    @media screen and (max-width: 1440px) {
+        flex-direction: row;
+        display: flex;
+        flex: 1;
+        margin-left: -2em;
+    }  
+
+
+    .column-wrapper {
+            height: 100%;
+            width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        justify-content: space-between;
+
+        @media screen and (max-width: 1440px) {
+            width: 40%;
+            height: 100%;
+        }        
+
+        .stat-perc {
+            display: flex;
+            justify-content: space-between;
+
+              
+
+            .stat-perc-prop2 {
+                font-family: 'FreePixel', sans-serif;
+                font-weight: normal;
+                letter-spacing: 0.02em;
+                color: #ffffff;
+                font-size: 2em;
+                text-transform: capitalize;
+                text-align: left;
+                white-space: nowrap;
+
+                @media screen and (max-width: 1440px) {
+                    font-size: 0.85em;
+                }
+            }
+
+            .stat-progress-bar {
+                background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                background-size: cover;
+                background-position: left;
+                background-repeat: no-repeat;
+                flex-basis: 45%;
+                height: 2em;
+                width: 10em;
+
+                @media screen and (max-width: 1440px) {
+                    display: none;
+                }
+            }
+
+            .perc {
+                flex-basis: 25%;
+                font-family: 'FreePixel', sans-serif;
+                font-weight: normal;
+                letter-spacing: 0.02em;
+                color: #ffffff;
+                font-size: 0.85em;
+            }
+
+            .spacerVertical{
+                opacity: 0;
             }
         }
     }
