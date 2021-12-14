@@ -5,6 +5,8 @@ import CardContent from './components/CardContentStats'
 import Nav from './../../components/Nav'
 import Items from './../ToysAndBoxes/ToysAndBoxes'
 import Unity, { UnityContext } from 'react-unity-webgl'
+import { useSelector } from 'react-redux'
+import api from './../../services/api'
 
 import './index.scss'
 
@@ -19,6 +21,10 @@ const unityContext = new UnityContext({
 function LastSeen() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
+    const [files, setFiles] = useState([])
+
+    const blockchain = useSelector(state => state.blockchain)
+    const box = useSelector(state => state.box)
 
     const charImgUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637934895/Toyo/haruko-page/skull_an6can.png'
@@ -34,6 +40,20 @@ function LastSeen() {
             setIsLoaded(true);            
         });
     }, []);
+
+    useEffect(async () => {
+        await api
+            .get('/ToyoBox/getParts', {
+                params: {
+                    walletAddress: blockchain.account,
+                    chainId: parseInt(blockchain.chainId, 16),
+                },
+            })
+            .then(response => setFiles(response.data))
+            .catch(error => {
+                console.log(error)
+            })
+    })
 
     useEffect(async () => {
         //if(isOk) {
@@ -75,16 +95,22 @@ function LastSeen() {
             <div className="main-content-wrapper">
                 <div className="item-showcase">
                     <div>
-                        {/* <img
+                        <img
                             className="main-img-showcase"
-                            src={charImgUrl}
+                            src={`${window.location.origin}/iconsItems/${box.name
+                                .split(' - ')
+                                .pop()
+                                .split('Head')[0]
+                                .toLowerCase()
+                                .trim()}.png`}
                             alt="main img"
-                        /> */}
+                        />
                         <Unity
                             unityContext={unityContext}
                             style={{
                                 width: '30vw',
                                 height: '55vh', 
+                                display: 'none',
                                 visibility: isLoaded ? "visible" : "hidden"
                             }}
                         /> 
@@ -96,11 +122,7 @@ function LastSeen() {
                         widthInVw={30}
                     />
                 </div>
-                <BoxesCarousel
-                    fileName={fileName}
-                    fileId={fileId}
-                    fileImg={fileImg}
-                />
+                <BoxesCarousel />
             </div>
             <Items />
         </main>

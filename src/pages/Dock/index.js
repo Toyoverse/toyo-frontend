@@ -72,7 +72,7 @@ function Dock() {
                                 style={{
                                     width: '30vw',
                                     height: '55vh',
-                                    backgroundImage: `url("${window.location.origin}/Boxes/${box.name.split(' - ').pop().split('Seed')[0].trim()}.png")`,
+                                    backgroundImage: `url("${window.location.origin}/iconsItems/${box.name.split(' - ').pop().split('Seed')[0].trim()}.png")`,
                                     backgroundPosition: 'center',
                                     backgroundSize: 'contain',
                                     backgroundRepeat: 'no-repeat',

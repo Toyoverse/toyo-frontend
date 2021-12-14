@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import BoxesCarousel from './../../../components/ItemsCarousel'
+import ItemsCarousel from './../../../components/ItemsCarousel'
 import Nav from './../../../components/Nav'
 import TextCard from './components/StatsCard'
 import CardContent from './components/CardContent'
@@ -25,7 +25,7 @@ function Haruko() {
 
     useEffect(async () => {
         await api
-            .get('/ToyoBox/getParts', {
+            .get('/ToyoBox/getToyos', {
                 params: {
                     walletAddress: blockchain.account,
                     chainId: parseInt(blockchain.chainId, 16),
@@ -64,11 +64,7 @@ function Haruko() {
                                 widthInVw={30}
                             />
                         </div>
-                        <BoxesCarousel
-                            fileName={fileName}
-                            fileId={fileId}
-                            fileImg={fileImg}
-                        />
+                        <ItemsCarousel />
                     </div>
                 </>
             )}

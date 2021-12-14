@@ -11,8 +11,9 @@ import { useSelector } from 'react-redux'
 
 import * as web3Connect from './../../middleware/web3Connect'
 
+var path = window.location.pathname
+
 function handleClick() {
-    const path = window.location.pathname
     if (path == '/parts') {
         document
             .getElementById('ToyosItemsOpen')
@@ -83,89 +84,280 @@ const ItemsCarousel = () => {
         'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
 
     useEffect(async () => {
-        await api
-            .get('/ToyoBox/getBoxes', {
-                params: {
-                    walletAddress: blockchain.account,
-                    chainId: parseInt(blockchain.chainId, 16),
-                },
-            })
-            .then(response => setFiles(response.data))
-            .catch(error => {
-                console.log(error)
-            })
+        path = window.location.pathname
+        console.log(path)
+        if(path == '/items') {
+            await api
+                .get('/ToyoBox/getBoxes', {
+                    params: {
+                        walletAddress: blockchain.account,
+                        chainId: parseInt(blockchain.chainId, 16),
+                    },
+                })
+                .then(response => setFiles(response.data))
+                .catch(error => {
+                    console.log(error)
+                })
+        } else if (path == '/parts') {
+            await api
+                .get('/ToyoBox/getParts', {
+                    params: {
+                        walletAddress: blockchain.account,
+                        chainId: parseInt(blockchain.chainId, 16),
+                    },
+                })
+                .then(response => setFiles(response.data))
+                .catch(error => {
+                    console.log(error)
+                })
+        } else if (path == '/toyos') {
+            await api
+                .get('/ToyoBox/getToyos', {
+                    params: {
+                        walletAddress: blockchain.account,
+                        chainId: parseInt(blockchain.chainId, 16),
+                    },
+                })
+                .then(response => setFiles(response.data))
+                .catch(error => {
+                    console.log(error)
+                })
+        }
     })
 
-    return (
-        <div className="carousel-out">
-            <div>
-                {files.length ? (
-                    <>
-                        <div className="top-section">
-                            <img
-                                className="title"
-                                src={titleBoxUrl}
-                                alt="title box"
-                            />
-                            <img
-                                src={upIconUrl}
-                                alt="scroll up"
-                                className="scroll-icon"
-                                onClick={handleClick}
-                            />
-                        </div>
-                        <div className="externo">
-                            <img
-                                className="nav-icon"
-                                src={iconLeftUrl}
-                                onClick={handleClickLeft}
-                                alt="icon left"
-                            />
-                            <div className="row" id="caroussel">
-                                <div className="row__inner">
-                                    {files.map(obj => (
-                                        <div
-                                            className="tile"
-                                            onClick={() =>
-                                                dispatch(
-                                                    boxClicked({
-                                                        id: obj.tokenId,
-                                                        name: obj.name,
-                                                    }),
-                                                )
-                                            }
-                                        >
-                                            <div className="tile__media">
-                                                <File
-                                                    name={
-                                                        obj.name
+    if (path == "/items") {
+        return (
+            <div className="carousel-out">
+                <div>
+                    {files.length > 0 ? (
+                        <>
+                            <div className="top-section">
+                                <img
+                                    className="title"
+                                    src={titleBoxUrl}
+                                    alt="title box"
+                                />
+                                <img
+                                    src={upIconUrl}
+                                    alt="scroll up"
+                                    className="scroll-icon"
+                                    onClick={handleClick}
+                                />
+                            </div>
+                            <div className="externo">
+                                <img
+                                    className="nav-icon"
+                                    src={iconLeftUrl}
+                                    onClick={handleClickLeft}
+                                    alt="icon left"
+                                />
+                                <div className="row" id="caroussel">
+                                    <div className="row__inner">
+                                        {files.map(obj => (
+                                            <div
+                                                className="tile"
+                                                onClick={() =>
+                                                    dispatch(
+                                                        boxClicked({
+                                                            id: obj.tokenId,
+                                                            name: obj.name,
+                                                        }),
+                                                    )
+                                                }
+                                            >
+                                                <div className="tile__media">
+                                                    <File
+                                                        name={
+                                                            obj.name
+                                                                .split(' - ')
+                                                                .pop()
+                                                                .split('Seed')[0] ||
+                                                            'LOADING'
+                                                        }
+                                                        id={obj.tokenId}
+                                                        img={
+                                                            `${window.location.origin}/iconsItems/${obj.name
                                                             .split(' - ')
                                                             .pop()
-                                                            .split('Seed')[0] ||
-                                                        'LOADING'
-                                                    }
-                                                    id={obj.tokenId}
-                                                    img={`${window.location.origin}/Boxes/${obj.name.split(' - ').pop().split('Seed')[0].trim()}.png`}
-                                                />
+                                                            .split('Seed')[0]
+                                                            .trim()}.png`
+                                                        }
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
+                                <img
+                                    className="nav-icon"
+                                    src={iconRightUrl}
+                                    onClick={handleClickRight}
+                                    alt="icon right"
+                                />
                             </div>
-                            <img
-                                className="nav-icon"
-                                src={iconRightUrl}
-                                onClick={handleClickRight}
-                                alt="icon right"
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <div className="spacer" />
-                )}
+                        </>
+                    ) : (
+                        <div className="spacer" />
+                    )}
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else if (path == "/toyos") {
+        return (
+            <div className="carousel-out">
+                <div>
+                    {files.length > 0 ? (
+                        <>
+                            <div className="top-section">
+                                <img
+                                    className="title"
+                                    src={titleBoxUrl}
+                                    alt="title box"
+                                />
+                                <img
+                                    src={upIconUrl}
+                                    alt="scroll up"
+                                    className="scroll-icon"
+                                    onClick={handleClick}
+                                />
+                            </div>
+                            <div className="externo">
+                                <img
+                                    className="nav-icon"
+                                    src={iconLeftUrl}
+                                    onClick={handleClickLeft}
+                                    alt="icon left"
+                                />
+                                <div className="row" id="caroussel">
+                                    <div className="row__inner">
+                                        {files.map(obj => (
+                                            <div
+                                                className="tile"
+                                                onClick={() =>
+                                                    dispatch(
+                                                        boxClicked({
+                                                            id: obj.tokenId,
+                                                            name: obj.name,
+                                                        }),
+                                                    )
+                                                }
+                                            >
+                                                <div className="tile__media">
+                                                    <File
+                                                        name={
+                                                            obj.name
+                                                                .split(' - ')
+                                                                .pop()
+                                                                .split('Seed')[0] ||
+                                                            'LOADING'
+                                                        }
+                                                        id={obj.tokenId}
+                                                        img={
+                                                            `${window.location.origin}/iconsItems/${obj.name
+                                                            .split(' - ')
+                                                            .pop()
+                                                            .split('Seed')[0]
+                                                            .trim()}.png`
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <img
+                                    className="nav-icon"
+                                    src={iconRightUrl}
+                                    onClick={handleClickRight}
+                                    alt="icon right"
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <div className="spacer" />
+                    )}
+                </div>
+            </div>
+        )
+    } else if (path == "/parts") {
+        return (
+            <div className="carousel-out">
+                <div>
+                    {files.length > 0 ? (
+                        <>
+                            <div className="top-section">
+                                <img
+                                    className="title"
+                                    src={titleBoxUrl}
+                                    alt="title box"
+                                />
+                                <img
+                                    src={upIconUrl}
+                                    alt="scroll up"
+                                    className="scroll-icon"
+                                    onClick={handleClick}
+                                />
+                            </div>
+                            <div className="externo">
+                                <img
+                                    className="nav-icon"
+                                    src={iconLeftUrl}
+                                    onClick={handleClickLeft}
+                                    alt="icon left"
+                                />
+                                <div className="row" id="caroussel">
+                                    <div className="row__inner">
+                                        {files.map(obj => (
+                                            <div
+                                                className="tile"
+                                                onClick={() =>
+                                                    dispatch(
+                                                        boxClicked({
+                                                            id: obj.tokenId,
+                                                            name: obj.name,
+                                                        }),
+                                                    )
+                                                }
+                                            >
+                                                <div className="tile__media">
+                                                    <File
+                                                        name={
+                                                            obj.name
+                                                                .split(' - ')
+                                                                .pop()
+                                                                .split('Seed')[0] ||
+                                                            'LOADING'
+                                                        }
+                                                        id={obj.tokenId}
+                                                        img={
+                                                            `${window.location.origin}/iconsItems/${obj.name
+                                                            .split(' - ')
+                                                            .pop()
+                                                            .split('Head')[0]
+                                                            .toLowerCase()
+                                                            .trim()}.png`
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <img
+                                    className="nav-icon"
+                                    src={iconRightUrl}
+                                    onClick={handleClickRight}
+                                    alt="icon right"
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <div className="spacer" />
+                    )}
+                </div>
+            </div>
+        )
+    }
 }
 
 export default ItemsCarousel

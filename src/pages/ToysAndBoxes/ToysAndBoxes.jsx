@@ -65,7 +65,7 @@ export default function ToysAndBoxes({ img, name, time }) {
                                 obj.name.split(' - ').pop().split('Seed')[0]
                             }
                             time={obj.tokenId}
-                            img={`${window.location.origin}/Boxes/${obj.name.split(' - ').pop().split('Seed')[0].trim()}.png`}
+                            img={`${window.location.origin}/iconsItems/${obj.name.split(' - ').pop().split('Seed')[0].trim()}.png`}
                         />
                     ))}
                 </div>
