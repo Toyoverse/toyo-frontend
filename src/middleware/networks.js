@@ -1,3 +1,4 @@
+/* eslint-disable */
 var Networks = {
     Ganache: {
         ChainId: '0x539',

@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function toyoRetorno(id) {
     var toyo = [
         {

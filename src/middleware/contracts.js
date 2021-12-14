@@ -1,3 +1,4 @@
+/* eslint-disable */
 let Contracts = {
     Mainnet: {
         nftTokenAddress: '0x07AE3987C679c0aFd2eC1ED2945278c37918816c',

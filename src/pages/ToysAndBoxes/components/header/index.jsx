@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './index.scss'
 import ShrinIcon from '../../../../assets/shrink.svg'
 import React from 'react'

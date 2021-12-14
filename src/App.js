@@ -3,6 +3,7 @@
  * @param void num The first number.
  * @returns The sum of the two numbers.
  */
+/* eslint-disable */
 import React from 'react'
 import {
     BrowserRouter as Router,

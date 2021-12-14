@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react'
 import Unity, { UnityContext } from 'react-unity-webgl'
 import './index.scss'

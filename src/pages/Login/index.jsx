@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react'
 import './index.scss'
 import iconMetamask from './../assets/images/metamask.png'

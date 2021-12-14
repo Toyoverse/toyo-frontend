@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function partRetorno(toyoId, partId) {
     var partInfo = [
         {

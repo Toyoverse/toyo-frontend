@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 
 import api from './../../../services/api'
 
+/* eslint-disable */
 function Haruko() {
     const mainImgUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637860899/Toyo/haruko-page/haruko_iwz559.png'

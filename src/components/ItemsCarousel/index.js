@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import api from './../../services/api'

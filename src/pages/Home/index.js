@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import ItemsCarousel from './components/ItemsCarousel'
 import TextCard from '../../components/TextCard'

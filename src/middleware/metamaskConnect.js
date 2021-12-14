@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ConsoleView } from "react-device-detect"
 
 const web3Connect = require("./web3Connect")
