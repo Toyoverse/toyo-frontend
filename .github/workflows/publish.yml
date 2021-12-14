@@ -17,15 +17,21 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-        
-    - name: Install yarn
-      run: npm install -g yarn
 
-    - name: Install dependencies with yarn
-      run: yarn install
+    - name: Install dependencies with npm
+      run: npm install
 
     - name: Run build
-      run: yarn build
+      run: npm run build
+
+    #- name: Install yarn
+    #  run: npm install -g yarn
+
+    #- name: Install dependencies with yarn
+    #  run: yarn install
+
+    #- name: Run build
+    #  run: yarn build
 
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
