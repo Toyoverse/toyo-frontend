@@ -3,8 +3,6 @@ name: Front-End CI
 on:
   push: 
     branches: [publish]
-  pull_request:
-    branches: [publish]
 
 jobs:
   build:
