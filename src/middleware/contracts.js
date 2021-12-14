@@ -17,7 +17,7 @@ let Contracts = {
         nftTokenAddress: '0x209aA41E78F8ae8ca1f58441E49857CeD709008f',
         nftTokenContractSymbol: 'TOYF9',
         nftTokenCrowdsaleAddress: '0x3E3FF74c5cf6Fb2A254Ad3D76d6e800aE8814F11',
-        nftTokenSwapAddress: '0x7c6f90da26fc5986fD2d71Cb9e9f5Cc875D61575'
+        nftTokenSwapAddress: '0x40C02d9fd53F634f9D64BfB7190a380BC9caE890'
     }
 }
 

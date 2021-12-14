@@ -249,5 +249,7 @@ export default function toyoRetorno(id) {
         }
     ]
 
-    return toyo[id]
+    return toyo.filter(info => {
+        return info.id == id
+    })
 }

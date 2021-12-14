@@ -62,90 +62,87 @@ async function web3App() {
                 return false
             } else {
                 await Metamask.setIsCorrectNetwork(true)
-                await $.getJSON('NftsContracts/NftTokenSwap.json', async function (nftTokenSwap) {
-                    contracts.NftTokenSwap = TruffleContract(nftTokenSwap)
-                    contracts.NftTokenSwap.setProvider(web3Provider)
-            
-                    _contracts.nftTokenSwapPromise = contracts.NftTokenSwap.at(
-                        _contracts.nftTokenSwapAddress,
-                    )
-            
-                    await _contracts.nftTokenSwapPromise.then(function (instance) {
-                        _contracts.nftTokenSwapInstance = instance
-                        _contracts.nftTokenSwapAddress = instance.address
-                            window.localStorage.setItem("nftTokenSwapInstance", _contracts.nftTokenSwapInstance)
-                            window.localStorage.setItem("nftTokenSwapInstanceAddress", _contracts.nftTokenSwapAddress)
-                    })
-                    window.localStorage.setItem("contractsNftTokenSwap",_contracts)
-
-
-                })
-                await $.getJSON('NftsContracts/NftToken.json', async function (nftToken) {
-                    contracts.NftToken = TruffleContract(nftToken)
-                    contracts.NftToken.setProvider(web3Provider)
-                    
-                    _contracts.nftTokenPromise = contracts.NftToken.at(
-                        _contracts.nftTokenAddress,
-                        )
-                        
-                        await  _contracts.nftTokenPromise.then(function (instance) {
-                            _contracts.nftTokenInstance = instance
-                            _contracts.nftTokenAddress = instance.address
-                            window.localStorage.setItem("nftTokenInstance", _contracts.nftTokenInstance)
-                            window.localStorage.setItem("nftTokenAddress", _contracts.nftTokenAddress)
-                        })
-                    })
-                window.localStorage.setItem("contractsNftToken", JSON.stringify(_contracts))
                 return true;
             }
         })
 }
 
-function swapToken(_tokenId, _typeId) {
-    console.log('App swapToken...')
+async function swapToken(_tokenId, _typeId, _account) {
+    console.log('App swapToken...')    
 
-    if (!MetaMask.isWalletConnected) {
-        alert('Wallet not connected!')
-        return
-    }
+    return $.getJSON('NftsContracts/NftToken.json', async function (nftToken) {
+        contracts.NftToken = TruffleContract(nftToken)
+        contracts.NftToken.setProvider(web3Provider)
+        
+        _contracts.nftTokenPromise = contracts.NftToken.at(_contracts.nftTokenAddress)
+            
+        return $.getJSON('NftsContracts/NftTokenSwap.json', async function (nftTokenSwap) {
+            contracts.NftTokenSwap = TruffleContract(nftTokenSwap)
+            contracts.NftTokenSwap.setProvider(web3Provider)
+    
+            _contracts.nftTokenSwapPromise = contracts.NftTokenSwap.at(
+                _contracts.nftTokenSwapAddress,
+            )
+    
+            return _contracts.nftTokenSwapPromise.then(function (instanceSwap) {
+                _contracts.nftTokenSwapInstance = instanceSwap
+                _contracts.nftTokenSwapAddress = instanceSwap.address
 
-    if (!MetaMask.isCorrectNetwork) {
-        alert('Wrong network!')
-        return
-    }
 
-    _contracts.nftTokenPromise
-        .then(function (instance) {
-            console.log('Swapping [Approve]...')
-            return instance.approve(_contracts.nftTokenSwapAddress, _tokenId, {
-                from: account,
-                value: new web3.utils.BN(0),
-                gasPrice: 5000000000,
+                return _contracts.nftTokenPromise
+                    .then(function (instance) {
+                        console.log('Swapping [Approve]...')
+                        instance.approve(instanceSwap.address, _tokenId, {
+                            from: _account,
+                            value: new web3.utils.BN(0),
+                            gasPrice: 5000000000,
+                        })
+                    })
+                    .then(function (result) {
+                        return _contracts.nftTokenSwapPromise
+                            .then(function (instance) {
+                                console.log('Swapping [swapToken]...')
+                                //instance.swapToken.estimateGas(App.account, tokenId, typeId).then(function(gas){
+                                return instance.swapToken(_account, _tokenId, _typeId, {
+                                    from: _account,
+                                    value: new web3.utils.BN(0),
+                                    gas: 2100000,
+                                    gasPrice: 5000000000,
+                                }).then(()=> {
+                                    return true
+                                })
+                                //});
+                            })
+                            .then(function (result) {
+                                alert('Tokens swapped, check your wallet!')
+                                return false;
+                            })
+                            .catch(function (error) {
+                                alert('Error')
+                                return false;
+                            })
+                    })
+                    .catch(function (error) {
+                        alert('Error')
+                        return false;
+                    })
+                    
             })
         })
-        .then(function (result) {
-            _contracts.nftTokenSwapPromise
-                .then(function (instance) {
-                    console.log('Swapping [swapToken]...')
-                    //instance.swapToken.estimateGas(App.account, tokenId, typeId).then(function(gas){
-                    return instance.swapToken(account, _tokenId, _typeId, {
-                        from: account,
-                        value: new web3.utils.BN(0),
-                        gas: 2100000,
-                        gasPrice: 5000000000,
-                    })
-                    //});
-                })
-                .then(function (result) {
-                    alert('Tokens swapped, check your wallet!')
-                })
-                .catch(function (error) {
-                    alert('Error')
-                })
+
+
+            
+
         })
-        .catch(function (error) {
-            alert('Error')
-        })
+
+    
+
+    
+
+    
+
+
+    
 }
 
 export {

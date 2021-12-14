@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  backend-toyo:
+    image: node:lts-bullseye
+    build: .
+    command: sh -c "./home/scriptDocker.sh"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3000:3000"

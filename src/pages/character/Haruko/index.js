@@ -25,7 +25,7 @@ function Haruko() {
 
     useEffect(async () => {
         await api
-            .get('/ToyoBox/getBoxes', {
+            .get('/ToyoBox/getParts', {
                 params: {
                     walletAddress: blockchain.account,
                     chainId: parseInt(blockchain.chainId, 16),
