@@ -1,0 +1,38 @@
+name: Front-End CI
+
+on:
+  push: 
+    branches: [publish]
+  pull_request:
+    branches: [publish]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get lastest code
+      uses: actions/checkout@v1
+
+    - name: Install Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+        
+    - name: Install yarn
+      run: npm install -g yarn
+
+    - name: Install dependencies with yarn
+      run: yarn install
+
+    - name: Run build
+      run: yarn build
+
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.PEMEC2 }}
+          SOURCE: "build/"
+          REMOTE_HOST: ${{ secrets.SERVEREC2 }}
+          REMOTE_USER: ${{ secrets.USEREC2 }}
+          TARGET: ${{ secrets.TARGETEC2 }}
+          EXCLUDE: "/dist/, /node_modules/"
