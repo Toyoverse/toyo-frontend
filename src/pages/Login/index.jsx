@@ -18,6 +18,10 @@ import {
     setChainId
 } from './../../redux/blockchain/index'
 
+import {
+    setWalletAddress,
+} from './../../redux/login/index'
+
 export default function Login() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -36,6 +40,7 @@ export default function Login() {
         //console.log('teste', window.ethereum)
         if (returnConnect == true) {
             dispatch(setWalletAccount(web3Connect.getAccount()))
+            dispatch(setWalletAddress(web3Connect.getAddress()))
             dispatch(setChainId(web3Connect.getValidNetwork().ChainId))
             history.push(path)
         }
