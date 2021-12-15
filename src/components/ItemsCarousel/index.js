@@ -126,7 +126,7 @@ const ItemsCarousel = () => {
         }
     })
 
-    if (path == "/items") {
+    if (path == "/items" || path == "/") {
         return (
             <div className="carousel-out">
                 <div>
