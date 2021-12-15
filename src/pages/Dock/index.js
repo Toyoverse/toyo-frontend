@@ -7,6 +7,7 @@ import './index.scss'
 import Items from './../ToysAndBoxes/ToysAndBoxes'
 
 import { useSelector } from 'react-redux'
+import { createStore } from 'redux'
 
 import api from './../../services/api'
 
@@ -30,6 +31,7 @@ function Dock() {
     const [isOpen, setIsOpen] = useState(true)
     const [files, setFiles] = useState([])
     const blockchain = useSelector(state => state.blockchain)
+    const login = useSelector(state => state.login)
 
     const fileName = 'Toyo'
     const fileId = '#696969'
@@ -38,12 +40,17 @@ function Dock() {
 
     const box = useSelector(state => state.box)
 
+    const store = createStore
     /* function loadingWebGL() {
         unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
         unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100");
     } */
 
     useEffect(async () => {
+        //store.getState(walletAddress)
+        //store.getState(chainId)
+        console.log('teste',login)
+        console.log('teste2',blockchain.chainId)
         await api
             .get('/ToyoBox/getBoxes', {
                 params: {
