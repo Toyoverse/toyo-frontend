@@ -15,8 +15,7 @@ import midle from './../../middleware/parts'
 import { useDispatch } from 'react-redux'
 import {
     setWalletAccount,
-    setChainId,
-    setContracts,
+    setChainId
 } from './../../redux/blockchain/index'
 
 export default function Login() {
