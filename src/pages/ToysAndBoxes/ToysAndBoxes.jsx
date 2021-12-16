@@ -40,7 +40,7 @@ export default function ToysAndBoxes({ img, name, time }) {
                 .catch(error => {
                     console.log(error)
                 })
-        } else if (path == '/items') {
+        } else if (path == '/items' || path == '/') {
             await api
                 .get('/ToyoBox/getBoxes', {
                     params: {
@@ -53,6 +53,48 @@ export default function ToysAndBoxes({ img, name, time }) {
                     console.log(error)
                 })
         }
+    }, [])
+    
+    useEffect(async () => {
+        setTimeout(async () => {
+            if (path == '/parts') {
+                await api
+                    .get('/ToyoBox/getParts', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            } else if (path == '/toyos') {
+                await api
+                    .get('/ToyoBox/getToyos', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            } else if (path == '/items' || path == '/') {
+                await api
+                    .get('/ToyoBox/getBoxes', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        }, 30000);
     })    
 
     return (

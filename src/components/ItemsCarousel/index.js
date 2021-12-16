@@ -124,6 +124,50 @@ const ItemsCarousel = () => {
                     console.log(error)
                 })
         }
+    }, [])
+
+    useEffect(async () => {
+        setTimeout(async () => {
+            path = window.location.pathname
+            console.log(path)
+            if(path == '/items') {
+                await api
+                    .get('/ToyoBox/getBoxes', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            } else if (path == '/parts') {
+                await api
+                    .get('/ToyoBox/getParts', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            } else if (path == '/toyos') {
+                await api
+                    .get('/ToyoBox/getToyos', {
+                        params: {
+                            walletAddress: blockchain.account,
+                            chainId: parseInt(blockchain.chainId, 16),
+                        },
+                    })
+                    .then(response => setFiles(response.data))
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        }, 30000)
     })
 
     if (path == "/items" || path == "/") {

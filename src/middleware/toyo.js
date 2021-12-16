@@ -245,7 +245,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Clawn",
+            name: "Clown",
             desc: " "
         }
     ]

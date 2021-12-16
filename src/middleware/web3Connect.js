@@ -1,5 +1,6 @@
 /* eslint-disable */
 import $ from "jquery";
+import { promisify } from 'util';
 
 const Metamask = require("./metamaskConnect");
 const Networks = require("./networks");
@@ -13,7 +14,6 @@ let account = "0x0";
 let loading = false;
 let validNetwork = Networks.default.PolygonMumbai;
 let _contracts = Contracts.default.Mumbai;
-let address = "";
 
 function getValidNetwork() {
   return validNetwork;
@@ -29,14 +29,6 @@ function getAccount() {
 
 function setAccount(value) {
   account = value;
-}
-
-function getAddress() {
-    return address;
-}
-
-function setAddress(value) {
-  address = value;
 }
 
 function showConnectedWallet(connect) {
@@ -100,6 +92,7 @@ async function swapToken(_tokenId, _typeId, _account) {
 
           return _contracts.nftTokenPromise
             .then(function (instance) {
+              window.localStorage.setItem("swap", "approve")
               console.log("Swapping [Approve]...");
               instance.approve(instanceSwap.address, _tokenId, {
                 from: _account,
@@ -110,6 +103,7 @@ async function swapToken(_tokenId, _typeId, _account) {
             .then(function (result) {
               return _contracts.nftTokenSwapPromise
                 .then(function (instance) {
+                  window.localStorage.setItem("swap", "swapping");
                   console.log("Swapping [swapToken]...");
                   //instance.swapToken.estimateGas(App.account, tokenId, typeId).then(function(gas){
                   return instance
@@ -125,16 +119,22 @@ async function swapToken(_tokenId, _typeId, _account) {
                   //});
                 })
                 .then(function (result) {
+                  window.localStorage.setItem("swap", "swapped");
                   alert("Tokens swapped, check your wallet!");
                   return false;
                 })
                 .catch(function (error) {
+                  window.localStorage.setItem("swap", "error");
+                  window.location.reload()
+                  console.log(error);
                   alert("Error");
                   return false;
                 });
             })
             .catch(function (error) {
               alert("Error");
+              console.log(error);
+              window.location.reload()
               return false;
             });
         });
@@ -143,14 +143,63 @@ async function swapToken(_tokenId, _typeId, _account) {
   });
 }
 
+async function swapTokenAsync(_tokenId, _typeId, _account) {
+  let jsonNFT = await $.getJSON("NftsContracts/NftToken.json")
+  let jsonNFTSwap = await $.getJSON("NftsContracts/NftTokenSwap.json")
+  let approve
+  let swapping
+
+  contracts.NftToken = TruffleContract(jsonNFT);
+  contracts.NftToken.setProvider(web3Provider);
+  _contracts.nftTokenPromise = contracts.NftToken.at(
+    _contracts.nftTokenAddress
+  );
+
+  contracts.NftTokenSwap = TruffleContract(jsonNFTSwap);
+  contracts.NftTokenSwap.setProvider(web3Provider);
+  _contracts.nftTokenSwapPromise = contracts.NftTokenSwap.at(
+    _contracts.nftTokenSwapAddress
+  );
+
+  let instance = await _contracts.nftTokenPromise;
+  let instanceSwap = await _contracts.nftTokenSwapPromise;
+
+  try {
+    approve = await instance.approve(instanceSwap.address, _tokenId, {
+      from: _account,
+      value: new web3.utils.BN(0),
+      gasPrice: 5000000000,
+    })
+  } catch(error) {
+    console.log('error approve')
+    console.error(error)
+    return false
+  }
+
+  try {
+    swapping = await instanceSwap.swapToken(_account, _tokenId, _typeId, {
+      from: _account,
+      value: new web3.utils.BN(0),
+      gas: 2100000,
+      gasPrice: 5000000000,
+    })
+    alert("Tokens swapped, check your wallet!");
+  } catch (error) {
+    console.log('error swapping')
+    console.error(error)
+    return false
+  }
+
+  return true 
+}
+
 export {
   web3App,
   showConnectedWallet,
   getValidNetwork,
   setAccount,
   getAccount,
-  setAddress,
-  getAddress,
   swapToken,
   getContracts,
+  swapTokenAsync
 };

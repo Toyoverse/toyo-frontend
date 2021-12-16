@@ -1,99 +1,91 @@
 /* eslint-disable */
-import React, { useEffect } from 'react'
-import './index.scss'
-import iconMetamask from './../assets/images/metamask.png'
-import openBtnUrl from './../assets/images/btn-metamask-2.png'
-import openBtnUrlHover from './../assets/images/btn-metamask.png'
+import React, { useEffect } from "react";
+import "./index.scss";
+import iconMetamask from "./../assets/images/metamask.png";
+import openBtnUrl from "./../assets/images/btn-metamask-2.png";
+import openBtnUrlHover from "./../assets/images/btn-metamask.png";
 /*  onMouseOver={} onMouseOut={}  */
-import { isMobile } from 'react-device-detect'
-import * as metamaskConnect from './../../middleware/metamaskConnect'
-import * as web3Connect from './../../middleware/web3Connect'
-import { useHistory } from 'react-router-dom'
+import { isMobile } from "react-device-detect";
+import * as metamaskConnect from "./../../middleware/metamaskConnect";
+import * as web3Connect from "./../../middleware/web3Connect";
+import { useHistory } from "react-router-dom";
 
-import midle from './../../middleware/parts'
+import midle from "./../../middleware/parts";
 
-import { useDispatch } from 'react-redux'
-import {
-    setWalletAccount,
-    setChainId
-} from './../../redux/blockchain/index'
-
-import {
-    setWalletAddress,
-} from './../../redux/login/index'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
 
 export default function Login() {
-    const dispatch = useDispatch()
-    const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    function mouseOver() {
-        document.getElementById('open-btn').src = openBtnUrlHover
+  function mouseOver() {
+    document.getElementById("open-btn").src = openBtnUrlHover;
+  }
+
+  function mouseOut() {
+    document.getElementById("open-btn").src = openBtnUrl;
+  }
+
+  async function connectMetaMask() {
+    let returnConnect = await web3Connect.web3App();
+    if (returnConnect == true) {
+        dispatch(setWalletAccount(web3Connect.getAccount()));
+        dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
+        localStorage.setItem("WalletAccount", web3Connect.getAccount());
+        localStorage.setItem("WalletChainId", web3Connect.getValidNetwork().ChainId);
+        history.push(`/items`);
     }
+  } 
 
-    function mouseOut() {
-        document.getElementById('open-btn').src = openBtnUrl
-    }
+  useEffect(async () => {
+    localStorage.clear();
+    await metamaskConnect.isMetaMaskInstalled();
+  }, []);
 
-    async function connectMetaMask() {
-        let returnConnect = await web3Connect.web3App()
-        let path = `/items`
-        //console.log('teste', window.ethereum)
-        if (returnConnect == true) {
-            dispatch(setWalletAccount(web3Connect.getAccount()))
-            dispatch(setWalletAddress(web3Connect.getAddress()))
-            dispatch(setChainId(web3Connect.getValidNetwork().ChainId))
-            history.push(path)
-        }
-    }
+  return (
 
-    useEffect(async () => {
-        await metamaskConnect.isMetaMaskInstalled()
-    }, [])
-
-    return (
-
-        <div className="main-wrapper-login">
-            <div className="main-login">
-                <div className="login-label">
-                    {isMobile ? (
-                        <p className="linking">
-                            THIS TERMINAL HAS NO GRANTED ACCESS. <br />
-                            TRY AGAIN USING A P.C. TERMINAL.
-                        </p>
-                    ) : (
-                        <>
-                            <p className="linking">
-                                LINKING WH9 HUMAN TO SIMULATION H64...
-                            </p>
-                            <div
-                                className="btnContainer"
-                                onMouseOver={mouseOver}
-                                onMouseOut={mouseOut}
-                                id="btnContainer"
-                                onClick={connectMetaMask}
-                            >
-                                <img
-                                    src={openBtnUrl}
-                                    id="open-btn"
-                                    className="open-btn"
-                                    alt="Connect Metamask"
-                                />
-                                <div className="icon-name">
-                                    <img
-                                        src={iconMetamask}
-                                        className="metamask-logo"
-                                        alt="Metamask"
-                                    />
-                                    <p className="connect">CONNECT METAMASK</p>
-                                </div>
-                            </div>
-                        </>
-                    )}
+    <div className="main-wrapper-login">
+      <div className="main-login">
+        <div className="login-label">
+          {isMobile ? (
+            <p className="linking">
+              THIS TERMINAL HAS NO GRANTED ACCESS. <br />
+              TRY AGAIN USING A P.C. TERMINAL.
+            </p>
+          ) : (
+            <>
+              <p className="linking">LINKING WH9 HUMAN TO SIMULATION H64...</p>
+              <div
+                className="btnContainer"
+                onMouseOver={mouseOver}
+                onMouseOut={mouseOut}
+                id="btnContainer"
+                onClick={connectMetaMask}
+              >
+                <img
+                  src={openBtnUrl}
+                  id="open-btn"
+                  className="open-btn"
+                  alt="Connect Metamask"
+                />
+                <div className="icon-name">
+                  <img
+                    src={iconMetamask}
+                    className="metamask-logo"
+                    alt="Metamask"
+                  />
+                  <p className="connect">CONNECT METAMASK</p>
                 </div>
-            </div>
-            <div className="noise-wrapper">
-                <div className="noise"></div>
-            </div>
+              </div>
+            </>
+          )}
         </div>
-    )
+      </div>
+      <div className="noise-wrapper">
+        <div className="noise"></div>
+      </div>
+    </div>
+  );
 }

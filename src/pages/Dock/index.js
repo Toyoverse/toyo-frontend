@@ -1,131 +1,159 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react'
-import ItemsCarousel from './../../components/ItemsCarousel'
-import TextCard from './components/StatsCardDock'
-import Nav from '../../components/Nav'
-import './index.scss'
-import Items from './../ToysAndBoxes/ToysAndBoxes'
+import React, { useState, useEffect } from "react";
+import ItemsCarousel from "./../../components/ItemsCarousel";
+import TextCard from "./components/StatsCardDock";
+import Nav from "../../components/Nav";
+import "./index.scss";
+import Items from "./../ToysAndBoxes/ToysAndBoxes";
 
-import { useSelector } from 'react-redux'
-import { createStore } from 'redux'
+import { useSelector } from "react-redux";
+import { createStore } from "redux";
 
-import api from './../../services/api'
+import api from "./../../services/api";
 
-import Waiting from './../Waiting/index'
+import Waiting from "./../Waiting/index";
+import Loading from "./../Loading/index";
 
-import Unity, { UnityContext } from 'react-unity-webgl'
+import Unity, { UnityContext } from "react-unity-webgl";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-/* import Toy from './../../components/toyBox' */
-
-/* const unityContext = new UnityContext({
-    loaderUrl: 'BoxOpening/Build/BoxOpening.loader.js',
-    dataUrl: 'BoxOpening/Build/BoxOpening.data',
-    frameworkUrl: 'BoxOpening/Build/BoxOpening.framework.js',
-    codeUrl: 'BoxOpening/Build/BoxOpening.wasm',
-}) */
+import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
 
 function Dock() {
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [boxSelected, setBoxSelected] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [boxSelected, setBoxSelected] = useState(0);
 
-    const [isOpen, setIsOpen] = useState(true)
-    const [files, setFiles] = useState([])
-    const blockchain = useSelector(state => state.blockchain)
-    const login = useSelector(state => state.login)
+  const [isOpen, setIsOpen] = useState(true);
+  const [files, setFiles] = useState([]);
+  const blockchain = useSelector((state) => state.blockchain);
 
-    const fileName = 'Toyo'
-    const fileId = '#696969'
-    const fileImg =
-        'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
+  const fileName = "Toyo";
+  const fileId = "#696969";
+  const fileImg =
+    "https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png";
 
-    const box = useSelector(state => state.box)
+  const box = useSelector((state) => state.box);
 
-    const store = createStore
-    /* function loadingWebGL() {
-        unityContext.send("Starter", "setaRota", "http://localhost:3000/toyoAssets/");
-        unityContext.send("Starter", "reStarta", "1;2,100,3;1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100,1_1_1_100");
-    } */
+  const store = createStore;
 
-    useEffect(async () => {
-        //store.getState(walletAddress)
-        //store.getState(chainId)
-        console.log('teste',login)
-        console.log('teste2',blockchain.chainId)
-        await api
-            .get('/ToyoBox/getBoxes', {
-                params: {
-                    walletAddress: blockchain.account,
-                    chainId: parseInt(blockchain.chainId, 16),
-                },
-            })
-            .then(response => setFiles(response.data))
-            .catch(error => {
-                console.log(error)
-            })
-    })
+  const WalletAccount = localStorage.getItem("WalletAccount");
+  const WalletChainId = localStorage.getItem("WalletChainId");
 
-    return (
-        <main className="main-wrapper">
-            <div id="img-background" className="img-background"></div>
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-            {/*  TO DO DESCOMENTAR ISSO IMPORTANTE  */}
-            {!files.length ? (
-                <Waiting />
-            ) : (
-                <>
-                    <Nav />
-                    <div className="main-content-wrapper">
-                        <div className="item-showcase">
-                            <div
-                                style={{
-                                    width: '30vw',
-                                    height: '55vh',
-                                    backgroundImage: `url("${window.location.origin}/iconsItems/${box.name.split(' - ').pop().split('Seed')[0].trim()}.png")`,
-                                    backgroundPosition: 'center',
-                                    backgroundSize: 'contain',
-                                    backgroundRepeat: 'no-repeat',
-                                    //visibility: isLoaded ? "hidden" : "visible",
-                                    //display: isLoaded ? "none" : "block"
-                                }}
-                            />
-                            <div className="text-card">
-                                <TextCard
-                                    itemName={box.name
-                                        .split(' - ')
-                                        .pop()
-                                        .split('Seed')[0]
-                                        .replace('Fortified', '')
-                                        .replace('Open', '')}
-                                    itemType={
-                                        box.name
-                                            .split(' - ')
-                                            .pop()
-                                            .includes('Fortified') == true
-                                            ? 'Fortified'
-                                            : 'Normal'
-                                    }
-                                    itemId={box.idBoxClicked}
-                                    itemStatus={box.name
-                                        .split(' - ')
-                                        .pop()
-                                        .includes('Open') == true
-                                        ? 'Open'
-                                        : 'Closed'
+  useEffect(async () => {
+    if (!blockchain.account && WalletAccount) {
+      dispatch(setWalletAccount(WalletAccount));
+      dispatch(setChainId(WalletChainId));
+    } else if (!WalletAccount) {
+      history.push(`/`);
+      alert("It was not possible to identify your wallet please log in again");
+    }
+    await api
+      .get("/ToyoBox/getBoxes", {
+        params: {
+          walletAddress: blockchain.account,
+          chainId: parseInt(blockchain.chainId, 16),
+        },
+      })
+      .then((response) => {
+        setFiles(response.data);
+        setIsLoaded(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-                                    }
-                                    heightInVh={55}
-                                    widthInVw={30}
-                                />
-                            </div>
-                        </div>
+  useEffect(async () => {
+    setTimeout(async () => {
+      if (!blockchain.account && WalletAccount) {
+        dispatch(setWalletAccount(WalletAccount));
+        dispatch(setChainId(WalletChainId));
+      } else if (!WalletAccount) {
+        history.push(`/`);
+        alert("It was not possible to identify your wallet please log in again");
+      }
+      await api
+        .get("/ToyoBox/getBoxes", {
+          params: {
+            walletAddress: blockchain.account,
+            chainId: parseInt(blockchain.chainId, 16),
+          },
+        })
+        .then((response) => {
+          setFiles(response.data);
+          setIsLoaded(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 30000);
+  });
 
-                        <ItemsCarousel />
-                    </div>
-                    <Items name={fileName} time={fileId} img={fileImg} />
-                </>
-            )}
-        </main>
-    )
+  return (
+    <main className="main-wrapper">
+      <div id="img-background" className="img-background"></div>
+
+     {/*  {isLoaded ? (
+        <Loading />
+      ) : files.length ? (
+        <Waiting />
+      ) : (  )} */}
+        <>
+          <Nav />
+          <div className="main-content-wrapper">
+            <div className="item-showcase">
+              <div
+                style={{
+                  width: "30vw",
+                  height: "55vh",
+                  backgroundImage: `url("${
+                    window.location.origin
+                  }/iconsItems/${box.name
+                    .split(" - ")
+                    .pop()
+                    .split("Seed")[0]
+                    .trim()}.png")`,
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
+              <div className="text-card">
+                <TextCard
+                  itemName={box.name
+                    .split(" - ")
+                    .pop()
+                    .split("Seed")[0]
+                    .replace("Fortified", "")
+                    .replace("Open", "")}
+                  itemType={
+                    box.name.split(" - ").pop().includes("Fortified") == true
+                      ? "Fortified"
+                      : "Normal"
+                  }
+                  itemId={box.idBoxClicked}
+                  itemStatus={
+                    box.name.split(" - ").pop().includes("Open") == true
+                      ? "Open"
+                      : "Closed"
+                  }
+                  heightInVh={55}
+                  widthInVw={30}
+                />
+              </div>
+            </div>
+
+            <ItemsCarousel />
+          </div>
+          <Items name={fileName} time={fileId} img={fileImg} />
+        </>
+     
+    </main>
+  );
 }
 
-export default Dock
+export default Dock;

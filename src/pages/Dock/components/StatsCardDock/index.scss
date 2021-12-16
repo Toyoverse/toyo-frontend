@@ -141,3 +141,26 @@
         text-transform: uppercase;
     }
 }
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 0.7em;
+    width: 100%;
+
+    & > .char-name {
+        font-family: 'FreePixel', sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+        color: #fff;
+        font-size: 3em;
+    }
+
+    & > .char-id {
+        font-family: 'FreePixel', sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+        color: #fff;
+        font-size: 1em;
+    }
+}
