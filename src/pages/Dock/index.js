@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
 
 function Dock() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   const [boxSelected, setBoxSelected] = useState(0);
 
   const [isOpen, setIsOpen] = useState(true);
@@ -44,12 +44,14 @@ function Dock() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
+    setIsLoaded(true);
     if (!blockchain.account && WalletAccount) {
       dispatch(setWalletAccount(WalletAccount));
       dispatch(setChainId(WalletChainId));
     } else if (!WalletAccount) {
-      history.push(`/`);
+      setIsLoaded(false);
       alert("It was not possible to identify your wallet please log in again");
+      history.push(`/`);
     }
     await api
       .get("/ToyoBox/getBoxes", {
@@ -60,11 +62,13 @@ function Dock() {
       })
       .then((response) => {
         setFiles(response.data);
-        setIsLoaded(true);
+        setIsLoaded(false);
       })
       .catch((error) => {
         console.log(error);
+        setIsLoaded(false);
       });
+      setIsLoaded(false);
   }, []);
 
   useEffect(async () => {
@@ -73,8 +77,8 @@ function Dock() {
         dispatch(setWalletAccount(WalletAccount));
         dispatch(setChainId(WalletChainId));
       } else if (!WalletAccount) {
-        history.push(`/`);
         alert("It was not possible to identify your wallet please log in again");
+        history.push(`/`);
       }
       await api
         .get("/ToyoBox/getBoxes", {
@@ -85,7 +89,6 @@ function Dock() {
         })
         .then((response) => {
           setFiles(response.data);
-          setIsLoaded(true);
         })
         .catch((error) => {
           console.log(error);
@@ -97,11 +100,11 @@ function Dock() {
     <main className="main-wrapper">
       <div id="img-background" className="img-background"></div>
 
-     {/*  {isLoaded ? (
+      {isLoaded ? (
         <Loading />
-      ) : files.length ? (
+      ) : files.length <= 0 ? (
         <Waiting />
-      ) : (  )} */}
+      ) : ( 
         <>
           <Nav />
           <div className="main-content-wrapper">
@@ -151,7 +154,7 @@ function Dock() {
           </div>
           <Items name={fileName} time={fileId} img={fileImg} />
         </>
-     
+       )}     
     </main>
   );
 }

@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import api from "./../../../../services/api";
 
 import * as web3Connect from "./../../../../middleware/web3Connect";
+import Dock from "../..";
 
 const { promisify } = require("util");
 
@@ -41,6 +42,7 @@ const TextCard = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
   const [isSwap, setIsSwap] = useState(false);
+  const [isUnityLoad, setIsUnityLoad] = useState(false);
 
   var swapStatus;
   const blockchain = useSelector((state) => state.blockchain);
@@ -61,6 +63,9 @@ const TextCard = ({
   useEffect(function () {
     unityContext.on("GameOver", function () {
       setIsClosed(true);
+      setIsSwap(false);
+      setIsOpen(false);
+      Dock.setIsLoaded(true);
       window.location.reload();
     });
   }, []);
@@ -158,7 +163,7 @@ const TextCard = ({
         retornoApi.qStats[8]
       },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
         retornoApi.qStats[11]
-      },${retornoApi.qStats[12]}`
+      },${retornoApi.qStats[12]}`     
     );
   }
 
@@ -175,9 +180,14 @@ const TextCard = ({
                 top: "2.5vh",
                 left: "2.5vw",
                 visibility: isLoaded && isOpen && isSwap ? "visible" : "hidden",
-                display: isClosed ? "none" : "block",
+                display: !isClosed ? "block" : "none",
+                //display: isClosed == false && isOpen == true ? "block" : "none",
                 }}
             />
+            //is closed = true e isopen = false - none
+            //isclosed = false e isopen = true - block
+            //isclosed = false e isopen = false - none
+            //isclosed = true e isopen = true - none
         ) : (<div style={{display: "none"}}></div>)}
       
       <div
@@ -249,6 +259,7 @@ const TextCard = ({
                         )} */}
 
                 { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
+                    isSwap == false && isOpen == false ?
                     (
                         <div className="btnContainer">
                             <img
@@ -257,6 +268,17 @@ const TextCard = ({
                                 alt="open button"
                                 onClick={openBox}
                             />
+                        </div>
+                        ) : (
+                          <div className="btnContainer">
+                            <p
+                                style={{
+                                fontSize: "2em",
+                                fontFamily: "FreePixel, sans-serif",
+                                }}
+                            >
+                                APPROVE IN METAMASK EXTENSION
+                            </p>
                         </div>
                     ) : (
                         <div className="btnContainer">
