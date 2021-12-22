@@ -19,6 +19,10 @@ function redirect() {
     window.open('https://opensea.io/collection/toyo-first-9', '_blank').focus()
 }
 
+function redirectProfile() {
+    window.open('https://opensea.io/account', '_blank').focus()
+}
+
 export default function Login() {
     const path = window.location.pathname
 
@@ -35,7 +39,7 @@ export default function Login() {
                             </p>
                         ) : (
                             <>
-                                {path == '/items' ? (
+                                {path === '/items' ? (
                                     <>
                                         <p className="linking">
                                             WE HAVE LOOKED IN ALL POSSIBLY
@@ -67,12 +71,44 @@ export default function Login() {
                                             </div>
                                         </div>
                                     </>
-                                ) : (
+                                ) :  path === '/toyos' ? (
+                                    <>
+                                        <p className="linking">
+                                            WILD TOYOS ATTACKED OUR LIVE LINK IN
+                                            SIMULATION H64. <br />
+                                            WE WILL BE BACK ASAP. IN THE MEANTIME YOU CAN VIEW YOUR TOYO ON OPENSEA.
+                                        </p>
+                                        <div
+                                            className="btnContainer"
+                                            onMouseOver={mouseOver}
+                                            onMouseOut={mouseOut}
+                                            id="btnContainer"
+                                            onClick={redirectProfile}
+                                        >
+                                            <img
+                                                src={openBtnUrl}
+                                                id="open-btn"
+                                                className="open-btn"
+                                                alt="Connect Metamask"
+                                            />
+                                            <div className="icon-name">
+                                                <img
+                                                    src={iconOpenSea}
+                                                    className="metamask-logo"
+                                                    alt="Metamask"
+                                                />
+                                                <p className="connect">
+                                                    VIEW IN OPENSEA
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (                                    
                                     <p className="linking">
                                         WILD TOYOS ATTACKED OUR LIVE LINK IN
                                         SIMULATION H64. <br />
-                                        WE WILL BE BACK ASAP.
-                                    </p>
+                                        WE WILL BE BACK ASAP. 
+                                    </p>                                        
                                 )}
                             </>
                         )}

@@ -33,16 +33,16 @@ function Nav() {
             <div className="nav-item">
                 <Link className="link" to="/items">
                     <img src={itemsUrl} alt="items" />
-                    <span>ITEMS</span>
+                    <span>BOXES</span>
                 </Link>
             </div>
-            <div className="nav-item">
+            <div className="nav-item desactived">
                 <Link className="link" to="/toyos">
                     <img src={toyosUrl} alt="toyos" />
                     <span>TOYOS</span>
                 </Link>
             </div>
-            <div className="nav-item">
+            <div className="nav-item desactived">
                 <Link className="link" to="/parts">
                     <img src={bodyPartsUrl} alt="body parts" />
                     <span>

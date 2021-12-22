@@ -113,6 +113,11 @@ const TextCard = ({
     );
     unityContext.send(
       "loader",
+      "setaWallet",
+      `${blockchain.account}||${parseInt(blockchain.chainId, 16)}`
+    )
+    unityContext.send(
+      "loader",
       "setaUpRota",
       "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
     );
@@ -179,58 +184,51 @@ const TextCard = ({
               <div className="loading-overlay">
                 <img src={loaderGif} alt="loading..." className="ampulheta" />
                 <br />
-                <p>Token Id: #{itemId}</p>
+                <p>PUNCH THE CONFIRM BUTTON ON BOTH METAMASK REQUESTS</p>
+                <br />
+                <p>TOKEN ID: #{itemId}</p>
               </div>
             )}
             <Unity className="unity-canvas" unityContext={unityContext} />
           </div>
         )}
       
-      <div
-        className="stats-card-wrapper"
-        style={{ height: `${heightInVh}vh`, width: `${widthInVw}vw` }}
-      >
-        <div className="top-card3">
-          <img className="menu-controls" src={headerImg} />
-          <div className="card-content">
-            <div className="dock-text-section">
-              <div className="stats-headerDock">
-                <div className="char-name">{itemName || "loading"}</div>
-                <div className="char-id">{'#'+itemId || "#0"}</div>
-              </div>
+      {
+        itemId ? (
+          <div
+            className="stats-card-wrapper"
+            style={{ height: `${heightInVh}vh`, width: `${widthInVw}vw` }}
+          >
+            <div className="top-card3">
+              <img className="menu-controls" src={headerImg} />
+              <div className="card-content">
+                <div className="dock-text-section">
+                  <div className="stats-headerDock">
+                    <div className="char-name">{itemName || "loading"}</div>
+                    <div className="char-id">{'#'+itemId || "#0"}</div>
+                  </div>
 
-              <div className="stats-metadataDock">
-                <div className="rarity">
-                  <span className="prop">Type:</span>
-                  <span className="val"> {itemType || "loading"}</span>
-                </div>
-                <div className="level">
-                  <span className="prop">Status:</span>
-                  <span className="val"> {itemStatus || "loading"}</span>
-                </div>
-              </div>
-                {/* { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
-                    isOpen == false ? (
-                        <div className="btnContainer">
-                            <img
-                                src={openBtnUrl}
-                                className="open-btn"
-                                alt="open button"
-                                onClick={openBox}
-                            />
-                        </div>
-                    ) : swapStatus == "approve" ? (
+                  <div className="stats-metadataDock">
+                    <div className="rarity">
+                      <span className="prop">Type:</span>
+                      <span className="val"> {itemType || "loading"}</span>
+                    </div>
+                    <div className="level">
+                      <span className="prop">Status:</span>
+                      <span className="val"> {itemStatus || "loading"}</span>
+                    </div>
+                  </div>
+                    {/* { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
+                        isOpen == false ? (
                             <div className="btnContainer">
-                                <p
-                                    style={{
-                                    fontSize: "2em",
-                                    fontFamily: "FreePixel, sans-serif",
-                                    }}
-                                >
-                                    PLEASE APPROVE METAMASK
-                                </p>
-                             </div>
-                        ) : swapStatus == "swapping" ?? (
+                                <img
+                                    src={openBtnUrl}
+                                    className="open-btn"
+                                    alt="open button"
+                                    onClick={openBox}
+                                />
+                            </div>
+                        ) : swapStatus == "approve" ? (
                                 <div className="btnContainer">
                                     <p
                                         style={{
@@ -238,66 +236,79 @@ const TextCard = ({
                                         fontFamily: "FreePixel, sans-serif",
                                         }}
                                     >
-                                        PLEASE CONFIRM SWAP ON METAMASK
+                                        PLEASE APPROVE METAMASK
                                     </p>
                                 </div>
-                        ) : ( 
+                            ) : swapStatus == "swapping" ?? (
+                                    <div className="btnContainer">
+                                        <p
+                                            style={{
+                                            fontSize: "2em",
+                                            fontFamily: "FreePixel, sans-serif",
+                                            }}
+                                        >
+                                            PLEASE CONFIRM SWAP ON METAMASK
+                                        </p>
+                                    </div>
+                            ) : ( 
+                                <div className="btnContainer">
+                                    <p
+                                        style={{
+                                        fontSize: "2em",
+                                        fontFamily: "FreePixel, sans-serif",
+                                        }}
+                                    >
+                                        IT'S NOT TIME YET
+                                    </p>
+                                </div>
+                            )} */}
+
+                    { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
+                        isSwap == false && isOpen == false ?
+                        (
+                            <div className="btnContainer">
+                                <img
+                                    src={openBtnUrl}
+                                    className="open-btn"
+                                    alt="open button"
+                                    onClick={openBox}
+                                />
+                            </div>
+                            ) : (
+                              <div className="btnContainer">
+                                <p
+                                    style={{
+                                    fontSize: "2em",
+                                    fontWeight: 'bold',
+                                    fontFamily: "FreePixel, sans-serif",
+                                    }}
+                                >
+                                    APPROVE IN METAMASK EXTENSION
+                                </p>
+                            </div>
+                        ) : (
                             <div className="btnContainer">
                                 <p
                                     style={{
                                     fontSize: "2em",
+                                    fontWeight: 'bold',
                                     fontFamily: "FreePixel, sans-serif",
                                     }}
                                 >
                                     IT'S NOT TIME YET
                                 </p>
                             </div>
-                        )} */}
-
-                { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
-                    isSwap == false && isOpen == false ?
-                    (
-                        <div className="btnContainer">
-                            <img
-                                src={openBtnUrl}
-                                className="open-btn"
-                                alt="open button"
-                                onClick={openBox}
-                            />
-                        </div>
-                        ) : (
-                          <div className="btnContainer">
-                            <p
-                                style={{
-                                fontSize: "2em",
-                                fontWeight: 'bold',
-                                fontFamily: "FreePixel, sans-serif",
-                                }}
-                            >
-                                APPROVE IN METAMASK EXTENSION
-                            </p>
-                        </div>
-                    ) : (
-                        <div className="btnContainer">
-                            <p
-                                style={{
-                                fontSize: "2em",
-                                fontWeight: 'bold',
-                                fontFamily: "FreePixel, sans-serif",
-                                }}
-                            >
-                                IT'S NOT TIME YET
-                            </p>
-                        </div>
-                    )
-                }
+                        )
+                    }
+                </div>
+              </div>
+            </div>
+            <div className="back-card3">
+              <div className="back-content"></div>
             </div>
           </div>
-        </div>
-        <div className="back-card3">
-          <div className="back-content"></div>
-        </div>
-      </div>
+        ) : ( <div></div>)
+      }
     </>
   );
 };
