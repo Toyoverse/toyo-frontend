@@ -106,6 +106,9 @@ const TextCard = ({
   }
 
   function loadingWebGL(retornoApi) {
+    const WalletAccount = localStorage.getItem("WalletAccount");
+    const WalletChainId = localStorage.getItem("WalletChainId");
+    let walletChain = `${WalletAccount};${parseInt(WalletChainId, 16)}`;
     unityContext.send(
       "loader",
       "setaRota",
@@ -113,13 +116,13 @@ const TextCard = ({
     );
     unityContext.send(
       "loader",
-      "setaWallet",
-      `${blockchain.account}||${parseInt(blockchain.chainId, 16)}`
-    )
-    unityContext.send(
-      "loader",
       "setaUpRota",
       "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
+    );
+    unityContext.send(
+      "loader",
+      "setaWallet",
+     `${walletChain}`
     );
     var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
     var box = itemType == "Fortified" ? 2 : 1;
