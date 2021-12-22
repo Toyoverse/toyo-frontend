@@ -216,7 +216,8 @@ const ItemsCarousel = () => {
                                                             obj.name
                                                                 .split(' - ')
                                                                 .pop()
-                                                                .split('Seed')[0] ||
+                                                                .split('Seed')[0]
+                                                                .replace('Open', '') ||
                                                             'LOADING'
                                                         }
                                                         id={obj.tokenId}

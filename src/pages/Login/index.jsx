@@ -1,22 +1,20 @@
 /* eslint-disable */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import iconMetamask from "./../assets/images/metamask.png";
 import openBtnUrl from "./../assets/images/btn-metamask-2.png";
 import openBtnUrlHover from "./../assets/images/btn-metamask.png";
-/*  onMouseOver={} onMouseOut={}  */
+
 import { isMobile } from "react-device-detect";
 import * as metamaskConnect from "./../../middleware/metamaskConnect";
 import * as web3Connect from "./../../middleware/web3Connect";
 import { useHistory } from "react-router-dom";
 
-import midle from "./../../middleware/parts";
-
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
 
 export default function Login() {
+  const [dots, setDots] = useState(0);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -42,7 +40,23 @@ export default function Login() {
   useEffect(async () => {
     localStorage.clear();
     await metamaskConnect.isMetaMaskInstalled();
-  }, []);
+  }, []);  
+
+  useEffect(() => {
+    setTimeout(() => {
+      changeDots()
+    }, 1000);
+  }, [dots])
+
+  function changeDots() {
+      if(dots == 1) {
+        setDots(2);
+      } else if (dots == 2) {
+        setDots(3);
+      } else {
+        setDots(1);
+      }
+  }
 
   return (
 
@@ -56,7 +70,9 @@ export default function Login() {
             </p>
           ) : (
             <>
-              <p className="linking">LINKING WH9 HUMAN TO SIMULATION H64...</p>
+            <p className="linking">LINKING WH9 HUMAN TO SIMULATION H64{
+              dots == 1 ? (<span>.</span>) : dots == 2 ? (<span>..</span>) : (<span>...</span>)
+            }</p>
               <div
                 className="btnContainer"
                 onMouseOver={mouseOver}

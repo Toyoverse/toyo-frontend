@@ -70,11 +70,11 @@ function Haruko() {
     <main className="main-char-wrapper">
       <div id="img-background" className="img-background"></div>
 
-      {/* {!isLoaded ? (
-        <Loading /> */}
-     {/*  ) : !files.length ? ( */}
+     {/*  {!isLoaded ? (
+        <Loading />
+      ) : files.length ? ( */}
         <Waiting />
-      {/* ) : (
+     {/*  ) : (
         <>
           <div className="stripes-overlay"></div>
           <Nav />

@@ -35,16 +35,13 @@ function Dock() {
 
   const box = useSelector((state) => state.box);
 
-  const store = createStore;
-
   const WalletAccount = localStorage.getItem("WalletAccount");
   const WalletChainId = localStorage.getItem("WalletChainId");
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    setIsLoaded(true);
+  async function setValueRedux () {
     if (!blockchain.account && WalletAccount) {
       dispatch(setWalletAccount(WalletAccount));
       dispatch(setChainId(WalletChainId));
@@ -53,11 +50,14 @@ function Dock() {
       alert("It was not possible to identify your wallet please log in again");
       history.push(`/`);
     }
+  }
+
+  async function getDatabase() {
     await api
       .get("/ToyoBox/getBoxes", {
         params: {
-          walletAddress: blockchain.account,
-          chainId: parseInt(blockchain.chainId, 16),
+          walletAddress: WalletAccount,
+          chainId: parseInt(WalletChainId, 16),
         },
       })
       .then((response) => {
@@ -65,36 +65,23 @@ function Dock() {
         setIsLoaded(false);
       })
       .catch((error) => {
-        console.log(error);
         setIsLoaded(false);
       });
-      setIsLoaded(false);
-  }, []);
+  }
 
   useEffect(async () => {
-    setTimeout(async () => {
-      if (!blockchain.account && WalletAccount) {
-        dispatch(setWalletAccount(WalletAccount));
-        dispatch(setChainId(WalletChainId));
-      } else if (!WalletAccount) {
-        alert("It was not possible to identify your wallet please log in again");
-        history.push(`/`);
-      }
-      await api
-        .get("/ToyoBox/getBoxes", {
-          params: {
-            walletAddress: blockchain.account,
-            chainId: parseInt(blockchain.chainId, 16),
-          },
-        })
-        .then((response) => {
-          setFiles(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    setIsLoaded(true)
+    await setValueRedux() 
+    await getDatabase()
+
+    const interval = setInterval(async () => {
+      await setValueRedux() 
+      await getDatabase()
     }, 30000);
-  });
+
+    return () => clearInterval(interval);
+
+  }, []);
 
   return (
     <main className="main-wrapper">
@@ -152,7 +139,7 @@ function Dock() {
 
             <ItemsCarousel />
           </div>
-          <Items name={fileName} time={fileId} img={fileImg} />
+          <Items />
         </>
        )}     
     </main>

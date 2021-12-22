@@ -5,6 +5,7 @@ import "./index.scss";
 import toyosInfos from "./../../../../middleware/toyo";
 import partsInfos from "./../../../../middleware/parts";
 import imgheader from "./../../../../assets/header.png";
+import loaderGif from "./../../assets/loader.gif";
 
 import { useSelector } from "react-redux";
 
@@ -40,16 +41,21 @@ const TextCard = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isOk, setIsOk] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isClosed, setIsClosed] = useState(false);
   const [isSwap, setIsSwap] = useState(false);
-  const [isUnityLoad, setIsUnityLoad] = useState(false);
 
-  var swapStatus;
   const blockchain = useSelector((state) => state.blockchain);
 
   const headerImg = imgheader;
   const openBtnUrl =
     "https://res.cloudinary.com/groovin/image/upload/v1637780948/Toyo/open-button_xjrwoo.png";
+
+  function resetPageWithDefaultValues() {
+    setIsSwap(false);
+    setIsOpen(false);
+    setIsLoaded(false);
+    setIsOk(false);
+    window.location.reload();
+  }
 
   useEffect(
     function () {
@@ -62,11 +68,7 @@ const TextCard = ({
 
   useEffect(function () {
     unityContext.on("GameOver", function () {
-      setIsClosed(true);
-      setIsSwap(false);
-      setIsOpen(false);
-      Dock.setIsLoaded(true);
-      window.location.reload();
+      resetPageWithDefaultValues()
     });
   }, []);
 
@@ -85,8 +87,10 @@ const TextCard = ({
             }}).then((apiReturn) => {
                 setIsSwap(true);
                 loadingWebGL(apiReturn.data);
-                setIsClosed(false);
             })
+      } else {
+        alert("Metamask rejected")
+        resetPageWithDefaultValues()
       }
     }
   }, [isOk]);
@@ -169,26 +173,18 @@ const TextCard = ({
 
   return (
     <>
-        { isOpen ? (
-            <Unity
-                unityContext={unityContext}
-                style={{
-                position: "absolute",
-                zIndex: 20,
-                width: "95vw",
-                height: "95vh",
-                top: "2.5vh",
-                left: "2.5vw",
-                visibility: isLoaded && isOpen && isSwap ? "visible" : "hidden",
-                display: !isClosed ? "block" : "none",
-                //display: isClosed == false && isOpen == true ? "block" : "none",
-                }}
-            />
-            //is closed = true e isopen = false - none
-            //isclosed = false e isopen = true - block
-            //isclosed = false e isopen = false - none
-            //isclosed = true e isopen = true - none
-        ) : (<div style={{display: "none"}}></div>)}
+        { isOpen === true && (
+          <div className="unity-container">
+            { (isLoaded === false || isSwap === false) && (
+              <div className="loading-overlay">
+                <img src={loaderGif} alt="loading..." className="ampulheta" />
+                <br />
+                <p>Token Id: #{itemId}</p>
+              </div>
+            )}
+            <Unity className="unity-canvas" unityContext={unityContext} />
+          </div>
+        )}
       
       <div
         className="stats-card-wrapper"
@@ -198,12 +194,12 @@ const TextCard = ({
           <img className="menu-controls" src={headerImg} />
           <div className="card-content">
             <div className="dock-text-section">
-              <div className="stats-header">
+              <div className="stats-headerDock">
                 <div className="char-name">{itemName || "loading"}</div>
                 <div className="char-id">{'#'+itemId || "#0"}</div>
               </div>
 
-              <div className="stats-metadata1">
+              <div className="stats-metadataDock">
                 <div className="rarity">
                   <span className="prop">Type:</span>
                   <span className="val"> {itemType || "loading"}</span>
@@ -274,6 +270,7 @@ const TextCard = ({
                             <p
                                 style={{
                                 fontSize: "2em",
+                                fontWeight: 'bold',
                                 fontFamily: "FreePixel, sans-serif",
                                 }}
                             >
@@ -285,6 +282,7 @@ const TextCard = ({
                             <p
                                 style={{
                                 fontSize: "2em",
+                                fontWeight: 'bold',
                                 fontFamily: "FreePixel, sans-serif",
                                 }}
                             >

@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const stock = createSlice({
     name: 'stock',
     initialState: {
-        account: 0,
+        account: '',
         chainId: '',
         contracts: {}
     },
