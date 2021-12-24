@@ -50,7 +50,7 @@ function Haruko() {
       alert("It was not possible to identify your wallet please log in again");
     }
 
-    await api
+    /* await api
       .get("/ToyoBox/getToyos", {
         params: {
           walletAddress: blockchain.account,
@@ -63,8 +63,8 @@ function Haruko() {
       })
       .catch((error) => {
         console.log(error);
-      });
-  });
+      }); */
+  },);
 
   return (
     <main className="main-char-wrapper">

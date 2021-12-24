@@ -12,8 +12,8 @@ let web3Provider = null;
 let contracts = {};
 let account = "0x0";
 let loading = false;
-let validNetwork = Networks.default.PolygonMumbai;
-let _contracts = Contracts.default.Mumbai;
+let validNetwork = Networks.default.PolygonMainnet;
+let _contracts = Contracts.default.Mainnet;
 
 function getValidNetwork() {
   return validNetwork;
@@ -53,7 +53,6 @@ async function web3App() {
   return await ethereum
     .request({ method: "eth_chainId" })
     .then(async (chainId) => {
-      console.log("Connected to chainId: " + chainId);
       if (chainId != validNetwork.ChainId) {
         alert("Wrong network!");
         await Metamask.switchNetwork();
@@ -93,7 +92,7 @@ async function swapTokenAsync(_tokenId, _typeId, _account) {
     approve = await instance.approve(instanceSwap.address, _tokenId, {
       from: _account,
       value: new web3.utils.BN(0),
-      gasPrice: 5000000000,
+      gasPrice: 100000000000,
     })
   } catch(error) {
     console.log('error approve')
@@ -106,7 +105,7 @@ async function swapTokenAsync(_tokenId, _typeId, _account) {
       from: _account,
       value: new web3.utils.BN(0),
       gas: 2100000,
-      gasPrice: 5000000000,
+      gasPrice: 100000000000,
     })
     //alert("Tokens swapped, check your wallet!");
   } catch (error) {

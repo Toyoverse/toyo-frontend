@@ -57,6 +57,16 @@ function handleClick() {
         }
     }
 }
+
+function changeItem() {
+    document.getElementById("boxItem").classList.add("blink");
+    document.getElementById("boxInfos").classList.add("blink");
+      setTimeout(() => {
+        document.getElementById("boxItem").classList.remove("blink");
+        document.getElementById("boxInfos").classList.remove("blink");
+      }, 400);
+}
+
 function handleClickLeft() {
     const el = document.getElementById('caroussel')
     el.scrollLeft -= 240
@@ -86,7 +96,6 @@ const ItemsCarousel = () => {
 
     useEffect(async () => {
         path = window.location.pathname
-        console.log(path)
         if(path == '/items') {
             await api
                 .get('/ToyoBox/getBoxes', {
@@ -97,7 +106,7 @@ const ItemsCarousel = () => {
                 })
                 .then(response => setFiles(response.data))
                 .catch(error => {
-                    console.log(error)
+                    console.error(error)
                 })
         } else if (path == '/parts') {
             await api
@@ -109,7 +118,7 @@ const ItemsCarousel = () => {
                 })
                 .then(response => setFiles(response.data))
                 .catch(error => {
-                    console.log(error)
+                    console.error(error)
                 })
         } else if (path == '/toyos') {
             await api
@@ -121,7 +130,7 @@ const ItemsCarousel = () => {
                 })
                 .then(response => setFiles(response.data))
                 .catch(error => {
-                    console.log(error)
+                    console.error(error)
                 })
         }
     }, [])
@@ -129,7 +138,7 @@ const ItemsCarousel = () => {
     useEffect(async () => {
         setTimeout(async () => {
             path = window.location.pathname
-            console.log(path)
+
             if(path == '/items') {
                 await api
                     .get('/ToyoBox/getBoxes', {
@@ -140,7 +149,7 @@ const ItemsCarousel = () => {
                     })
                     .then(response => setFiles(response.data))
                     .catch(error => {
-                        console.log(error)
+                        console.error(error)
                     })
             } else if (path == '/parts') {
                 await api
@@ -152,7 +161,7 @@ const ItemsCarousel = () => {
                     })
                     .then(response => setFiles(response.data))
                     .catch(error => {
-                        console.log(error)
+                        console.error(error)
                     })
             } else if (path == '/toyos') {
                 await api
@@ -164,7 +173,7 @@ const ItemsCarousel = () => {
                     })
                     .then(response => setFiles(response.data))
                     .catch(error => {
-                        console.log(error)
+                        console.error(error)
                     })
             }
         }, 30000)
@@ -201,13 +210,15 @@ const ItemsCarousel = () => {
                                         {files.map(obj => (
                                             <div
                                                 className="tile"
-                                                onClick={() =>
+                                                onClick={() => {
                                                     dispatch(
                                                         boxClicked({
                                                             id: obj.tokenId,
                                                             name: obj.name,
                                                         }),
                                                     )
+                                                    changeItem()
+                                                    }
                                                 }
                                             >
                                                 <div className="tile__media">

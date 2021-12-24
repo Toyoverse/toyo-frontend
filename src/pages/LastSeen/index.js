@@ -56,12 +56,11 @@ function LastSeen() {
         alert("It was not possible to identify your wallet please log in again");
       }
     unityContext.on("loaded", function () {
-      console.log("oi");
       setIsLoaded(true);
     });
   }, []);
 
-  useEffect(async () => {
+  /* useEffect(async () => {
     await api
       .get("/ToyoBox/getParts", {
         params: {
@@ -76,7 +75,7 @@ function LastSeen() {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }); */
 
   useEffect(async () => {
     //if(isOk) {

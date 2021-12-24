@@ -53,7 +53,8 @@ function Dock() {
   }
 
   async function getDatabase() {
-    await api
+    if(localStorage.getItem("systemPause") == 0) {
+      await api
       .get("/ToyoBox/getBoxes", {
         params: {
           walletAddress: WalletAccount,
@@ -67,6 +68,7 @@ function Dock() {
       .catch((error) => {
         setIsLoaded(false);
       });
+    }
   }
 
   useEffect(async () => {
@@ -77,16 +79,29 @@ function Dock() {
     const interval = setInterval(async () => {
       await setValueRedux() 
       await getDatabase()
-    }, 30000);
+    }, 60000);
 
     return () => clearInterval(interval);
 
   }, []);
 
+  useEffect(async () => {
+    window.ethereum.on('chainChanged', (_chainId) => {
+        alert("Network Changed, reloading...")
+        history.push(`/`);
+    });
+  }, [])
+
+  useEffect(async () => {
+    window.ethereum.on('accountsChanged', (accounts) => {
+        alert("Account Changed, reloading...")
+        history.push(`/`);
+    });
+  }, [])
+
   return (
     <main className="main-wrapper">
       <div id="img-background" className="img-background"></div>
-
       {isLoaded ? (
         <Loading />
       ) : files.length <= 0 ? (
@@ -97,6 +112,7 @@ function Dock() {
           <div className="main-content-wrapper">
             <div className="item-showcase">
               <div
+                id="boxItem"
                 style={{
                   width: "30vw",
                   height: "55vh",

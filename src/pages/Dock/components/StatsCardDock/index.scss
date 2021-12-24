@@ -3,6 +3,20 @@
     src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
 }
 
+
+@keyframes blinkBox {
+    0% { opacity: 1; }
+    25% { opacity: 0.5; }
+    50% { opacity: 0; }
+    75% { opacity: 0.5; }
+    100% {  opacity: 1; }
+}
+
+.blink {
+    animation-name: blinkBox;
+    animation-duration: 0.4s;
+}
+
 .unity-canvas {
     position: absolute;
     z-index: 20;
@@ -143,7 +157,14 @@
     justify-content: center;
     width: 100%;
     align-items: center;
+    
 }
+.open-btn:hover {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    transition: 0.3s;
+}
+
 .open-btn {
     z-index: 1;
     height: 8em;

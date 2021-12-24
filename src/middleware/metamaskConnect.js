@@ -41,14 +41,11 @@ async function connectWallet() {
             web3Connect.showConnectedWallet(true)
             isWalletConnected = true;
             web3Connect.setAccount(account.toString());
-            console.log('carteira conectada no endereco: ')
-            console.log(web3Connect.getAccount())
             //$('.account .wallet-address').html(account);
         })
         .catch((error) => {
             if (error.code === 4001) {
                 // EIP-1193 userRejectedRequest error
-                console.log('Please connect to MetaMask.');
                 web3Connect.showConnectedWallet(false)
                 isWalletConnected = false;
                 alert('Please connect to MetaMask.');
@@ -101,8 +98,8 @@ function addToWallet() {
             params: {
                 type: 'ERC20',
                 options: {
-                    address: Contracts.Mumbai.nftTokenAddress,
-                    symbol: Contracts.Mumbai.nftTokenContractSymbol,
+                    address: Contracts.Mainnet.nftTokenAddress,
+                    symbol: Contracts.Mainnet.nftTokenContractSymbol,
                     decimals: 0,
                     image: 'https://ipfs.io/ipfs/QmUdDyL22m4wbmshvspLBpysfLPUT7r8dXnZ22Zh6F8SQz',
                 },

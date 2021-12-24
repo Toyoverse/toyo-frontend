@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import "./index.scss";
 import iconMetamask from "./../assets/images/metamask.png";
 import openBtnUrl from "./../assets/images/btn-metamask-2.png";
@@ -29,11 +30,24 @@ export default function Login() {
   async function connectMetaMask() {
     let returnConnect = await web3Connect.web3App();
     if (returnConnect == true) {
-        dispatch(setWalletAccount(web3Connect.getAccount()));
-        dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
-        localStorage.setItem("WalletAccount", web3Connect.getAccount());
-        localStorage.setItem("WalletChainId", web3Connect.getValidNetwork().ChainId);
-        history.push(`/items`);
+        try {
+          const returnLogin = await axios.post('https://bridge-api.toyoverse.com/auth/login', {
+            'email': window.ethereum.selectedAddress.toString(),
+            'password': window.ethereum.chainId.toString()
+          });
+          localStorage.setItem("access_token", returnLogin.data.access_token);
+          localStorage.setItem("systemPause", "0");
+          dispatch(setWalletAccount(web3Connect.getAccount()));
+          dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
+          localStorage.setItem("WalletAccount", web3Connect.getAccount());
+          localStorage.setItem("WalletChainId", web3Connect.getValidNetwork().ChainId);
+          history.push(`/items`);
+        } catch (error) {
+          alert("Error logging in, check your metamask extension");
+          console.error(error);
+          window.location.reload();
+        }
+        
     }
   } 
 

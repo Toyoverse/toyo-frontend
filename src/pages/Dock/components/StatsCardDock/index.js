@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Unity, { UnityContext } from "react-unity-webgl";
 import "./index.scss";
 import toyosInfos from "./../../../../middleware/toyo";
@@ -54,6 +55,7 @@ const TextCard = ({
     setIsOpen(false);
     setIsLoaded(false);
     setIsOk(false);
+    localStorage.setItem("systemPause", "0");
     window.location.reload();
   }
 
@@ -71,6 +73,30 @@ const TextCard = ({
       resetPageWithDefaultValues()
     });
   }, []);
+
+  useEffect(function () {
+    unityContext.on("sendValue", async function (pontuacao, tokenId) {
+      await savePontuacao(`${pontuacao}`, `${tokenId}`);
+    });
+  }, []);
+
+  async function savePontuacao(pontuacao, tokenId) {
+    try {
+      await axios.post('https://bridge-api.toyoverse.com/stats-toyo', {
+        'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
+        'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
+        'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`
+        }
+      });
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
   useEffect(async () => {
     if (isOk) {
@@ -102,6 +128,7 @@ const TextCard = ({
   });
 
   async function openBox() {
+    localStorage.setItem("systemPause", "1");
     setIsOpen(true);
   }
 
@@ -205,7 +232,7 @@ const TextCard = ({
             <div className="top-card3">
               <img className="menu-controls" src={headerImg} />
               <div className="card-content">
-                <div className="dock-text-section">
+                <div className="dock-text-section" id="boxInfos">
                   <div className="stats-headerDock">
                     <div className="char-name">{itemName || "loading"}</div>
                     <div className="char-id">{'#'+itemId || "#0"}</div>
