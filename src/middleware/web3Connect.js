@@ -12,8 +12,8 @@ let web3Provider = null;
 let contracts = {};
 let account = "0x0";
 let loading = false;
-let validNetwork = Networks.default.PolygonMainnet;
-let _contracts = Contracts.default.Mainnet;
+let validNetwork = Networks.default.PolygonMumbai;
+let _contracts = Contracts.default.Mumbai;
 
 function getValidNetwork() {
   return validNetwork;

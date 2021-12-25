@@ -66,6 +66,7 @@ function Dock() {
         setIsLoaded(false);
       })
       .catch((error) => {
+        console.log(error)
         setIsLoaded(false);
       });
     }
