@@ -5,15 +5,28 @@ import './index.scss'
 import PropTypes from 'prop-types'
 
 export default function Files({ img, name, id }) {
-    return (
-        <div className="filePortrait1">
-            <img src={img} className="fileImg" />
-            <div className="fileTextsFiles">
-                <text className="fileText">{name}</text>
-                <text className="fileText">#{id}</text>
+    
+    if(window.location.pathname == "/toyos") {
+        return (        
+            <div className="filePortrait2">
+                <img src={img} className="fileImg" />
+                <div className="fileTextsFiles">
+                    <text className="fileText">{name}</text>
+                    <text className="fileText">#{id}</text>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (        
+            <div className="filePortrait1">
+                <img src={img} className="fileImg" />
+                <div className="fileTextsFiles">
+                    <text className="fileText">{name}</text>
+                    <text className="fileText">#{id}</text>
+                </div>
+            </div>
+        )
+    }
 }
 
 Files.propTypes = {

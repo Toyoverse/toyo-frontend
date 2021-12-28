@@ -43,15 +43,16 @@
 
         .item-showcase {
             /* height: 80%; */
+            height: 55vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             margin-bottom: 5vh;
+            justify-content: space-between;
 
             & > div > .main-img-showcase {
-                width: 30vw;
+                width: 25vw;
                 height: 55vh;
-                /* margin-right: 5em; */
+                margin-right: 1em;
             }
         }
     }

@@ -103,7 +103,7 @@ function Dock() {
   return (
     <main className="main-wrapper">
       <div id="img-background" className="img-background"></div>
-      {isLoaded ? (
+      { isLoaded ? (
         <Loading />
       ) : files.length <= 0 ? (
         <Waiting />
@@ -158,7 +158,7 @@ function Dock() {
           </div>
           <Items />
         </>
-       )}     
+       )}   
     </main>
   );
 }

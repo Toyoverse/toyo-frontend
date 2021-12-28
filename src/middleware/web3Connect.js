@@ -12,8 +12,8 @@ let web3Provider = null;
 let contracts = {};
 let account = "0x0";
 let loading = false;
-let validNetwork = Networks.default.PolygonMumbai;
-let _contracts = Contracts.default.Mumbai;
+let validNetwork = Networks.default.PolygonMainnet;
+let _contracts = Contracts.default.Mainnet;
 
 function getValidNetwork() {
   return validNetwork;
@@ -114,7 +114,7 @@ async function swapTokenAsync(_tokenId, _typeId, _account) {
     return false
   }
 
-  return true 
+  return true
 }
 
 export {

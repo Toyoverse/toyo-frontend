@@ -82,19 +82,7 @@ const TextCard = ({
 
   async function savePontuacao(pontuacao, tokenId) {
     try {
-      console.log('pontuacao');
-      console.log(pontuacao);
-
-      console.log('tokenId');
-      console.log(tokenId);
-
-      console.log('Ym9udXM: ');
-      console.log(`${Buffer.from(pontuacao, 'binary').toString('base64')}`);
-
-      console.log('dG9rZW5JZA');
-      console.log(`${Buffer.from(tokenId, 'binary').toString('base64')}`);
-      
-      await axios.post('https://localhost/stats-toyo', {
+      await axios.post('https://bridge-api.toyoverse.com/stats-toyo', {
         'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
         'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
         'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
@@ -125,6 +113,10 @@ const TextCard = ({
             }}).then((apiReturn) => {
                 setIsSwap(true);
                 loadingWebGL(apiReturn.data);
+            }).catch((error) => {
+              alert('Error on Raffle your Toyo, send the error shown in sequence on the discord bugs channel');
+              alert(error);
+              resetPageWithDefaultValues();
             })
       } else {
         alert("Metamask rejected")

@@ -39,7 +39,7 @@ export default function Login() {
                             </p>
                         ) : (
                             <>
-                                {path === '/items' ? (
+                                {/* {path === '/items' ? (
                                     <>
                                         <p className="linking">
                                             WE HAVE LOOKED IN ALL POSSIBLY
@@ -103,13 +103,13 @@ export default function Login() {
                                             </div>
                                         </div>
                                     </>
-                                ) : (                                    
+                                ) : (               */}                      
                                     <p className="linking">
                                         WILD TOYOS ATTACKED OUR LIVE LINK IN
                                         SIMULATION H64. <br />
                                         WE WILL BE BACK ASAP. 
                                     </p>                                        
-                                )}
+                              {/*   )} */}
                             </>
                         )}
                     </div>

@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import ItemsCarousel from "./../../../components/ItemsCarousel";
 import Nav from "./../../../components/Nav";
 import TextCard from "./components/StatsCard";
-import CardContent from "./components/CardContent";
 import "./index.scss";
 
 import Waiting from "./../../Waiting/index";
 
-import { useSelector } from "react-redux";
-
 import api from "./../../../services/api";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 
 import Loading from "./../../Loading/index";
 
@@ -34,6 +31,7 @@ function Haruko() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const blockchain = useSelector((state) => state.blockchain);
+  const toyo = useSelector((state) => state.toyo);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -41,20 +39,24 @@ function Haruko() {
   const WalletAccount = localStorage.getItem("WalletAccount");
   const WalletChainId = localStorage.getItem("WalletChainId");
 
-  useEffect(async () => {
+  async function setValueRedux () {
     if (!blockchain.account && WalletAccount) {
       dispatch(setWalletAccount(WalletAccount));
       dispatch(setChainId(WalletChainId));
     } else if (!WalletAccount) {
-      history.push(`/`);
+      setIsLoaded(false);
       alert("It was not possible to identify your wallet please log in again");
+      history.push(`/`);
     }
+  }
 
-    /* await api
+  async function getDatabase() {
+    if(localStorage.getItem("systemPause") == 0) {
+      await api
       .get("/ToyoBox/getToyos", {
         params: {
-          walletAddress: blockchain.account,
-          chainId: parseInt(blockchain.chainId, 16),
+          walletAddress: WalletAccount,
+          chainId: parseInt(WalletChainId, 16),
         },
       })
       .then((response) => {
@@ -63,33 +65,53 @@ function Haruko() {
       })
       .catch((error) => {
         console.log(error);
-      }); */
-  },);
+      });
+    }
+  }
+  
+  useEffect(async () => {
+    setIsLoaded(false)
+    await setValueRedux() 
+    await getDatabase()
+
+    const interval = setInterval(async () => {
+      await setValueRedux() 
+      await getDatabase()
+    }, 60000);
+
+    return () => clearInterval(interval);
+
+  }, []);
 
   return (
     <main className="main-char-wrapper">
       <div id="img-background" className="img-background"></div>
 
-     {/*  {!isLoaded ? (
+      {!isLoaded ? (
         <Loading />
-      ) : files.length ? ( */}
+      ) : files.length <= 0 ? (
         <Waiting />
-     {/*  ) : (
+     ) : (
         <>
           <div className="stripes-overlay"></div>
           <Nav />
           <div className="main-content-wrapper">
             <div className="item-showcase">
               <div>
-                <img
-                  className="main-img-showcase"
-                  src={mainImgUrl}
-                  alt="main img"
-                />
+                {toyo.name ? (
+                  <img
+                    className="main-img-showcase"
+                    src={toyo.thumb}
+                    alt="main img"
+                  />
+                ) : (
+                  <img
+                    className="main-img-showcase"
+                  />
+                )}
               </div>
 
               <TextCard
-                CardContent={CardContent}
                 heightInVh={55}
                 widthInVw={30}
               />
@@ -97,7 +119,7 @@ function Haruko() {
             <ItemsCarousel />
           </div>
         </>
-      )} */}
+      )}
     </main>
   );
 }

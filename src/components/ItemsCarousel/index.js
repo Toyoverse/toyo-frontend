@@ -7,6 +7,7 @@ import File from './../files'
 
 import { useDispatch } from 'react-redux'
 import { boxClicked } from './../../redux/boxToyos/index'
+import { toyoClicked } from './../../redux/toyos/index'
 
 import { useSelector } from 'react-redux'
 
@@ -59,14 +60,17 @@ function handleClick() {
 }
 
 function changeItem() {
-    document.getElementById("boxItem").classList.add("blink");
-    document.getElementById("boxInfos").classList.add("blink");
-      setTimeout(() => {
-        document.getElementById("boxItem").classList.remove("blink");
-        document.getElementById("boxInfos").classList.remove("blink");
-      }, 400);
+    const Items = document.getElementById("boxItem")
+    const Infos = document.getElementById("boxInfos")
+    if(Items && Infos) {
+        Items.classList.add("blink");
+        Infos.classList.add("blink");
+          setTimeout(() => {
+            Items.classList.remove("blink");
+            Infos.classList.remove("blink");
+          }, 400);
+    }
 }
-
 function handleClickLeft() {
     const el = document.getElementById('caroussel')
     el.scrollLeft -= 240
@@ -95,50 +99,18 @@ const ItemsCarousel = () => {
         'https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png'
 
     useEffect(async () => {
-        path = window.location.pathname
-        if(path == '/items') {
-            await api
-                .get('/ToyoBox/getBoxes', {
-                    params: {
-                        walletAddress: blockchain.account,
-                        chainId: parseInt(blockchain.chainId, 16),
-                    },
-                })
-                .then(response => setFiles(response.data))
-                .catch(error => {
-                    console.error(error)
-                })
-        } else if (path == '/parts') {
-            await api
-                .get('/ToyoBox/getParts', {
-                    params: {
-                        walletAddress: blockchain.account,
-                        chainId: parseInt(blockchain.chainId, 16),
-                    },
-                })
-                .then(response => setFiles(response.data))
-                .catch(error => {
-                    console.error(error)
-                })
-        } else if (path == '/toyos') {
-            await api
-                .get('/ToyoBox/getToyos', {
-                    params: {
-                        walletAddress: blockchain.account,
-                        chainId: parseInt(blockchain.chainId, 16),
-                    },
-                })
-                .then(response => setFiles(response.data))
-                .catch(error => {
-                    console.error(error)
-                })
-        }
+        await getDatabase()
+    
+        const interval = setInterval(async () => {
+          await getDatabase()
+        }, 60000);
+    
+        return () => clearInterval(interval);
     }, [])
 
-    useEffect(async () => {
-        setTimeout(async () => {
+    async function getDatabase() {
+        if(localStorage.getItem("systemPause") == 0) {
             path = window.location.pathname
-
             if(path == '/items') {
                 await api
                     .get('/ToyoBox/getBoxes', {
@@ -171,13 +143,15 @@ const ItemsCarousel = () => {
                             chainId: parseInt(blockchain.chainId, 16),
                         },
                     })
-                    .then(response => setFiles(response.data))
+                    .then(response => {
+                        setFiles(response.data)
+                    })
                     .catch(error => {
                         console.error(error)
                     })
             }
-        }, 30000)
-    })
+        }
+    }
 
     if (path == "/items" || path == "/") {
         return (
@@ -292,9 +266,12 @@ const ItemsCarousel = () => {
                                                 className="tile"
                                                 onClick={() =>
                                                     dispatch(
-                                                        boxClicked({
+                                                        toyoClicked({
                                                             id: obj.tokenId,
                                                             name: obj.name,
+                                                            thumb: obj.thumb,
+                                                            animation: obj.animation,
+                                                            changeValue: obj.changeValue
                                                         }),
                                                     )
                                                 }
@@ -310,11 +287,7 @@ const ItemsCarousel = () => {
                                                         }
                                                         id={obj.tokenId}
                                                         img={
-                                                            `${window.location.origin}/iconsItems/${obj.name
-                                                            .split(' - ')
-                                                            .pop()
-                                                            .split('Seed')[0]
-                                                            .trim()}.png`
+                                                            `${obj.thumb}`
                                                         }
                                                     />
                                                 </div>
