@@ -20,6 +20,10 @@ const stock = createSlice({
         },
         cleanToyoClicked: (state) => {
             state.idToyoClicked = 0
+            state.name = ""
+            state.thumb = ""
+            state.animation = ""
+            state.changeValue = ""
         }
     }
 })

@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react'
 import './index.scss'
 import api from './../../services/api'
 import File from './../files'
+import toyoHeader from './my-toyos.png'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { boxClicked } from './../../redux/boxToyos/index'
 import { toyoClicked } from './../../redux/toyos/index'
-
-import { useSelector } from 'react-redux'
 
 import * as web3Connect from './../../middleware/web3Connect'
 
@@ -242,7 +241,7 @@ const ItemsCarousel = () => {
                             <div className="top-section">
                                 <img
                                     className="title"
-                                    src={titleBoxUrl}
+                                    src={toyoHeader}
                                     alt="title box"
                                 />
                                 <img
@@ -287,7 +286,10 @@ const ItemsCarousel = () => {
                                                         }
                                                         id={obj.tokenId}
                                                         img={
-                                                            `${obj.thumb}`
+                                                            `${window.location.origin}/iconsItems/toyos/${obj.name                                                               
+                                                                .trim()
+                                                                .toLowerCase()
+                                                                .replace(" ", "_")}.png`
                                                         }
                                                     />
                                                 </div>
@@ -353,9 +355,10 @@ const ItemsCarousel = () => {
                                                     <File
                                                         name={
                                                             obj.name
-                                                                .split(' - ')
-                                                                .pop()
-                                                                .split('Seed')[0] ||
+                                                            .split(" - ")
+                                                            .pop()
+                                                            .split("Head")[0]
+                                                            .trim() ||
                                                             'LOADING'
                                                         }
                                                         id={obj.tokenId}
@@ -365,7 +368,8 @@ const ItemsCarousel = () => {
                                                             .pop()
                                                             .split('Head')[0]
                                                             .toLowerCase()
-                                                            .trim()}.png`
+                                                            .trim()
+                                                            .replace(" ", "_")}.png`
                                                         }
                                                     />
                                                 </div>

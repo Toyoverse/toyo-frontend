@@ -17,19 +17,26 @@ import Dock from "../..";
 
 const { promisify } = require("util");
 
-/* const unityContext = new UnityContext({
-    loaderUrl: 'https://nakatoshivault.com/kxLpTx0j_fVLcZ_openbox/open100/Build/open100.loader.js',
-    dataUrl: 'https://nakatoshivault.com/kxLpTx0j_fVLcZ_openbox/open100/Build/open100.data',
-    frameworkUrl: 'https://nakatoshivault.com/kxLpTx0j_fVLcZ_openbox/open100/Build/open100.framework.js',
-    codeUrl: 'https://nakatoshivault.com/kxLpTx0j_fVLcZ_openbox/open100/Build/open100.wasm',
-}) */
-
-const unityContext = new UnityContext({
-  loaderUrl: "open100/Build/open100.loader.js",
-  dataUrl: "open100/Build/open100.data",
-  frameworkUrl: "open100/Build/open100.framework.js",
-  codeUrl: "open100/Build/open100.wasm",
+const unityContextJakana = new UnityContext({
+  loaderUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.loader.js",
+  dataUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.data",
+  frameworkUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.framework.js",
+  codeUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.wasm",
 });
+
+const unityContextKytunt = new UnityContext({
+  loaderUrl: "openBoxKytuntScene/Build/openBoxKytuntScene.loader.js",
+  dataUrl: "openBoxKytuntScene/Build/openBoxKytuntScene.data",
+  frameworkUrl: "openBoxKytuntScene/Build/openBoxKytuntScene.framework.js",
+  codeUrl: "openBoxKytuntScene/Build/openBoxKytuntScene.wasm",
+});
+
+/* const unityContext = new UnityContext({
+  loaderUrl: "open100.old/Build/open100.loader.js",
+  dataUrl: "open100.old/Build/open100.data",
+  frameworkUrl: "open100.old/Build/open100.framework.js",
+  codeUrl: "open100.old/Build/open100.wasm",
+}); */
 
 const TextCard = ({
   heightInVh,
@@ -61,28 +68,47 @@ const TextCard = ({
 
   useEffect(
     function () {
-      unityContext.on("loaded", function () {
-        setIsLoaded(true);
-      });
+      if(itemName.trim() == "Jakana") {
+        unityContextJakana.on("loaded", function () {
+          setIsLoaded(true);
+        });
+      } else {
+        unityContextKytunt.on("loaded", function () {
+          setIsLoaded(true);
+        });
+      }
     },
     [isOpen]
   );
 
-  useEffect(function () {
-    unityContext.on("GameOver", function () {
-      resetPageWithDefaultValues()
-    });
+  useEffect(function () {  
+    if(itemName.trim() == "Jakana") {
+      unityContextJakana.on("GameOver", function () {
+        resetPageWithDefaultValues()
+      });
+    } else {
+      unityContextKytunt.on("GameOver", function () {
+        resetPageWithDefaultValues()
+      });
+    }
   }, []);
 
   useEffect(function () {
-    unityContext.on("sendValue", async function (pontuacao, tokenId) {
-      await savePontuacao(`${pontuacao}`, `${tokenId}`);
-    });
+    
+    if(itemName.trim() == "Jakana") {
+      unityContextJakana.on("sendValue", async function (pontuacao, tokenId) {
+        await savePontuacao(pontuacao, tokenId);
+      });
+    } else {
+      unityContextKytunt.on("sendValue", async function (pontuacao, tokenId) {
+        await savePontuacao(pontuacao, tokenId);
+      });
+    }
   }, []);
 
   async function savePontuacao(pontuacao, tokenId) {
     try {
-      await axios.post('https://bridge-api.toyoverse.com/stats-toyo', {
+      await axios.post('https://3.142.70.234/stats-toyo', {
         'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
         'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
         'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
@@ -102,7 +128,7 @@ const TextCard = ({
     if (isOk) {
       const typeId = itemType == "Fortified" ? 2 : 1;
       let swapReturn = await web3Connect.swapTokenAsync(itemId, typeId, blockchain.account);
-      if(swapReturn) {        
+      if(swapReturn) {
         api.get("/ToyoBox/sortBox", {
             params: {
               TypeId: typeId,
@@ -110,12 +136,13 @@ const TextCard = ({
               walletAddress: blockchain.account,
               chainId: parseInt(blockchain.chainId, 16),
               Fortified: itemType == "Fortified" ? true : false,
+              Jakana:  itemName.trim() == "Jakana" ? true : false
             }}).then((apiReturn) => {
                 setIsSwap(true);
                 loadingWebGL(apiReturn.data);
             }).catch((error) => {
               alert('Error on Raffle your Toyo, send the error shown in sequence on the discord bugs channel');
-              alert(error);
+              console.log(error);
               resetPageWithDefaultValues();
             })
       } else {
@@ -140,91 +167,181 @@ const TextCard = ({
     const WalletAccount = localStorage.getItem("WalletAccount");
     const WalletChainId = localStorage.getItem("WalletChainId");
     let walletChain = `${WalletAccount};${parseInt(WalletChainId, 16)}`;
-    unityContext.send(
+    /* unityContext.send(
       "loader",
       "setaRota",
       "https://st0rag3-toy0-d3vs-h3ll.nyc3.cdn.digitaloceanspaces.com/toyoAssets/"
-    );
-    unityContext.send(
-      "loader",
-      "setaUpRota",
-      "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
-    );
-    unityContext.send(
-      "loader",
-      "setaWallet",
-     `${walletChain}`
-    );
-    var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
-    var box = itemType == "Fortified" ? 2 : 1;
-    unityContext.send(
-      "loader",
-      "backFunction",
-      `${box},${retornoApi.raridade},${_toyoInfo.bodyType},1,${retornoApi.toyoId};${
-        _toyoInfo.id
-      },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
-        _toyoInfo.id
-      },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
-        _toyoInfo.id
-      };1,1,1,1,1,1,1,1,1,1;1,1,1,1,1,1,1,1,1,1;${
-        partsInfos(_toyoInfo.id, 1)[0].size
-      },${_toyoInfo.size},${partsInfos(_toyoInfo.id, 3)[0].size},${
-        partsInfos(_toyoInfo.id, 4)[0].size
-      },${partsInfos(_toyoInfo.id, 5)[0].size},${
-        partsInfos(_toyoInfo.id, 6)[0].size
-      },${partsInfos(_toyoInfo.id, 7)[0].size},${
-        partsInfos(_toyoInfo.id, 8)[0].size
-      },${partsInfos(_toyoInfo.id, 9)[0].size},${
-        partsInfos(_toyoInfo.id, 10)[0].size
-      };${partsInfos(_toyoInfo.id, 1)[0].retroBone},0,${
-        partsInfos(_toyoInfo.id, 3)[0].retroBone
-      },${partsInfos(_toyoInfo.id, 4)[0].retroBone},${
-        partsInfos(_toyoInfo.id, 5)[0].retroBone
-      },${partsInfos(_toyoInfo.id, 6)[0].retroBone},${
-        partsInfos(_toyoInfo.id, 7)[0].retroBone
-      },${partsInfos(_toyoInfo.id, 8)[0].retroBone},${
-        partsInfos(_toyoInfo.id, 9)[0].retroBone
-      },${partsInfos(_toyoInfo.id, 10)[0].retroBone};${
-        retornoApi.qParts[1][0]
-      },${retornoApi.qParts[2][0]},${retornoApi.qParts[3][0]},${
-        retornoApi.qParts[4][0]
-      },${retornoApi.qParts[5][0]},${retornoApi.qParts[6][0]},${
-        retornoApi.qParts[7][0]
-      },${retornoApi.qParts[8][0]},${retornoApi.qParts[9][0]},${
-        retornoApi.qParts[10][0]
-      };${retornoApi.qParts[1][1]},${retornoApi.qParts[2][1]},${
-        retornoApi.qParts[3][1]
-      },${retornoApi.qParts[4][1]},${retornoApi.qParts[5][1]},${
-        retornoApi.qParts[6][1]
-      },${retornoApi.qParts[7][1]},${retornoApi.qParts[8][1]},${
-        retornoApi.qParts[9][1]
-      },${retornoApi.qParts[10][1]}|${retornoApi.qStats[1]},${
-        retornoApi.qStats[2]
-      },${retornoApi.qStats[3]},${retornoApi.qStats[4]},${
-        retornoApi.qStats[5]
-      },${retornoApi.qStats[6]},${retornoApi.qStats[7]},${
-        retornoApi.qStats[8]
-      },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
-        retornoApi.qStats[11]
-      },${retornoApi.qStats[12]}`     
-    );
+    ); */
+    if(itemName.trim() == "Jakana") {
+      unityContextJakana.send(
+        "loader",
+        "setaRota",
+        "https://18.220.141.105/toyoAssets/"
+      );
+  
+      /* unityContextJakana.send(
+        "loader",
+        "setaUpRota",
+        "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
+      ); */
+  
+      unityContextJakana.send(
+        "loader",
+        "setaWallet",
+       `${walletChain}`
+      );
+  
+      var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
+  
+      var box = itemType == "Fortified" ? 2 : 1;
+  
+      unityContextJakana.send(
+        "loader",
+        "backFunction",
+        `${box},${retornoApi.raridade},${_toyoInfo.bodyType},1,${retornoApi.toyoId};${
+          _toyoInfo.id
+        },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
+          _toyoInfo.id
+        },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
+          _toyoInfo.id
+        };1,1,1,1,1,1,1,1,1,1;1,1,1,1,1,1,1,1,1,1;${
+          partsInfos(_toyoInfo.id, 1)[0].size
+        },${_toyoInfo.size},${partsInfos(_toyoInfo.id, 3)[0].size},${
+          partsInfos(_toyoInfo.id, 4)[0].size
+        },${partsInfos(_toyoInfo.id, 5)[0].size},${
+          partsInfos(_toyoInfo.id, 6)[0].size
+        },${partsInfos(_toyoInfo.id, 7)[0].size},${
+          partsInfos(_toyoInfo.id, 8)[0].size
+        },${partsInfos(_toyoInfo.id, 9)[0].size},${
+          partsInfos(_toyoInfo.id, 10)[0].size
+        };${partsInfos(_toyoInfo.id, 1)[0].retroBone},0,${
+          partsInfos(_toyoInfo.id, 3)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 4)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 5)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 6)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 7)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 8)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 9)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 10)[0].retroBone};${
+          retornoApi.qParts[1][0]
+        },${retornoApi.qParts[2][0]},${retornoApi.qParts[3][0]},${
+          retornoApi.qParts[4][0]
+        },${retornoApi.qParts[5][0]},${retornoApi.qParts[6][0]},${
+          retornoApi.qParts[7][0]
+        },${retornoApi.qParts[8][0]},${retornoApi.qParts[9][0]},${
+          retornoApi.qParts[10][0]
+        };${retornoApi.qParts[1][1]},${retornoApi.qParts[2][1]},${
+          retornoApi.qParts[3][1]
+        },${retornoApi.qParts[4][1]},${retornoApi.qParts[5][1]},${
+          retornoApi.qParts[6][1]
+        },${retornoApi.qParts[7][1]},${retornoApi.qParts[8][1]},${
+          retornoApi.qParts[9][1]
+        },${retornoApi.qParts[10][1]}|${retornoApi.qStats[1]},${
+          retornoApi.qStats[2]
+        },${retornoApi.qStats[3]},${retornoApi.qStats[4]},${
+          retornoApi.qStats[5]
+        },${retornoApi.qStats[6]},${retornoApi.qStats[7]},${
+          retornoApi.qStats[8]
+        },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
+          retornoApi.qStats[11]
+        },${retornoApi.qStats[12]}`     
+      );
+    } else {
+      unityContextKytunt.send(
+        "loader",
+        "setaRota",
+        "https://18.220.141.105/toyoAssets/"
+      );
+  
+      /* unityContextKytunt.send(
+        "loader",
+        "setaUpRota",
+        "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
+      ); */
+  
+      unityContextKytunt.send(
+        "loader",
+        "setaWallet",
+       `${walletChain}`
+      );
+  
+      var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
+  
+      var box = itemType == "Fortified" ? 2 : 1;
+  
+      unityContextKytunt.send(
+        "loader",
+        "backFunction",
+        `${box},${retornoApi.raridade},${_toyoInfo.bodyType},1,${retornoApi.toyoId};${
+          _toyoInfo.id
+        },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
+          _toyoInfo.id
+        },${_toyoInfo.id},${_toyoInfo.id},${_toyoInfo.id},${
+          _toyoInfo.id
+        };1,1,1,1,1,1,1,1,1,1;1,1,1,1,1,1,1,1,1,1;${
+          partsInfos(_toyoInfo.id, 1)[0].size
+        },${_toyoInfo.size},${partsInfos(_toyoInfo.id, 3)[0].size},${
+          partsInfos(_toyoInfo.id, 4)[0].size
+        },${partsInfos(_toyoInfo.id, 5)[0].size},${
+          partsInfos(_toyoInfo.id, 6)[0].size
+        },${partsInfos(_toyoInfo.id, 7)[0].size},${
+          partsInfos(_toyoInfo.id, 8)[0].size
+        },${partsInfos(_toyoInfo.id, 9)[0].size},${
+          partsInfos(_toyoInfo.id, 10)[0].size
+        };${partsInfos(_toyoInfo.id, 1)[0].retroBone},0,${
+          partsInfos(_toyoInfo.id, 3)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 4)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 5)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 6)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 7)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 8)[0].retroBone},${
+          partsInfos(_toyoInfo.id, 9)[0].retroBone
+        },${partsInfos(_toyoInfo.id, 10)[0].retroBone};${
+          retornoApi.qParts[1][0]
+        },${retornoApi.qParts[2][0]},${retornoApi.qParts[3][0]},${
+          retornoApi.qParts[4][0]
+        },${retornoApi.qParts[5][0]},${retornoApi.qParts[6][0]},${
+          retornoApi.qParts[7][0]
+        },${retornoApi.qParts[8][0]},${retornoApi.qParts[9][0]},${
+          retornoApi.qParts[10][0]
+        };${retornoApi.qParts[1][1]},${retornoApi.qParts[2][1]},${
+          retornoApi.qParts[3][1]
+        },${retornoApi.qParts[4][1]},${retornoApi.qParts[5][1]},${
+          retornoApi.qParts[6][1]
+        },${retornoApi.qParts[7][1]},${retornoApi.qParts[8][1]},${
+          retornoApi.qParts[9][1]
+        },${retornoApi.qParts[10][1]}|${retornoApi.qStats[1]},${
+          retornoApi.qStats[2]
+        },${retornoApi.qStats[3]},${retornoApi.qStats[4]},${
+          retornoApi.qStats[5]
+        },${retornoApi.qStats[6]},${retornoApi.qStats[7]},${
+          retornoApi.qStats[8]
+        },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
+          retornoApi.qStats[11]
+        },${retornoApi.qStats[12]}`     
+      );
+    }
   }
 
   return (
     <>
         { isOpen === true && (
-          <div className="unity-container">
-            { (isLoaded === false || isSwap === false) && (
-              <div className="loading-overlay">
-                <img src={loaderGif} alt="loading..." className="ampulheta" />
-                <br />
-                <p>PUNCH THE CONFIRM BUTTON ON BOTH METAMASK REQUESTS</p>
-                <br />
-                <p>TOKEN ID: #{itemId}</p>
-              </div>
-            )}
-            <Unity className="unity-canvas" unityContext={unityContext} />
-          </div>
+          <>
+              { (isLoaded === false || isSwap === false) && (
+                <div className="loading-overlay">
+                  <img src={loaderGif} alt="loading..." className="ampulheta" />
+                  <br />
+                  <p>PUNCH THE CONFIRM BUTTON ON BOTH METAMASK REQUESTS</p>
+                  <br />
+                  <p>TOKEN ID: #{itemId}</p>
+                </div>
+              )}
+              {itemName.trim() == "Jakana" ? (
+                <Unity className="unity-canvas" unityContext={unityContextJakana} />
+              ): (
+                <Unity className="unity-canvas" unityContext={unityContextKytunt} />
+              )}
+          </>
         )}
       
       {
@@ -238,7 +355,7 @@ const TextCard = ({
               <div className="card-content">
                 <div className="dock-text-section" id="boxInfos">
                   <div className="stats-headerDock">
-                    <div className="char-name">{itemName || "loading"}</div>
+                    <div className="char-name">{itemName.trim() || "loading"}</div>
                     <div className="char-id">{'#'+itemId || "#0"}</div>
                   </div>
 
@@ -297,8 +414,8 @@ const TextCard = ({
                                 </div>
                             )} */}
 
-                    { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
-                        isSwap == false && isOpen == false ?
+                    {/* { itemName.includes("Kytunt") && itemStatus == "Closed" ?  */}
+                       { isSwap == false && isOpen == false ?
                         (
                             <div className="btnContainer">
                                 <img
@@ -320,7 +437,7 @@ const TextCard = ({
                                     APPROVE IN METAMASK EXTENSION
                                 </p>
                             </div>
-                        ) : (
+                        ) /* : (
                             <div className="btnContainer">
                                 <p
                                     style={{
@@ -332,7 +449,7 @@ const TextCard = ({
                                     IT'S NOT TIME YET
                                 </p>
                             </div>
-                        )
+                        ) */
                     }
                 </div>
               </div>

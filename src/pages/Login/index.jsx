@@ -31,7 +31,7 @@ export default function Login() {
     let returnConnect = await web3Connect.web3App();
     if (returnConnect == true) {
         try {
-          const returnLogin = await axios.post('https://bridge-api.toyoverse.com/auth/login', {
+          const returnLogin = await axios.post('https://3.142.70.234/auth/login', {
             'email': window.ethereum.selectedAddress.toString(),
             'password': window.ethereum.chainId.toString()
           });
@@ -41,6 +41,7 @@ export default function Login() {
           dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
           localStorage.setItem("WalletAccount", web3Connect.getAccount());
           localStorage.setItem("WalletChainId", web3Connect.getValidNetwork().ChainId);
+          window.localStorage.setItem("route", "i");
           history.push(`/items`);
         } catch (error) {
           alert("Error logging in, check your metamask extension");

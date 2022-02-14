@@ -9,6 +9,8 @@ import loaderGif from "./loader.gif";
 import openBtnUrl from "./../../../../assets/images/btn-metamask.png";
 import toyosInfos from "./../../../../../middleware/toyo";
 import partsInfos from "./../../../../../middleware/parts";
+import CardContent from '../CardContent';
+import CardContentParts from '../CardContentParts';
 
 import Unity, { UnityContext } from "react-unity-webgl";
 
@@ -27,6 +29,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
     const [isOk, setIsOk] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isRaffle, setIsRaffle] = useState(false);
+    const [isPart, setIsPart] = useState(false);
     const blockchain = useSelector((state) => state.blockchain);
     const headerImg = imgheader
     // 'https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png'
@@ -56,13 +59,13 @@ const TextCard = ({ heightInVh, widthInVw }) => {
 
     useEffect(function () {
         unityContext.on("sendValue", async function (pontuacao, tokenId) {
-            await savePontuacao(`${pontuacao}`, `${tokenId}`);
+            //await savePontuacao(`${pontuacao}`, `${tokenId}`);
         });
     }, []);
 
     async function savePontuacao(pontuacao, tokenId) {
         try {
-          await axios.post('https://bridge-api.toyoverse.com/stats-toyo', {
+          await axios.post('https://3.142.70.234/stats-toyo', {
             'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
             'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
             'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
@@ -115,20 +118,49 @@ const TextCard = ({ heightInVh, widthInVw }) => {
         setIsOpen(true);
     }
 
+    function handleStats() {
+      let parallelogramStats = document.getElementById("parallelogramStats");
+      let trapezoidParts = document.getElementById("trapezoidParts");
+      setIsPart(false);
+      if (!parallelogramStats.classList.contains('active')) {
+        parallelogramStats.classList.add('active')
+      }
+      if (trapezoidParts.classList.contains('active')) {
+        trapezoidParts.classList.remove('active')
+      }
+    }
+
+    function handleParts() {
+      let parallelogramStats = document.getElementById("parallelogramStats");
+      let trapezoidParts = document.getElementById("trapezoidParts");
+      setIsPart(true);
+      if (parallelogramStats.classList.contains('active')) {
+        parallelogramStats.classList.remove('active')
+      }
+      if (!trapezoidParts.classList.contains('active')) {
+        trapezoidParts.classList.add('active')
+      }
+    }
+
     function loadingWebGL(retornoApi) {
         const WalletAccount = localStorage.getItem("WalletAccount");
         const WalletChainId = localStorage.getItem("WalletChainId");
         let walletChain = `${WalletAccount};${parseInt(WalletChainId, 16)}`;
-        unityContext.send(
+        /* unityContext.send(
           "loader",
           "setaRota",
           "https://st0rag3-toy0-d3vs-h3ll.nyc3.cdn.digitaloceanspaces.com/toyoAssets/"
-        );
+        ); */
         unityContext.send(
+          "loader",
+          "setaRota",
+          "https://18.220.141.105/toyoAssets/"
+        );
+        /* unityContext.send(
           "loader",
           "setaUpRota",
           "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
-        );
+        ); */
         unityContext.send(
           "loader",
           "setaWallet",
@@ -214,58 +246,65 @@ const TextCard = ({ heightInVh, widthInVw }) => {
                 <div className="top-card2">
                     <img className="menu-controls" src={headerImg} />
                     
-                    {/* <div className="tabs">
-                        <div className="outside-trapezoid-parts">
-                            <div className="trapezoid" />
+                    <div className="tabs">
+                        <div className="outside-trapezoid-parts" onClick={handleParts}>
+                            <div className="trapezoid" id="trapezoidParts" />
                             <span className="parts">
                                 PARTS
                             </span>
                         </div>
 
-                        <div className="outside-parallelogram-stats">
-                            <div className="parallelogram active" />
+                        <div className="outside-parallelogram-stats" onClick={handleStats}>
+                            <div className="parallelogram active" id="parallelogramStats" />
                             <span className="stats">
                                 STATS
                             </span>
                         </div>
-                    </div> */}   
+                    </div>   
 
                     <div className="card-content">                      
 
-                        <div className="stats-header">
-                            <div className="char-name">{toyo.name}</div>
-                        </div>
-
                         {(toyo.changeValue == false && isOpen == false && toyo.name)  ?
-                            (
-                                <div
-                                    className="btnContainer"
-                                    id="btnContainer"
-                                    onClick={handleMinigame}
-                                >
-                                    <img
-                                    src={openBtnUrl}
-                                    id="open-btn"
-                                    className="open-btn"
-                                    alt="Minigame"
-                                    />
-                                    <div className="icon-name">
-                                        <p className="connect">MINIGAME</p>
-                                    </div>
+                            (<>
+                                <div className="stats-header">
+                                    <div className="char-name">{toyo.name}</div>
                                 </div>
-                                ) : isOpen == true && (
-                                <div className="btnContainer">
-                                    <p
-                                        style={{
-                                        fontSize: "2em",
-                                        fontWeight: 'bold',
-                                        fontFamily: "FreePixel, sans-serif",
-                                        }}
-                                    >
-                                        AWAIT RAFFLE TOYO
-                                    </p>
-                                </div>
-                            )}
+                                  <div
+                                      className="btnContainer"
+                                      id="btnContainer"
+                                      onClick={handleMinigame}
+                                  >
+                                      <img
+                                      src={openBtnUrl}
+                                      id="open-btn"
+                                      className="open-btn"
+                                      alt="Minigame"
+                                      />
+                                      <div className="icon-name">
+                                          <p className="connect">MINIGAME</p>
+                                      </div>
+                                  </div>
+                                  </>
+                                  ) : (toyo.changeValue == false && isOpen == true && toyo.name)  ? (
+                                  <div className="btnContainer">
+                                      <p
+                                          style={{
+                                          fontSize: "2em",
+                                          fontWeight: 'bold',
+                                          fontFamily: "FreePixel, sans-serif",
+                                          }}
+                                      >
+                                          AWAIT RAFFLE TOYO
+                                      </p>
+                                  </div> 
+                            ) : 
+                              isPart ? (
+                                <CardContentParts />
+                              ) : (
+                                <CardContent/>
+                              )
+                            }
+                            
                     </div>             
                 </div>
                 

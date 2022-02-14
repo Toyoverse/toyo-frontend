@@ -223,14 +223,30 @@
                 flex-basis: 35%;
             }
 
-            .stat-progress-bar {
+           /*  .stat-progress-bar {
                 background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
                 background-size: cover;
                 background-position: left;
                 background-repeat: no-repeat;
                 flex-basis: 45%;
                 height: 2em;
+            } */
+
+            .stat-progress-bar {
+                //background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                background-color: #fd00a956;
+                background-size: cover;
+                background-position: left;
+                background-repeat: no-repeat;
+                flex-basis: 45%;
+                height: 1em;
+                margin-bottom: 5px;
             }
+
+            //.stat-progress-bar>div {
+                //background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                
+            //}
 
             .perc {
                 flex-basis: 25%;
@@ -296,7 +312,7 @@
                 }
             }
 
-            .stat-progress-bar {
+            /* .stat-progress-bar {
                 background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
                 background-size: cover;
                 background-position: left;
@@ -308,7 +324,7 @@
                 @media screen and (max-width: 1440px) {
                     display: none;
                 }
-            }
+            } */
 
             .perc {
                 flex-basis: 25%;

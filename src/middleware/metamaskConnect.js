@@ -98,8 +98,8 @@ function addToWallet() {
             params: {
                 type: 'ERC20',
                 options: {
-                    address: Contracts.Mainnet.nftTokenAddress,
-                    symbol: Contracts.Mainnet.nftTokenContractSymbol,
+                    address: Contracts.Mumbai.nftTokenAddress,
+                    symbol: Contracts.Mumbai.nftTokenContractSymbol,
                     decimals: 0,
                     image: 'https://ipfs.io/ipfs/QmUdDyL22m4wbmshvspLBpysfLPUT7r8dXnZ22Zh6F8SQz',
                 },

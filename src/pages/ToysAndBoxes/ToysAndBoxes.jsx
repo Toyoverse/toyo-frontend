@@ -112,15 +112,37 @@ export default function ToysAndBoxes() {
                 })
               );
             }}>
-              <Toys
-                name={obj.name.split(" - ").pop().split("Seed")[0]}
-                time={obj.tokenId}
-                img={`${window.location.origin}/iconsItems/${obj.name
-                  .split(" - ")
-                  .pop()
-                  .split("Seed")[0]
-                  .trim()}.png`}
-              />
+              {/* <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/toyos/${obj.name
+                    .trim()
+                    .toLowerCase()
+                    .replace(" ", "_")}.png`}
+                /> */}
+              {window.location.pathname == "/parts" ? (
+                <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/${obj.name
+                    .split(" - ")
+                    .pop()
+                    .split("Head")[0]
+                    .toLowerCase()
+                    .trim()
+                    .replace(" ", "_")}.png`}
+                />
+              ) : (
+                <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/${obj.name
+                    .split(" - ")
+                    .pop()
+                    .split("Seed")[0]
+                    .trim()}.png`}
+                />
+              )}              
             </div>
           ))}
         </div>

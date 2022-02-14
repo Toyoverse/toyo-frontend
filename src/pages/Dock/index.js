@@ -42,14 +42,15 @@ function Dock() {
   const dispatch = useDispatch();
 
   async function setValueRedux () {
-    if (!blockchain.account && WalletAccount) {
+    //MARS >> 
+    /* if (!blockchain.account && WalletAccount) { */
       dispatch(setWalletAccount(WalletAccount));
       dispatch(setChainId(WalletChainId));
-    } else if (!WalletAccount) {
+    /* } else if (!WalletAccount) {
       setIsLoaded(false);
       alert("It was not possible to identify your wallet please log in again");
       history.push(`/`);
-    }
+    } */
   }
 
   async function getDatabase() {
@@ -66,7 +67,7 @@ function Dock() {
         setIsLoaded(false);
       })
       .catch((error) => {
-        console.log(error)
+        console.log("erro")
         setIsLoaded(false);
       });
     }

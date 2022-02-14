@@ -1,9 +1,11 @@
 /* eslint-disable */
 import React from 'react'
+import { useSelector } from "react-redux";
 
 import './index.scss'
 
 function CardContent() {
+    const box = useSelector((state) => state.box);
     /*   const charIconUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637917431/Toyo/haruko-page/haruko-icon_zimt4f.png'
  */ const doubleLinesUrl =
@@ -17,24 +19,29 @@ function CardContent() {
     return (
         <>
             <div className="stats-header">
-                <div className="char-name">Haruko</div>
+                <div className="char-name">{box.name
+                .split(" - ")
+                .pop()
+                .split("Head")[0]
+                .toLowerCase()
+                .trim()}</div>
             </div>
 
             <div className="stats-metadata">
-                <div className="rarity">
+                {/* <div className="rarity">
                     <span className="prop">Rarity:</span>
                     <span className="val"> prototype</span>
-                </div>
-                <div className="level">
+                </div> */}
+                {/* <div className="level">
                     <span className="prop">Level:</span>
                     <span className="val"> v8</span>
-                </div>
+                </div> */}
                 <div className="char-id">
-                    <span className="val">id # 2078</span>
+                    <span className="val">id # {box.idBoxClicked}</span>
                 </div>
             </div>
 
-            <div className="stats-desc-header2">
+           {/*  <div className="stats-desc-header2">
                 <img
                     src={doubleLinesUrl}
                     className="stats-double-lines"
@@ -42,9 +49,9 @@ function CardContent() {
                 />
                 <span className="val">Heart&nbsp;Bond&nbsp;198</span>
                 <img src={heartIconUrl} className="heart-icon" alt="heart" />
-            </div>
+            </div> */}
 
-            <div className="stats-type2-wrapper3">
+            {/* <div className="stats-type2-wrapper3">
                 <div className="column-wrapper">
                     <div className="stat-perc">
                         <div className="stat-perc-prop">Head:</div>
@@ -73,7 +80,7 @@ function CardContent() {
                     </div>
                 </div>
 
-                <div className="column-wrapper">
+               <div className="column-wrapper">
                     <div className="stat-perc">
                         <div className="stat-perc-prop">Left Leg:</div>
                         <div className="stat-perc-prop">Resistance +4</div>
@@ -99,7 +106,7 @@ function CardContent() {
                         <div className="stat-perc-prop spacerVertical">estrategica</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

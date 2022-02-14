@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 export default function Files({ img, name, id }) {
     
-    if(window.location.pathname == "/toyos") {
+   /*  if(window.location.pathname == "/toyos") {
         return (        
             <div className="filePortrait2">
                 <img src={img} className="fileImg" />
@@ -16,7 +16,7 @@ export default function Files({ img, name, id }) {
                 </div>
             </div>
         )
-    } else {
+    } else { */
         return (        
             <div className="filePortrait1">
                 <img src={img} className="fileImg" />
@@ -26,7 +26,7 @@ export default function Files({ img, name, id }) {
                 </div>
             </div>
         )
-    }
+    //}
 }
 
 Files.propTypes = {
