@@ -22,7 +22,7 @@ const unityContext = new UnityContext({
     frameworkUrl: "open100/Build/open100.framework.js",
     codeUrl: "open100/Build/open100.wasm",
   });
-  
+
 
 const TextCard = ({ heightInVh, widthInVw }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
     const blockchain = useSelector((state) => state.blockchain);
     const headerImg = imgheader
     // 'https://res.cloudinary.com/groovin/image/upload/v1637685686/Toyo/top-panel_oyxcmc.png'
-    
+
     const toyo = useSelector((state) => state.toyo);
 
     useEffect(
@@ -50,7 +50,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
             setIsOk(true);
         }
     });
-    
+
     useEffect(function () {
         unityContext.on("GameOver", function () {
             resetPageWithDefaultValues()
@@ -65,14 +65,10 @@ const TextCard = ({ heightInVh, widthInVw }) => {
 
     async function savePontuacao(pontuacao, tokenId) {
         try {
-          await axios.post('https://3.142.70.234/stats-toyo', {
+          await api.post('/postPercentageBonus', {
             'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
             'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
             'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
-          }, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-            }
           }).then((result) => {
               return true;
           }).catch((error) => {
@@ -87,7 +83,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
       }
 
     useEffect(async () => {
-        if (isOk) {                  
+        if (isOk) {
             await api.get("/ToyoBox/minigame", {
                 params: {
                     TokenId: toyo.idToyoClicked,
@@ -110,7 +106,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
         setIsOk(false);
         setIsRaffle(false);
         localStorage.setItem("systemPause", "0");
-        window.location.reload(); 
+        window.location.reload();
     }
 
     function handleMinigame() {
@@ -217,13 +213,13 @@ const TextCard = ({ heightInVh, widthInVw }) => {
             retornoApi.qStats[8]
           },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
             retornoApi.qStats[11]
-          },${retornoApi.qStats[12]}`     
+          },${retornoApi.qStats[12]}`
         );
       }
 
     return (
         <>
-            {toyo.name && 
+            {toyo.name &&
                 isOpen === true && (
                     <div className="unity-container">
                         { (isLoaded === false || isRaffle === false) && (
@@ -245,7 +241,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
             >
                 <div className="top-card2">
                     <img className="menu-controls" src={headerImg} />
-                    
+
                     <div className="tabs">
                         <div className="outside-trapezoid-parts" onClick={handleParts}>
                             <div className="trapezoid" id="trapezoidParts" />
@@ -260,9 +256,9 @@ const TextCard = ({ heightInVh, widthInVw }) => {
                                 STATS
                             </span>
                         </div>
-                    </div>   
+                    </div>
 
-                    <div className="card-content">                      
+                    <div className="card-content">
 
                         {(toyo.changeValue == false && isOpen == false && toyo.name)  ?
                             (<>
@@ -296,23 +292,23 @@ const TextCard = ({ heightInVh, widthInVw }) => {
                                       >
                                           AWAIT RAFFLE TOYO
                                       </p>
-                                  </div> 
-                            ) : 
+                                  </div>
+                            ) :
                               isPart ? (
                                 <CardContentParts />
                               ) : (
                                 <CardContent/>
                               )
                             }
-                            
-                    </div>             
+
+                    </div>
                 </div>
-                
+
                 <div className="back-card2">
                     <div className="back-content"></div>
                 </div>
             </div>
-        
+
         </>
     )}
 

@@ -20,7 +20,7 @@ const unityContext = new UnityContext({
     frameworkUrl: "open100/Build/open100.framework.js",
     codeUrl: "open100/Build/open100.wasm",
   });
-  
+
 
 function CardContentParts() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ function CardContentParts() {
         'https://res.cloudinary.com/groovin/image/upload/v1637920611/Toyo/haruko-page/best-stats_gzu4km.png'
     const progrBarUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png'
-        
+
 
     const toyo = useSelector((state) => state.toyo);
     const dispatch = useDispatch();
@@ -59,7 +59,7 @@ function CardContentParts() {
             setIsOk(true);
         }
     });
-    
+
     useEffect(function () {
         unityContext.on("GameOver", function () {
             resetPageWithDefaultValues()
@@ -74,14 +74,10 @@ function CardContentParts() {
 
     async function savePontuacao(pontuacao, tokenId) {
         try {
-          await axios.post('https://3.142.70.234/stats-toyo', {
+          await api.post('/postPercentageBonus', {
             'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
             'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
             'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
-          }, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-            }
           }).then((result) => {
               return true;
           }).catch((error) => {
@@ -96,7 +92,7 @@ function CardContentParts() {
       }
 
     useEffect(async () => {
-        if (isOk) {                  
+        if (isOk) {
             await api.get("/ToyoBox/minigame", {
                 params: {
                     TokenId: toyo.idToyoClicked,
@@ -114,8 +110,8 @@ function CardContentParts() {
       }, [isOk]);
 
       useEffect(async () => {
-        if (toyo.idToyoClicked) {          
-            console.log('entrou cima')           
+        if (toyo.idToyoClicked) {
+            console.log('entrou cima')
             await api.get("/ToyoBox/getStatusParts", {
                 params: {
                     tokenId: toyo.idToyoClicked,
@@ -134,8 +130,8 @@ function CardContentParts() {
       }, [toyo]);
 
       useEffect(async () => {
-        if (toyo.idToyoClicked) {       
-            console.log('entrou')           
+        if (toyo.idToyoClicked) {
+            console.log('entrou')
             await api.get("/ToyoBox/getStatusToyo", {
                 params: {
                     tokenId: toyo.idToyoClicked,
@@ -147,15 +143,15 @@ function CardContentParts() {
                     let rarity = toyosInfos(apiReturn.data[0].toyoId)[0].rarity
                     if (rarity == 1)
                         apiReturn.data[0].rarity = "Common"
-                    else if (rarity == 2) 
+                    else if (rarity == 2)
                         apiReturn.data[0].rarity = "Uncommon"
-                    else if (rarity == 3) 
+                    else if (rarity == 3)
                         apiReturn.data[0].rarity = "Rare"
-                    else if (rarity == 4) 
+                    else if (rarity == 4)
                         apiReturn.data[0].rarity = "LImited"
-                    else if (rarity == 5) 
+                    else if (rarity == 5)
                         apiReturn.data[0].rarity = "Collectors"
-                    else if (rarity == 6) 
+                    else if (rarity == 6)
                         apiReturn.data[0].rarity = "Prototype"
 
                     setIsStatsToyo(apiReturn.data);
@@ -174,7 +170,7 @@ function CardContentParts() {
         setIsRaffle(false);
         dispatch(cleanToyoClicked());
         localStorage.setItem("systemPause", "0");
-        window.location.reload(true); 
+        window.location.reload(true);
     }
 
     function handleMinigame() {
@@ -252,7 +248,7 @@ function CardContentParts() {
             retornoApi.qStats[8]
           },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
             retornoApi.qStats[11]
-          },${retornoApi.qStats[12]}`     
+          },${retornoApi.qStats[12]}`
         );
       }
 
@@ -263,8 +259,8 @@ function CardContentParts() {
                 <>
                     <div className="stats-header">
                         <div className="char-name">{toyo.name}</div>
-                    </div>            
-                    
+                    </div>
+
                     <div className="stats-metadata">
                         <div className="rarity">
                             <span className="prop">Rarity:</span>

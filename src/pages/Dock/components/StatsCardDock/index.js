@@ -81,7 +81,7 @@ const TextCard = ({
     [isOpen]
   );
 
-  useEffect(function () {  
+  useEffect(function () {
     if(itemName.trim() == "Jakana") {
       unityContextJakana.on("GameOver", function () {
         resetPageWithDefaultValues()
@@ -94,7 +94,7 @@ const TextCard = ({
   }, []);
 
   useEffect(function () {
-    
+
     if(itemName.trim() == "Jakana") {
       unityContextJakana.on("sendValue", async function (pontuacao, tokenId) {
         await savePontuacao(pontuacao, tokenId);
@@ -108,14 +108,10 @@ const TextCard = ({
 
   async function savePontuacao(pontuacao, tokenId) {
     try {
-      await axios.post('https://3.142.70.234/stats-toyo', {
+      await api.post('/postPercentageBonus', {
         'Ym9udXM': `${Buffer.from(pontuacao, 'binary').toString('base64')}`,
         'dG9rZW5JZA': `${Buffer.from(tokenId, 'binary').toString('base64')}`,
         'wallet': `${localStorage.getItem("WalletAccount")};${parseInt(localStorage.getItem("WalletChainId"), 16)}`
-      }, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-        }
       });
       return true;
     } catch (error) {
@@ -178,23 +174,23 @@ const TextCard = ({
         "setaRota",
         "https://18.220.141.105/toyoAssets/"
       );
-  
+
       /* unityContextJakana.send(
         "loader",
         "setaUpRota",
         "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
       ); */
-  
+
       unityContextJakana.send(
         "loader",
         "setaWallet",
        `${walletChain}`
       );
-  
+
       var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
-  
+
       var box = itemType == "Fortified" ? 2 : 1;
-  
+
       unityContextJakana.send(
         "loader",
         "backFunction",
@@ -244,7 +240,7 @@ const TextCard = ({
           retornoApi.qStats[8]
         },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
           retornoApi.qStats[11]
-        },${retornoApi.qStats[12]}`     
+        },${retornoApi.qStats[12]}`
       );
     } else {
       unityContextKytunt.send(
@@ -252,23 +248,23 @@ const TextCard = ({
         "setaRota",
         "https://18.220.141.105/toyoAssets/"
       );
-  
+
       /* unityContextKytunt.send(
         "loader",
         "setaUpRota",
         "https://0.0.0.0:5001/api/ToyoBox/postPercentageBonus"
       ); */
-  
+
       unityContextKytunt.send(
         "loader",
         "setaWallet",
        `${walletChain}`
       );
-  
+
       var [_toyoInfo] = toyosInfos(retornoApi.toyoRaridade);
-  
+
       var box = itemType == "Fortified" ? 2 : 1;
-  
+
       unityContextKytunt.send(
         "loader",
         "backFunction",
@@ -318,7 +314,7 @@ const TextCard = ({
           retornoApi.qStats[8]
         },${retornoApi.qStats[9]},${retornoApi.qStats[10]},${
           retornoApi.qStats[11]
-        },${retornoApi.qStats[12]}`     
+        },${retornoApi.qStats[12]}`
       );
     }
   }
@@ -343,7 +339,7 @@ const TextCard = ({
               )}
           </>
         )}
-      
+
       {
         itemId ? (
           <div
@@ -369,7 +365,7 @@ const TextCard = ({
                       <span className="val"> {itemStatus || "loading"}</span>
                     </div>
                   </div>
-                    {/* { itemName.includes("Kytunt") && itemStatus == "Closed" ? 
+                    {/* { itemName.includes("Kytunt") && itemStatus == "Closed" ?
                         isOpen == false ? (
                             <div className="btnContainer">
                                 <img
@@ -401,7 +397,7 @@ const TextCard = ({
                                             PLEASE CONFIRM SWAP ON METAMASK
                                         </p>
                                     </div>
-                            ) : ( 
+                            ) : (
                                 <div className="btnContainer">
                                     <p
                                         style={{

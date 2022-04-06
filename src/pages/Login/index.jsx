@@ -31,11 +31,6 @@ export default function Login() {
     let returnConnect = await web3Connect.web3App();
     if (returnConnect == true) {
         try {
-          const returnLogin = await axios.post('https://3.142.70.234/auth/login', {
-            'email': window.ethereum.selectedAddress.toString(),
-            'password': window.ethereum.chainId.toString()
-          });
-          localStorage.setItem("access_token", returnLogin.data.access_token);
           localStorage.setItem("systemPause", "0");
           dispatch(setWalletAccount(web3Connect.getAccount()));
           dispatch(setChainId(web3Connect.getValidNetwork().ChainId));
@@ -48,14 +43,14 @@ export default function Login() {
           console.error(error);
           window.location.reload();
         }
-        
+
     }
-  } 
+  }
 
   useEffect(async () => {
     localStorage.clear();
     await metamaskConnect.isMetaMaskInstalled();
-  }, []);  
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
