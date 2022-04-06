@@ -102,7 +102,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 2,
             cyber: 0,
-            name: "Rato",
+            name: "Slicky",
             desc: " "
         },
         {
@@ -115,7 +115,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 2,
             cyber: 0,
-            name: "Pug",
+            name: "Don Barko",
             desc: " "
         },
         {
@@ -128,7 +128,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Panda",
+            name: "BlkEy3z",
             desc: " "
         },
         {
@@ -141,7 +141,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Eleph",
+            name: "Gaja",
             desc: " "
         },
         {
@@ -154,7 +154,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Hawk",
+            name: "Rocker",
             desc: " "
         },
         {
@@ -167,7 +167,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Sphynx",
+            name: "Uzi",
             desc: " "
         },
         {
@@ -180,7 +180,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Onca",
+            name: "Yawara",
             desc: " "
         },
         {
@@ -193,7 +193,7 @@ export default function toyoRetorno(id) {
             variants: 1,
             colors: 1,
             cyber: 0,
-            name: "Perereca",
+            name: "Ribbit",
             desc: " "
         },
         {
@@ -247,7 +247,59 @@ export default function toyoRetorno(id) {
             cyber: 0,
             name: "Clown",
             desc: " "
-        }
+        },
+        {
+            id: 20,
+            existe: 0,
+            material: 1,
+            bodyType: 2,
+            rarity: 3,
+            size: 100,
+            variants: 1,
+            colors: 1,
+            cyber: 0,
+            name: "Santa Claus",
+            desc: " "
+        },
+        {
+            id: 21,
+            existe: 0,
+            material: 2,
+            bodyType: 2,
+            rarity: 3,
+            size: 100,
+            variants: 1,
+            colors: 1,
+            cyber: 0,
+            name: "KIlljoy",
+            desc: " "
+        },
+        {
+            id: 22,
+            existe: 0,
+            material: 3,
+            bodyType: 2,
+            rarity: 3,
+            size: 100,
+            variants: 1,
+            colors: 1,
+            cyber: 0,
+            name: "Rudolph",
+            desc: " "
+        },
+        {
+            id: 23,
+            existe: 1,
+            material: 0,
+            bodyType: 3,
+            rarity: 5,
+            size: 100,
+            variants: 1,
+            colors: 1,
+            cyber: 0,
+            name: "Lao Qing",
+            desc: " "
+        },
     ]
 
     return toyo.filter(info => {

@@ -41,14 +41,11 @@ async function connectWallet() {
             web3Connect.showConnectedWallet(true)
             isWalletConnected = true;
             web3Connect.setAccount(account.toString());
-            console.log('carteira conectada no endereco: ')
-            console.log(web3Connect.getAccount())
             //$('.account .wallet-address').html(account);
         })
         .catch((error) => {
             if (error.code === 4001) {
                 // EIP-1193 userRejectedRequest error
-                console.log('Please connect to MetaMask.');
                 web3Connect.showConnectedWallet(false)
                 isWalletConnected = false;
                 alert('Please connect to MetaMask.');

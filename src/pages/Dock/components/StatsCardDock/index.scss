@@ -3,6 +3,20 @@
     src: url('../../../assets/fonts/FreePixel.ttf') format('opentype');
 }
 
+
+@keyframes blinkBox {
+    0% { opacity: 1; }
+    25% { opacity: 0.5; }
+    50% { opacity: 0; }
+    75% { opacity: 0.5; }
+    100% {  opacity: 1; }
+}
+
+.blink {
+    animation-name: blinkBox;
+    animation-duration: 0.4s;
+}
+
 .unity-canvas {
     position: absolute;
     z-index: 20;
@@ -14,13 +28,13 @@
 
 .loading-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 99%;
+    height: 98%;
+    top: 1%;
+    left: 0.5%;
     display: flex;
     flex-direction: column;
-    background-color: transparent;
+    background-color: rgb(10, 10, 10);
     justify-content: center;
     align-items: center;
     z-index: 21;
@@ -31,8 +45,8 @@
   }
 
 .ampulheta {
-    height: 28vh;
-    width: 14vw;
+    height: 6vh;
+    width: 3vw;
 }
 
 .stats-card-wrapper {
@@ -143,7 +157,14 @@
     justify-content: center;
     width: 100%;
     align-items: center;
+    
 }
+.open-btn:hover {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    transition: 0.3s;
+}
+
 .open-btn {
     z-index: 1;
     height: 8em;
@@ -181,10 +202,10 @@
         font-weight: normal;
         letter-spacing: 0.02em;
         color: #fff;
-        font-size: 2em;
+        font-size: 1.5em;
         text-transform: uppercase;
 
-        @media screen and (max-width: 1366px) {
+        @media screen and (max-width: 1800px) {
             font-size: 1.3em;
         }
     }

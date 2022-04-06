@@ -45,6 +45,10 @@
                 color: #fff;
             }
         }
+    } 
+    
+    .nav-item.desactived {
+        opacity: 0.2;
     }
 
     & > .logo {

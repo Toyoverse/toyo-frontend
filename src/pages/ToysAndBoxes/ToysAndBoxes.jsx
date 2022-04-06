@@ -17,47 +17,17 @@ export default function ToysAndBoxes() {
     "https://res.cloudinary.com/groovin/image/upload/v1637826561/Toyo/img1_veodwm.png";
 
   useEffect(async () => {
-    if (path == "/parts") {
-      await api
-        .get("/ToyoBox/getParts", {
-          params: {
-            walletAddress: blockchain.account,
-            chainId: parseInt(blockchain.chainId, 16),
-          },
-        })
-        .then((response) => setFiles(response.data))
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (path == "/toyos") {
-      await api
-        .get("/ToyoBox/getToyos", {
-          params: {
-            walletAddress: blockchain.account,
-            chainId: parseInt(blockchain.chainId, 16),
-          },
-        })
-        .then((response) => setFiles(response.data))
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (path == "/items" || path == "/") {
-      await api
-        .get("/ToyoBox/getBoxes", {
-          params: {
-            walletAddress: blockchain.account,
-            chainId: parseInt(blockchain.chainId, 16),
-          },
-        })
-        .then((response) => setFiles(response.data))
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    await getDatabase()
+
+    const interval = setInterval(async () => {
+      await getDatabase()
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
-  useEffect(async () => {
-    setTimeout(async () => {
+  async function getDatabase() {
+    if(localStorage.getItem("systemPause") == 0) {
       if (path == "/parts") {
         await api
           .get("/ToyoBox/getParts", {
@@ -95,8 +65,8 @@ export default function ToysAndBoxes() {
             console.log(error);
           });
       }
-    }, 30000);
-  });
+    }
+  }
 
   function handleClickPanel() {
     const path = window.location.pathname;
@@ -142,15 +112,37 @@ export default function ToysAndBoxes() {
                 })
               );
             }}>
-              <Toys
-                name={obj.name.split(" - ").pop().split("Seed")[0]}
-                time={obj.tokenId}
-                img={`${window.location.origin}/iconsItems/${obj.name
-                  .split(" - ")
-                  .pop()
-                  .split("Seed")[0]
-                  .trim()}.png`}
-              />
+              {/* <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/toyos/${obj.name
+                    .trim()
+                    .toLowerCase()
+                    .replace(" ", "_")}.png`}
+                /> */}
+              {window.location.pathname == "/parts" ? (
+                <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/${obj.name
+                    .split(" - ")
+                    .pop()
+                    .split("Head")[0]
+                    .toLowerCase()
+                    .trim()
+                    .replace(" ", "_")}.png`}
+                />
+              ) : (
+                <Toys
+                  name={obj.name.split(" - ").pop().split("Seed")[0]}
+                  time={obj.tokenId}
+                  img={`${window.location.origin}/iconsItems/${obj.name
+                    .split(" - ")
+                    .pop()
+                    .split("Seed")[0]
+                    .trim()}.png`}
+                />
+              )}              
             </div>
           ))}
         </div>

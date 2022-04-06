@@ -42,18 +42,20 @@ function Dock() {
   const dispatch = useDispatch();
 
   async function setValueRedux () {
-    if (!blockchain.account && WalletAccount) {
+    //MARS >> 
+    /* if (!blockchain.account && WalletAccount) { */
       dispatch(setWalletAccount(WalletAccount));
       dispatch(setChainId(WalletChainId));
-    } else if (!WalletAccount) {
+    /* } else if (!WalletAccount) {
       setIsLoaded(false);
       alert("It was not possible to identify your wallet please log in again");
       history.push(`/`);
-    }
+    } */
   }
 
   async function getDatabase() {
-    await api
+    if(localStorage.getItem("systemPause") == 0) {
+      await api
       .get("/ToyoBox/getBoxes", {
         params: {
           walletAddress: WalletAccount,
@@ -65,8 +67,10 @@ function Dock() {
         setIsLoaded(false);
       })
       .catch((error) => {
+        console.log("erro")
         setIsLoaded(false);
       });
+    }
   }
 
   useEffect(async () => {
@@ -77,17 +81,30 @@ function Dock() {
     const interval = setInterval(async () => {
       await setValueRedux() 
       await getDatabase()
-    }, 30000);
+    }, 60000);
 
     return () => clearInterval(interval);
 
   }, []);
 
+  useEffect(async () => {
+    window.ethereum.on('chainChanged', (_chainId) => {
+        alert("Network Changed, reloading...")
+        history.push(`/`);
+    });
+  }, [])
+
+  useEffect(async () => {
+    window.ethereum.on('accountsChanged', (accounts) => {
+        alert("Account Changed, reloading...")
+        history.push(`/`);
+    });
+  }, [])
+
   return (
     <main className="main-wrapper">
       <div id="img-background" className="img-background"></div>
-
-      {isLoaded ? (
+      { isLoaded ? (
         <Loading />
       ) : files.length <= 0 ? (
         <Waiting />
@@ -97,6 +114,7 @@ function Dock() {
           <div className="main-content-wrapper">
             <div className="item-showcase">
               <div
+                id="boxItem"
                 style={{
                   width: "30vw",
                   height: "55vh",
@@ -141,7 +159,7 @@ function Dock() {
           </div>
           <Items />
         </>
-       )}     
+       )}   
     </main>
   );
 }

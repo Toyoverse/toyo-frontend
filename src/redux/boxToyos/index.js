@@ -14,6 +14,7 @@ const stock = createSlice({
         },
         cleanBoxClicked: (state) => {
             state.idBoxClicked = 0
+            state.name = ''
         }
     }
 })

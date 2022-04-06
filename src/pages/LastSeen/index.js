@@ -1,17 +1,18 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import BoxesCarousel from "./../../components/ItemsCarousel";
+import { useHistory } from "react-router-dom";
 import TextCard from "../../components/StatsCard";
 import CardContent from "./components/CardContentStats";
 import Nav from "./../../components/Nav";
 import Items from "./../ToysAndBoxes/ToysAndBoxes";
 import Unity, { UnityContext } from "react-unity-webgl";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import api from "./../../services/api";
 import Waiting from "./../Waiting/index";
-
-
 import "./index.scss";
+import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
+import { cleanBoxClicked } from "./../../redux/boxToyos/index";
 
 const unityContext = new UnityContext({
   loaderUrl: "viewer/Build/viewer.loader.js",
@@ -20,13 +21,12 @@ const unityContext = new UnityContext({
   codeUrl: "viewer/Build/viewer.wasm",
 });
 
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-import { setWalletAccount, setChainId } from "./../../redux/blockchain/index";
 
 function LastSeen() {
+  
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoadUnity, setIsLoadUnity] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
   const [files, setFiles] = useState([]);
 
@@ -55,11 +55,16 @@ function LastSeen() {
         history.push(`/`);
         alert("It was not possible to identify your wallet please log in again");
       }
-    unityContext.on("loaded", function () {
-      console.log("oi");
-      setIsLoaded(true);
-    });
   }, []);
+
+ /*  useEffect(
+    function() {      
+        unityContext.on("loaded", function () {
+          console.log("carregou")
+          setIsLoadUnity(true);
+        })},
+    []
+  ); */
 
   useEffect(async () => {
     await api
@@ -78,7 +83,7 @@ function LastSeen() {
       });
   });
 
-  useEffect(async () => {
+  /* useEffect(async () => { */
     //if(isOk) {
     /*  const typeId = itemType == "Fortified" ? 2 : 1
             var swap = new Promise((resolve, reject) => {
@@ -102,57 +107,72 @@ function LastSeen() {
                 })
             }) */
     //}
-    loadingWebGL();
-  }, [isLoaded]);
+  /*   if (isLoadUnity)  {
+      console.log('entrei')
+      loadingWebGL();
+    }
+  }, [isLoadUnity]); */
 
-  function loadingWebGL() {
+ /*  function loadingWebGL() {
+    console.log('oi')
+    console.log(isLoaded)
     unityContext.send(
       "Starter",
       "setaRota",
-      "https://st0rag3-toy0-d3vs-h3ll.nyc3.cdn.digitaloceanspaces.com/toyoAssets/"
+      "http://localhost:3000/toyoAssets/"
     );
     //unityContext.send("Starter", "reStarta", `2;2,1,3,1,1`);
     unityContext.send(
       "Starter",
       "reStarta",
-      `1;2,100,3;1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100,1_1_1_100,4_1_1_100,5_1_1_100,6_1_1_100,7_1_1_100`
+      `1;2,100,3;12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100,12_1_1_100`
     );
-  }
+  } */
 
   return (
     <main className="last-seen-wrapper">
-      <Waiting />
-      {/* <div id="img-background" className="img-background"></div>
-      <Nav />
-      <div className="main-content-wrapper">
-        <div className="item-showcase">
-          <div>
-            <img
-              className="main-img-showcase"
-              src={`${window.location.origin}/iconsItems/${box.name
-                .split(" - ")
-                .pop()
-                .split("Head")[0]
-                .toLowerCase()
-                .trim()}.png`}
-              alt="main img"
-            />
-            <Unity
-              unityContext={unityContext}
-              style={{
-                width: "30vw",
-                height: "55vh",
-                display: "none",
-                visibility: isLoaded ? "visible" : "hidden",
-              }}
-            />
-          </div>
+      {!isLoaded ? (
+        <Waiting />
+        ) :(
+        <>
+          <div id="img-background" className="img-background"></div>
+          <Nav />
+          <div className="main-content-wrapper">
+            <div className="item-showcase">
+              {box.name && (
+                <>
+                  <div>
+                    <img
+                      className="main-img-showcase"
+                      src={`${window.location.origin}/iconsItems/${box.name
+                        .split(" - ")
+                        .pop()
+                        .split("Head")[0]
+                        .toLowerCase()
+                        .trim()
+                        .replace(" ", "_")}.png`}
+                      alt="main img"
+                    />
+                    {/* <Unity
+                      unityContext={unityContext}
+                      style={{
+                        width: "30vw",
+                        height: "55vh",
+                        visibility: isLoaded ? "visible" : "hidden",
+                      }}
+                    /> */}
+                </div>
+                <TextCard CardContent={CardContent} heightInVh={55} widthInVw={30} />
+               </>
+              ) }
+             
 
-          <TextCard CardContent={CardContent} heightInVh={55} widthInVw={30} />
-        </div>
-        <BoxesCarousel />
-      </div>
-      <Items /> */}
+            </div>
+            <BoxesCarousel />
+          </div>
+          <Items />
+        </>  
+      )}
     </main>
   );
 }

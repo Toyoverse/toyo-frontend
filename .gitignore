@@ -26,3 +26,5 @@ yarn-error.log*
 *.zip
 *.tar.gz
 *.7zip
+
+.prettierignore

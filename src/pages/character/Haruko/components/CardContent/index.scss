@@ -223,14 +223,30 @@
                 flex-basis: 35%;
             }
 
-            .stat-progress-bar {
+           /*  .stat-progress-bar {
                 background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
                 background-size: cover;
                 background-position: left;
                 background-repeat: no-repeat;
                 flex-basis: 45%;
                 height: 2em;
+            } */
+
+            .stat-progress-bar {
+                //background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                background-color: #fd00a956;
+                background-size: cover;
+                background-position: left;
+                background-repeat: no-repeat;
+                flex-basis: 45%;
+                height: 1em;
+                margin-bottom: 5px;
             }
+
+            //.stat-progress-bar>div {
+                //background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
+                
+            //}
 
             .perc {
                 flex-basis: 25%;
@@ -296,7 +312,7 @@
                 }
             }
 
-            .stat-progress-bar {
+            /* .stat-progress-bar {
                 background: url(https://res.cloudinary.com/groovin/image/upload/v1637926026/Toyo/haruko-page/stat-progr-bar_bjmrsg.png);
                 background-size: cover;
                 background-position: left;
@@ -308,7 +324,7 @@
                 @media screen and (max-width: 1440px) {
                     display: none;
                 }
-            }
+            } */
 
             .perc {
                 flex-basis: 25%;
@@ -324,4 +340,81 @@
             }
         }
     }
+}
+
+.btnContainer {
+    color: #ff009b;
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    .icon-name {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      z-index: 1;
+      margin-top: -5px;
+      margin-left: -10px;
+
+      .metamask-logo {
+        width: 4vw;
+        margin-right: 0.5vw;
+
+        @media screen and (max-width: 1366px) {
+          width: 3vw;
+        }
+      }
+
+      .connect {
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        @media screen and (max-width: 1366px) {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+.unity-canvas {
+    position: absolute;
+    z-index: 20;
+    width: 99%;
+    height: 98%;
+    top: 1%;
+    left: 0.5%;
+}
+
+.loading-overlay {
+    position: absolute;
+    width: 99%;
+    height: 98%;
+    top: 1%;
+    left: 0.5%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(10, 10, 10);
+    justify-content: center;
+    align-items: center;
+    z-index: 21;
+    font-family: 'FreePixel', sans-serif;
+    font-size: 1.25em;
+    //color: #e100b0;
+    font-weight: bold;
+  }
+
+.ampulheta {
+    height: 6vh;
+    width: 3vw;
+}
+
+.unity-container {
+    position: relative;
 }
