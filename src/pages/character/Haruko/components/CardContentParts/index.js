@@ -93,7 +93,7 @@ function CardContentParts() {
 
     useEffect(async () => {
         if (isOk) {
-            await api.get("/ToyoBox/minigame", {
+            await api.get("/minigame", {
                 params: {
                     TokenId: toyo.idToyoClicked,
                     walletAddress: blockchain.account,
@@ -112,7 +112,7 @@ function CardContentParts() {
       useEffect(async () => {
         if (toyo.idToyoClicked) {
             console.log('entrou cima')
-            await api.get("/ToyoBox/getStatusParts", {
+            await api.get("/getStatusParts", {
                 params: {
                     tokenId: toyo.idToyoClicked,
                     walletAddress: blockchain.account,
@@ -132,7 +132,7 @@ function CardContentParts() {
       useEffect(async () => {
         if (toyo.idToyoClicked) {
             console.log('entrou')
-            await api.get("/ToyoBox/getStatusToyo", {
+            await api.get("/getStatusToyo", {
                 params: {
                     tokenId: toyo.idToyoClicked,
                     walletAddress: blockchain.account,

@@ -30,7 +30,7 @@ export default function ToysAndBoxes() {
     if(localStorage.getItem("systemPause") == 0) {
       if (path == "/parts") {
         await api
-          .get("/ToyoBox/getParts", {
+          .get("/getParts", {
             params: {
               walletAddress: blockchain.account,
               chainId: parseInt(blockchain.chainId, 16),
@@ -42,7 +42,7 @@ export default function ToysAndBoxes() {
           });
       } else if (path == "/toyos") {
         await api
-          .get("/ToyoBox/getToyos", {
+          .get("/getToyos", {
             params: {
               walletAddress: blockchain.account,
               chainId: parseInt(blockchain.chainId, 16),
@@ -54,7 +54,7 @@ export default function ToysAndBoxes() {
           });
       } else if (path == "/items" || path == "/") {
         await api
-          .get("/ToyoBox/getBoxes", {
+          .get("/GetBoxes", {
             params: {
               walletAddress: blockchain.account,
               chainId: parseInt(blockchain.chainId, 16),
@@ -142,7 +142,7 @@ export default function ToysAndBoxes() {
                     .split("Seed")[0]
                     .trim()}.png`}
                 />
-              )}              
+              )}
             </div>
           ))}
         </div>

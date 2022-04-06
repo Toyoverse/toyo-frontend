@@ -125,7 +125,7 @@ const TextCard = ({
       const typeId = itemType == "Fortified" ? 2 : 1;
       let swapReturn = await web3Connect.swapTokenAsync(itemId, typeId, blockchain.account);
       if(swapReturn) {
-        api.get("/ToyoBox/sortBox", {
+        api.get("/sortBox", {
             params: {
               TypeId: typeId,
               TokenId: itemId,

@@ -24,7 +24,7 @@ const unityContext = new UnityContext({
 
 
 function LastSeen() {
-  
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoadUnity, setIsLoadUnity] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -58,7 +58,7 @@ function LastSeen() {
   }, []);
 
  /*  useEffect(
-    function() {      
+    function() {
         unityContext.on("loaded", function () {
           console.log("carregou")
           setIsLoadUnity(true);
@@ -68,7 +68,7 @@ function LastSeen() {
 
   useEffect(async () => {
     await api
-      .get("/ToyoBox/getParts", {
+      .get("/getParts", {
         params: {
           walletAddress: blockchain.account,
           chainId: parseInt(blockchain.chainId, 16),
@@ -90,12 +90,12 @@ function LastSeen() {
                 let x = web3Connect.swapToken(itemId, typeId, blockchain.account)
                 console.log(x);
                 if (x == true) resolve(x);
-            })                       
-            
+            })
+
             swap.then(() => {
                 console.log('swap ok');
                 setIsSwap(true);
-                api.get('/ToyoBox/sortBox', {
+                api.get('/sortBox', {
                     params: {
                         TypeId: typeId,
                         TokenId: itemId,
@@ -165,13 +165,13 @@ function LastSeen() {
                 <TextCard CardContent={CardContent} heightInVh={55} widthInVw={30} />
                </>
               ) }
-             
+
 
             </div>
             <BoxesCarousel />
           </div>
           <Items />
-        </>  
+        </>
       )}
     </main>
   );

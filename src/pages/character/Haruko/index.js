@@ -53,7 +53,7 @@ function Haruko() {
   async function getDatabase() {
     if(localStorage.getItem("systemPause") == 0) {
       await api
-      .get("/ToyoBox/getToyos", {
+      .get("/getToyos", {
         params: {
           walletAddress: WalletAccount,
           chainId: parseInt(WalletChainId, 16),
@@ -68,14 +68,14 @@ function Haruko() {
       });
     }
   }
-  
+
   useEffect(async () => {
     setIsLoaded(false)
-    await setValueRedux() 
+    await setValueRedux()
     await getDatabase()
 
     const interval = setInterval(async () => {
-      await setValueRedux() 
+      await setValueRedux()
       await getDatabase()
     }, 60000);
 

@@ -84,7 +84,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
 
     useEffect(async () => {
         if (isOk) {
-            await api.get("/ToyoBox/minigame", {
+            await api.get("/minigame", {
                 params: {
                     TokenId: toyo.idToyoClicked,
                     walletAddress: blockchain.account,

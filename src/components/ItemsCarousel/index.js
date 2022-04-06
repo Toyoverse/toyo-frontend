@@ -99,11 +99,11 @@ const ItemsCarousel = () => {
 
     useEffect(async () => {
         await getDatabase()
-    
+
         const interval = setInterval(async () => {
           await getDatabase()
         }, 60000);
-    
+
         return () => clearInterval(interval);
     }, [])
 
@@ -112,7 +112,7 @@ const ItemsCarousel = () => {
             path = window.location.pathname
             if(path == '/items') {
                 await api
-                    .get('/ToyoBox/getBoxes', {
+                    .get('/GetBoxes', {
                         params: {
                             walletAddress: blockchain.account,
                             chainId: parseInt(blockchain.chainId, 16),
@@ -124,7 +124,7 @@ const ItemsCarousel = () => {
                     })
             } else if (path == '/parts') {
                 await api
-                    .get('/ToyoBox/getParts', {
+                    .get('/getParts', {
                         params: {
                             walletAddress: blockchain.account,
                             chainId: parseInt(blockchain.chainId, 16),
@@ -136,7 +136,7 @@ const ItemsCarousel = () => {
                     })
             } else if (path == '/toyos') {
                 await api
-                    .get('/ToyoBox/getToyos', {
+                    .get('/getToyos', {
                         params: {
                             walletAddress: blockchain.account,
                             chainId: parseInt(blockchain.chainId, 16),
@@ -286,7 +286,7 @@ const ItemsCarousel = () => {
                                                         }
                                                         id={obj.tokenId}
                                                         img={
-                                                            `${window.location.origin}/iconsItems/toyos/${obj.name                                                               
+                                                            `${window.location.origin}/iconsItems/toyos/${obj.name
                                                                 .trim()
                                                                 .toLowerCase()
                                                                 .replace(" ", "_")}.png`
