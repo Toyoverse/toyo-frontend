@@ -3,17 +3,17 @@ import $ from "jquery";
 import { promisify } from 'util';
 
 const Metamask = require("./metamaskConnect");
-const Networks = require("./networks");
-const Contracts = require("./contracts");
 import { isMobile } from "react-device-detect";
+import contract from "./contracts";
+import network from "./networks";
 
 let captchaWidget = null;
 let web3Provider = null;
 let contracts = {};
 let account = "0x0";
 let loading = false;
-let validNetwork = Networks.default.PolygonMumbai;
-let _contracts = Contracts.default.Mumbai;
+let validNetwork = network;
+let _contracts = contract;
 
 function getValidNetwork() {
   return validNetwork;

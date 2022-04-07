@@ -2,7 +2,7 @@
 import { ConsoleView } from "react-device-detect"
 
 const web3Connect = require("./web3Connect")
-const Contracts = require('./contracts')
+import contract from "./contracts";
 
 let isWalletConnected =  false
 let isCorrectNetwork = false
@@ -98,8 +98,8 @@ function addToWallet() {
             params: {
                 type: 'ERC20',
                 options: {
-                    address: Contracts.Mumbai.nftTokenAddress,
-                    symbol: Contracts.Mumbai.nftTokenContractSymbol,
+                    address: contract.nftTokenAddress,
+                    symbol: contract.nftTokenContractSymbol,
                     decimals: 0,
                     image: 'https://ipfs.io/ipfs/QmUdDyL22m4wbmshvspLBpysfLPUT7r8dXnZ22Zh6F8SQz',
                 },

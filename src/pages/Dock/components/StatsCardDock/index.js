@@ -130,9 +130,6 @@ const TextCard = ({
               TypeId: typeId,
               TokenId: itemId,
               walletAddress: blockchain.account,
-              chainId: parseInt(blockchain.chainId, 16),
-              Fortified: itemType == "Fortified" ? true : false,
-              Jakana:  itemName.trim() == "Jakana" ? true : false
             }}).then((apiReturn) => {
                 setIsSwap(true);
                 loadingWebGL(apiReturn.data);
