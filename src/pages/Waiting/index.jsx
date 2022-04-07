@@ -1,30 +1,30 @@
 import React from 'react'
 import './index.scss'
-import iconOpenSea from './../../assets/icons/icon_opensea.png'
-import openBtnUrl from './../assets/images/btn-metamask-2.png'
-import openBtnUrlHover from './../assets/images/btn-metamask.png'
+// import iconOpenSea from './../../assets/icons/icon_opensea.png'
+// import openBtnUrl from './../assets/images/btn-metamask-2.png'
+// import openBtnUrlHover from './../assets/images/btn-metamask.png'
 /*  onMouseOver={} onMouseOut={}  */
 import { isMobile } from 'react-device-detect'
 import Nav from '../../components/Nav'
 
-function mouseOver() {
-    document.getElementById('open-btn').src = openBtnUrlHover
-}
+// function mouseOver() {
+//     document.getElementById('open-btn').src = openBtnUrlHover
+// }
 
-function mouseOut() {
-    document.getElementById('open-btn').src = openBtnUrl
-}
+// function mouseOut() {
+//     document.getElementById('open-btn').src = openBtnUrl
+// }
 
-function redirect() {
-    window.open('https://opensea.io/collection/toyo-first-9', '_blank').focus()
-}
+// function redirect() {
+//     window.open('https://opensea.io/collection/toyo-first-9', '_blank').focus()
+// }
 
-function redirectProfile() {
-    window.open('https://opensea.io/account', '_blank').focus()
-}
+// function redirectProfile() {
+//     window.open('https://opensea.io/account', '_blank').focus()
+// }
 
 export default function Login() {
-    const path = window.location.pathname
+    // const path = window.location.pathname
 
     return (
         <main className="main">
@@ -103,12 +103,12 @@ export default function Login() {
                                             </div>
                                         </div>
                                     </>
-                                ) : (               */}                      
+                                ) : (               */}
                                     <p className="linking">
                                         WILD TOYOS ATTACKED OUR LIVE LINK IN
                                         SIMULATION H64. <br />
-                                        WE WILL BE BACK ASAP. 
-                                    </p>                                        
+                                        WE WILL BE BACK ASAP.
+                                    </p>
                               {/*   )} */}
                             </>
                         )}

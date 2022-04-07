@@ -35,7 +35,7 @@ export default function Loading() {
                             </p>
                         ) : (
                             <>
-                                {path == '/items' ? (
+                                {path === '/items' ? (
                                     <>
                                         <p className="linking">
                                             PLEASE WAIT, WE ARE SEARCHING FOR YOUR ITEMS
