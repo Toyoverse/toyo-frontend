@@ -139,6 +139,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
     }
 
     function loadingWebGL(retornoApi) {
+        const { PUBLIC_URL } = process.env;
         const WalletAccount = localStorage.getItem("WalletAccount");
         const WalletChainId = localStorage.getItem("WalletChainId");
         let walletChain = `${WalletAccount};${parseInt(WalletChainId, 16)}`;
@@ -150,7 +151,7 @@ const TextCard = ({ heightInVh, widthInVw }) => {
         unityContext.send(
           "loader",
           "setaRota",
-          "https://18.220.141.105/toyoAssets/"
+          `${PUBLIC_URL}/toyoAssets/`
         );
         /* unityContext.send(
           "loader",

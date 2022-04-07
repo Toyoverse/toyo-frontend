@@ -169,10 +169,11 @@ const TextCard = ({
       "https://st0rag3-toy0-d3vs-h3ll.nyc3.cdn.digitaloceanspaces.com/toyoAssets/"
     ); */
     if(itemName.trim() == "Jakana") {
+      const { PUBLIC_URL } = process.env;
       unityContextJakana.send(
         "loader",
         "setaRota",
-        "https://18.220.141.105/toyoAssets/"
+        `${PUBLIC_URL}/toyoAssets/`
       );
 
       /* unityContextJakana.send(
@@ -243,10 +244,11 @@ const TextCard = ({
         },${retornoApi.qStats[12]}`
       );
     } else {
+      const { PUBLIC_URL } = process.env;
       unityContextKytunt.send(
         "loader",
         "setaRota",
-        "https://18.220.141.105/toyoAssets/"
+        `${PUBLIC_URL}/toyoAssets/`
       );
 
       /* unityContextKytunt.send(
