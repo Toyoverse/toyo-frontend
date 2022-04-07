@@ -81,7 +81,7 @@ function LastSeen() {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
 
   /* useEffect(async () => { */
     //if(isOk) {
