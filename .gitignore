@@ -28,3 +28,4 @@ yarn-error.log*
 *.7zip
 
 .prettierignore
+.env
