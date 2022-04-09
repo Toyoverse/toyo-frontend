@@ -66,21 +66,25 @@ function LastSeen() {
     []
   ); */
 
-  useEffect(async () => {
-    await api
-      .get("/getParts", {
-        params: {
-          walletAddress: blockchain.account,
-          chainId: parseInt(blockchain.chainId, 16),
-        },
-      })
-      .then((response) => {
-        setFiles(response.data)
-        setIsLoaded(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchParts = async () => {
+    try {
+      const response = await api.get(
+        "/getParts",
+        {
+          params: {
+            walletAddress: blockchain.account,
+            chainId: parseInt(blockchain.chainId, 16)
+          }
+        });
+      setFiles(response.data);
+      setIsLoaded(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchParts();
   }, []);
 
   /* useEffect(async () => { */

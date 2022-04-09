@@ -15,6 +15,7 @@ import CardContentParts from '../CardContentParts';
 import Unity, { UnityContext } from "react-unity-webgl";
 
 import { useSelector} from "react-redux";
+import getRandomNumber from '../../../../../helpers/getRandomNumber';
 
 const unityContext = new UnityContext({
     loaderUrl: "open100/Build/open100.loader.js",
@@ -24,7 +25,7 @@ const unityContext = new UnityContext({
   });
 
 
-const TextCard = ({ heightInVh, widthInVw }) => {
+const TextCard = ({ heightInVh, widthInVw, reload = null }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOk, setIsOk] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -109,9 +110,11 @@ const TextCard = ({ heightInVh, widthInVw }) => {
         window.location.reload();
     }
 
-    function handleMinigame() {
-        localStorage.setItem("systemPause", "1");
-        setIsOpen(true);
+    async function handleMinigame() {
+        await savePontuacao(getRandomNumber(8, 1), `${toyo.idToyoClicked}`);
+        resetPageWithDefaultValues();
+        // localStorage.setItem("systemPause", "1");
+        // setIsOpen(true);
     }
 
     function handleStats() {

@@ -155,6 +155,7 @@ function CardContent() {
                         apiReturn.data[0].rarity = "Prototype"
 
                     setIsStatsToyo(apiReturn.data);
+                    console.info(isStatsToyo);
                 }).catch((error) => {
                     alert('getParts error');
                     alert(error);
@@ -272,7 +273,7 @@ function CardContent() {
                             <span className="val"> v8</span>
                         </div>
                         <div className="char-id">
-                            <span className="val">id # 2078</span>
+                            <span className="val">id # {toyo.idToyoClicked}</span>
                         </div>
                     </div>
 
