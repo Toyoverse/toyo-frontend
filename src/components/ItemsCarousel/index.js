@@ -182,6 +182,7 @@ const ItemsCarousel = () => {
                                     <div className="row__inner">
                                         {files.map(obj => (
                                             <div
+                                                key={obj.tokenId}
                                                 className="tile"
                                                 onClick={() => {
                                                     dispatch(
@@ -262,6 +263,7 @@ const ItemsCarousel = () => {
                                     <div className="row__inner">
                                         {files.map(obj => (
                                             <div
+                                                key={obj.tokenId}
                                                 className="tile"
                                                 onClick={() =>
                                                     dispatch(
@@ -341,6 +343,7 @@ const ItemsCarousel = () => {
                                     <div className="row__inner">
                                         {files.map(obj => (
                                             <div
+                                                key={obj.tokenId}
                                                 className="tile"
                                                 onClick={() =>
                                                     dispatch(
