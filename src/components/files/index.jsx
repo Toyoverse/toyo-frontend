@@ -5,24 +5,24 @@ import './index.scss'
 import PropTypes from 'prop-types'
 
 export default function Files({ img, name, id }) {
-    
+
    /*  if(window.location.pathname == "/toyos") {
-        return (        
+        return (
             <div className="filePortrait2">
                 <img src={img} className="fileImg" />
                 <div className="fileTextsFiles">
-                    <text className="fileText">{name}</text>
-                    <text className="fileText">#{id}</text>
+                    <p className="fileText">{name}</p>
+                    <p className="fileText">#{id}</p>
                 </div>
             </div>
         )
     } else { */
-        return (        
+        return (
             <div className="filePortrait1">
                 <img src={img} className="fileImg" />
                 <div className="fileTextsFiles">
-                    <text className="fileText">{name}</text>
-                    <text className="fileText">#{id}</text>
+                    <p className="fileText">{name}</p>
+                    <p className="fileText">#{id}</p>
                 </div>
             </div>
         )
