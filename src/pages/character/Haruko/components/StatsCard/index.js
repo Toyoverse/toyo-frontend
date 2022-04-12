@@ -281,7 +281,7 @@ const TextCard = ({ heightInVh, widthInVw, reload = null }) => {
                                       alt="Minigame"
                                       />
                                       <div className="icon-name">
-                                          <p className="connect">MINIGAME</p>
+                                          <p className="connect">GET BONUS</p>
                                       </div>
                                   </div>
                                   </>
