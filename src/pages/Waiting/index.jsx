@@ -105,9 +105,18 @@ export default function Login() {
                                     </>
                                 ) : (               */}
                                     <p className="linking">
-                                        WILD TOYOS ATTACKED OUR LIVE LINK IN
-                                        SIMULATION H64. <br />
-                                        WE WILL BE BACK ASAP.
+                                        SIMULATION H64 LIVE LINK: CONNECTED <br />
+                                        TOYO HEARTBOND LINK: NOT FOUND <br />
+                                        IT SEEMS YOU DON'T HAVE A LINK WITH A TOYO YET,
+                                        {"YOU MIGHT FIND ONE AT "}
+                                        <a
+                                            href="https://opensea.io/collection/toyo-first-9"
+                                            rel="noreferrer"
+                                            target="_blank"
+                                            style={{ color: 'white' }}
+                                        >
+                                            SIMULATION WH9
+                                        </a>
                                     </p>
                               {/*   )} */}
                             </>
