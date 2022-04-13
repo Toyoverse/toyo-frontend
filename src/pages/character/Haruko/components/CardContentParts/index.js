@@ -281,12 +281,12 @@ function CardContentParts() {
                             className="stats-double-lines"
                             alt="double lines"
                         />
-                        <span className="val">Heart&nbsp;Bond&nbsp;198</span>
+                        {/* <span className="val">Heart&nbsp;Bond&nbsp;198</span>
                         <img
                             src={heartIconUrl}
                             className="heart-icon"
                             alt="heart"
-                        />
+                        /> */}
                     </div>
 
                     <div className="stats-type2-wrapper2">

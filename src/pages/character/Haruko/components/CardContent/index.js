@@ -269,8 +269,8 @@ function CardContent() {
                             <span className="val"> {isStatsToyo.length > 0 && isStatsToyo[0].rarity }</span>
                         </div>
                         <div className="level">
-                            <span className="prop">Level:</span>
-                            <span className="val"> v8</span>
+                            {/* <span className="prop">Level:</span>
+                            <span className="val"> v8</span> */}
                         </div>
                         <div className="char-id">
                             <span className="val">id # {toyo.idToyoClicked}</span>
@@ -283,12 +283,12 @@ function CardContent() {
                             className="stats-double-lines"
                             alt="double lines"
                         />
-                        <span className="val">Heart&nbsp;Bond&nbsp;198</span>
+                        {/* <span className="val">Heart&nbsp;Bond&nbsp;198</span>
                         <img
                             src={heartIconUrl}
                             className="heart-icon"
                             alt="heart"
-                        />
+                        /> */}
                     </div>
 
                    {/*  <img
