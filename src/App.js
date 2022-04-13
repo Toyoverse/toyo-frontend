@@ -31,7 +31,7 @@ function App() {
                     </Route>
                     <Route path="/items" component={Dock} />
                     <Route exact path="/character" component={Character} />
-                    <Route path="/parts" component={LastSeen} />
+                    {/* <Route path="/parts" component={LastSeen} /> */}
                     <Route path="/toyos" component={Haruko} />
                     <Route path="/waiting" component={Waiting} />
                 </Switch>

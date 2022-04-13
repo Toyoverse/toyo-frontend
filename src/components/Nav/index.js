@@ -22,7 +22,7 @@ function Nav() {
         'https://res.cloudinary.com/groovin/image/upload/v1637677736/Toyo/body_part_3x_mxq76n.png'
     /*   const selectedNavGlowUrl =
         'https://res.cloudinary.com/groovin/image/upload/v1637769744/Toyo/nav-item-glow_wkiqbj.png' */
-   
+
     useEffect(() => {
         handleClick(window.localStorage.getItem("route"));
     }, [])
@@ -70,8 +70,8 @@ function Nav() {
             }
             history.push(`/parts`);
         }
-    }  
-   
+    }
+
     return (
         <div className="nav-items">
             {/*  <div className="selected-nav-item-glow">
@@ -98,7 +98,12 @@ function Nav() {
                     <span>TOYOS</span>
                 </div>
             </div>
-            <div className="nav-item desactived" id="navParts" onClick={() => handleClick("p")}>
+            <div
+                style={{ display: "none" }}
+                className="nav-item desactived"
+                id="navParts"
+                onClick={() => handleClick("p")}
+            >
                 <div className="link">
                     <img src={bodyPartsUrl} alt="body parts" />
                     <span>
