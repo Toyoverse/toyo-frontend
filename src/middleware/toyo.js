@@ -137,7 +137,7 @@ export default function toyoRetorno(id) {
             material: 0,
             bodyType: 3,
             rarity: 3,
-            size: 125,
+            size: 95,
             variants: 1,
             colors: 1,
             cyber: 0,
