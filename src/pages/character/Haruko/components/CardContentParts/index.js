@@ -267,11 +267,11 @@ function CardContentParts() {
                             <span className="val"> {isStatsToyo.length > 0 && isStatsToyo[0].rarity }</span>
                         </div>
                         <div className="level">
-                            <span className="prop">Level:</span>
-                            <span className="val"> v8</span>
+                            {/* <span className="prop">Level:</span>
+                            <span className="val"> v8</span> */}
                         </div>
                         <div className="char-id">
-                            <span className="val">id # 2078</span>
+                            <span className="val">id # {toyo.idToyoClicked}</span>
                         </div>
                     </div>
 
