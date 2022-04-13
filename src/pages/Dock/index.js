@@ -149,6 +149,7 @@ function Dock() {
                       ? "Open"
                       : "Closed"
                   }
+                  typeId={box.boxTypeId}
                   heightInVh={55}
                   widthInVw={30}
                 />

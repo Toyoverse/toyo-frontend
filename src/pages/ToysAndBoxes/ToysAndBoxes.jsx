@@ -110,6 +110,7 @@ export default function ToysAndBoxes() {
                   boxClicked({
                     id: obj.tokenId,
                     name: obj.name,
+                    typeId: obj.typeId,
                   })
                 );
               }}>

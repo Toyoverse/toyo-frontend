@@ -1,20 +1,23 @@
 /* eslint-disable */
 import { createSlice } from '@reduxjs/toolkit'
 
+const initialState = {
+    idBoxClicked: 0,
+    boxTypeId: 0,
+    name: ''
+}
+
 const stock = createSlice({
     name: 'stock',
-    initialState: {
-        idBoxClicked: 0,
-        name: ''
-    },
+    initialState,
     reducers: {
         boxClicked: (state, value) => {
             state.idBoxClicked = value.payload.id
             state.name = value.payload.name
+            state.boxTypeId = value.payload.typeId
         },
         cleanBoxClicked: (state) => {
-            state.idBoxClicked = 0
-            state.name = ''
+            state = initialState;
         }
     }
 })

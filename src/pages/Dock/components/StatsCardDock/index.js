@@ -45,6 +45,7 @@ const TextCard = ({
   itemType,
   itemStatus,
   itemId,
+  typeId,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOk, setIsOk] = useState(false);
@@ -122,7 +123,6 @@ const TextCard = ({
 
   useEffect(async () => {
     if (isOk) {
-      const typeId = itemType == "Fortified" ? 2 : 1;
       let swapReturn = await web3Connect.swapTokenAsync(itemId, typeId, blockchain.account);
       if(swapReturn) {
         api.get("/sortBox", {
