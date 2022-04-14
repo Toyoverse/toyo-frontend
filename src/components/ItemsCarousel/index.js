@@ -246,12 +246,12 @@ const ItemsCarousel = () => {
                                     src={toyoHeader}
                                     alt="title box"
                                 />
-                                <img
+                                {/* <img
                                     src={upIconUrl}
                                     alt="scroll up"
                                     className="scroll-icon"
                                     onClick={handleClick}
-                                />
+                                /> */}
                             </div>
                             <div className="externo">
                                 <img
