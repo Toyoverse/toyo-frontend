@@ -70,6 +70,8 @@ function CardContent() {
         unityContext.on("sendValue", async function (pontuacao, tokenId) {
             await savePontuacao(`${pontuacao}`, `${tokenId}`);
         });
+
+        return () => unityContext.removeEventListener("sendValue");
     }, []);
 
     async function savePontuacao(pontuacao, tokenId) {

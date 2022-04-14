@@ -105,6 +105,8 @@ const TextCard = ({
         await savePontuacao(pontuacao, tokenId);
       });
     }
+
+    return () => unityContext.removeEventListener("sendValue");
   }, []);
 
   async function savePontuacao(pontuacao, tokenId) {
