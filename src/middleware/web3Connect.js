@@ -105,7 +105,7 @@ async function swapTokenAsync(_tokenId, _typeId, _account) {
       from: _account,
       value: new web3.utils.BN(0),
       gas: 2100000,
-      gasPrice: 100000000000,
+      gasPrice: 3_700000000,
     })
     //alert("Tokens swapped, check your wallet!");
   } catch (error) {
