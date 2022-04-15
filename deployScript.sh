@@ -1,20 +1,5 @@
 #!/usr/bin/bash
 
-if [[ $(git branch --show-current) == "dev" ]]; then
-    DEPLOY_DIR_NAME="nakatoshivault.dev"
-else
-    DEPLOY_DIR_NAME="game.toyoverse.com"
-fi
-REPO_DIR=$(pwd)
-
-BUILD_DIR="$REPO_DIR/build"
-DEPLOY_DIR="/www/wwwroot/$DEPLOY_DIR_NAME"
-
-[[ -d "$DEPLOY_DIR" ]] || \
-    { echo "Deploy directory: '$DEPLOY_DIR' not found or is not a directory."; exit 1; }
-[[ -d "$BUILD_DIR" ]] || \
-    { echo "Build directory: '$BUILD_DIR' not found or is not a directory."; exit 1; }
-
 stop-nginx() {
     echo "Stopping nginx..."
     killall nginx
@@ -39,13 +24,29 @@ export-from-env() {
     done < "$env_file"
 }
 
-# Export for production or development environments
 if [[ "$1" == "prod" ]]; then
+    echo "Buiding for PRODUCTION environment..."
     export-from-env ".env.prod"
+    DEPLOY_DIR_NAME="game.toyoverse.com"
+    sleep 3
 else
+    echo "Buiding for DEVELOPMENT environment..."
+    DEPLOY_DIR_NAME="nakatoshivault.dev"
     export-from-env ".env"
+    sleep 3
 fi
+
+REPO_DIR=$(pwd)
+BUILD_DIR="$REPO_DIR/build"
+DEPLOY_DIR="/www/wwwroot/$DEPLOY_DIR_NAME"
+
+[[ -d "$DEPLOY_DIR" ]] || \
+    { echo "Deploy directory: '$DEPLOY_DIR' not found or is not a directory."; exit 1; }
+
 npm run build
+
+[[ -d "$BUILD_DIR" ]] || \
+    { echo "Build directory: '$BUILD_DIR' not found or is not a directory."; exit 1; }
 
 stop-nginx
 echo "Removing old build files..."
