@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 
-DEPLOY_DIR_NAME="nakatoshivault.dev"
+if [[ $(git branch --show-current) == "dev" ]]; then
+    DEPLOY_DIR_NAME="nakatoshivault.dev"
+else
+    DEPLOY_DIR_NAME="game.toyoverse.com"
+fi
 REPO_DIR=$(pwd)
 
 BUILD_DIR="$REPO_DIR/build"
@@ -49,3 +53,5 @@ rm -r "${DEPLOY_DIR:?}"/*
 echo "Copying new build files over..."
 cp -r "${BUILD_DIR:?}"/* "${DEPLOY_DIR:?}"
 start-nginx
+echo "Deploying to: $DEPLOY_DIR_NAME"
+echo "Deploy complete."
