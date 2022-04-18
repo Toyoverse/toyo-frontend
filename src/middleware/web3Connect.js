@@ -72,12 +72,17 @@ async function swapTokenAsync(_tokenId, _typeId, _account) {
   let jsonNFTSwap = await $.getJSON("NftsContracts/NftTokenSwap.json")
   let approve
   let swapping
+  let addressToUse
+
+  if (_tokenId >= 9477) {
+    addressToUse = process.env.REACT_APP_NFT_TOKEN_ADDRESS_2;
+  } else {
+    addressToUse = process.env.REACT_APP_NFT_TOKEN_ADDRESS;
+  }
 
   contracts.NftToken = TruffleContract(jsonNFT);
   contracts.NftToken.setProvider(web3Provider);
-  _contracts.nftTokenPromise = contracts.NftToken.at(
-    _contracts.nftTokenAddress
-  );
+  _contracts.nftTokenPromise = contracts.NftToken.at(addressToUse);
 
   contracts.NftTokenSwap = TruffleContract(jsonNFTSwap);
   contracts.NftTokenSwap.setProvider(web3Provider);
