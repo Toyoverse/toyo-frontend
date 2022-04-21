@@ -14,21 +14,22 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 250%;
     text-align: center;
-    background-color: rgba(27, 27, 27, 0.700);
+    background-color: rgba(27, 27, 27, 0.900);
     animation: slideUp 1 400ms both;
     border: 2px solid $color-red;
     z-index: 50;
+    font-family: 'FreePixel', sans-serif;
+    font-size: 1.2rem;
 }
 
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translate(-25%, -90%);
+        transform: translate(0, -90%);
     }
     to {
         opacity: 1;
-        transform: translate(-25%, -110%);
+        transform: translate(0, -110%);
     }
 }

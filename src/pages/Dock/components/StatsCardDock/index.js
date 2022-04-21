@@ -17,6 +17,8 @@ import Dock from "../..";
 
 const { promisify } = require("util");
 
+import PopUpMessage from "../../../../components/PopUpMessage";
+
 const unityContextJakana = new UnityContext({
   loaderUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.loader.js",
   dataUrl: "openBoxJakanaScene/Build/openBoxJakanaScene.data",
@@ -415,12 +417,19 @@ const TextCard = ({
                        { isSwap == false && isOpen == false ?
                         (
                             <div className="btnContainer">
-                                <img
-                                    src={openBtnUrl}
-                                    className="open-btn"
-                                    alt="open button"
-                                    onClick={openBox}
-                                />
+                                <PopUpMessage
+                                  message={
+                                  `Attention: If you ignore the minigame it cannot be redone later,
+                                  you will only have the option to receive a random bonus boost to your Toyo.`
+                                  }
+                                >
+                                  <img
+                                      src={openBtnUrl}
+                                      className="open-btn"
+                                      alt="open button"
+                                      onClick={openBox}
+                                  />
+                                </PopUpMessage>
                             </div>
                             ) : (
                               <div className="btnContainer">
