@@ -75,8 +75,8 @@ export default function Login() {
         <div className="login-label">
           {isMobile ? (
             <p className="linking">
-              THIS TERMINAL HAS NO GRANTED ACCESS. <br />
-              TRY AGAIN USING A P.C. TERMINAL.
+              TRY AGAIN USING A DESKTOP TERMINAL. <br />
+              THIS MOBILE DEVICE HAS NO GRANTED ACCESS.
             </p>
           ) : (
             <>
